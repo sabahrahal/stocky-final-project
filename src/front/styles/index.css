@@ -1,3 +1,71 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+.nav-link {
+  color: #3b3b3b;
+}
+
+.stocky-text-color {
+  color: #3b3b3b;
+}
+
+.nav-link:hover {
+  color: #ef802f;
+}
+
+.stocky-button {
+  background-color: #ef802f;
+  color: white;
+  width: 100px;
+  height: 40px;
+  border-radius: 25px;
+  border: 1px;
+}
+
+.a-box {
+  display: inline-block;
+  width: 240px;
+  text-align: center;
+}
+
+.img-container {
+  height: 230px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 0px 0px 20px 20px;
+  display: inline-block;
+}
+
+.img-container img {
+  height: 250px;
+  margin: -35px 0px 0px -70px;
+}
+
+.inner-skew {
+  display: inline-block;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0px;
+  font-size: 0px;
+  margin: 30px 0px 0px 0px;
+  background: #c8c2c2;
+  height: 250px;
+  width: 200px;
+}
+
+.text-container {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.4);
+  padding: 120px 20px 20px 20px;
+  border-radius: 20px;
+  background: #3b3b3b;
+  margin: -120px 0px 0px 0px;
+  line-height: 19px;
+  font-size: 14px;
+  color: white;
+}
+
+.text-container h3 {
+  margin: 20px 0px 10px 0px;
+  color: white;
+  font-size: 18px;
+}
