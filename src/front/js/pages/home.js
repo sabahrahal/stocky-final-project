@@ -10,7 +10,7 @@ export const Home = () => {
   return (
     <div className="container mt-4">
       <div className="row">
-        <div className="col-5">
+        <div className="col-md-5 title-and-sub-title">
           <h1 className="stocky-text-color">
             A Smart, automatic inventory tool.
           </h1>
@@ -21,7 +21,7 @@ export const Home = () => {
           </p>
           <button className="stocky-button">Explore</button>
         </div>
-        <div className="col d-flex justify-content-center align-items-center">
+        <div className="col-md-7 d-flex justify-content-center align-items-center screen-991px">
           <img
             src="https://cdn.discordapp.com/attachments/747040302988132352/1041237107454255124/logo_png_sabah.png"
             width="500px"
@@ -30,8 +30,9 @@ export const Home = () => {
       </div>
 
       <div className="row mt-5">
-        <div className="col">
+        <div className="col-md d-flex justify-content-center">
           <InfoCard
+            className="col-md d-flex justify-content-center"
             img="https://images.unsplash.com/photo-1584791097929-aa825fe8e1e1?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             title="Real-Time Invetory Visibility"
             description="Enjoy real-time, detailed visibility into key inventory control
@@ -40,7 +41,7 @@ export const Home = () => {
           />
         </div>
 
-        <div className="col">
+        <div className="col-md d-flex justify-content-center">
           <InfoCard
             img="https://images.unsplash.com/photo-1584791097929-aa825fe8e1e1?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             title="Complete Procure-to-Pay Purchasing"
@@ -50,7 +51,7 @@ export const Home = () => {
           />
         </div>
 
-        <div className="col">
+        <div className="col-md d-flex justify-content-center">
           <InfoCard
             img="https://images.unsplash.com/photo-1584791097929-aa825fe8e1e1?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             title="One System for Your Entire Company"
@@ -59,7 +60,7 @@ export const Home = () => {
           />
         </div>
 
-        <div className="col">
+        <div className="col-md d-flex justify-content-center">
           <InfoCard
             img="https://images.unsplash.com/photo-1584791097929-aa825fe8e1e1?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
             title="Advanced Invetory & Order Fulfillment"
