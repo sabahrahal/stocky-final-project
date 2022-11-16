@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-md navbar-light sticky-top bg-white">
       <div className="container">
         <a className="navbar-brand" href="#">
           <img
-            src="https://cdn.discordapp.com/attachments/1041080734464614410/1041138801067687966/Stocky_Logo_Only.svg"
+            src="https://cdn.discordapp.com/attachments/245471080829943820/1042278498254979112/Stocky_Logo_Only.png"
             width="64px"
           />
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#menu"
@@ -20,7 +20,7 @@ export const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="menu">
           <ul className="navbar-nav navbar-mobile">

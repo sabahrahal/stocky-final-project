@@ -1,31 +1,55 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
-.nav-link {
-  color: #3b3b3b;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
 }
 
 .stocky-text-color {
   color: #3b3b3b;
 }
 
-.nav-link:hover {
-  color: #ef802f;
+.stocky-text-color h1 {
+  font-size: 60px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.hr-color {
+  background-color: #d3508e;
 }
 
 .stocky-button {
-  background-color: #ef802f;
+  background: linear-gradient(to right, #ffcc57, #d3508e);
+  background-color: #ffcc57;
+  color: #fff;
+  font-size: 18px;
+  font-style: normal;
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 0px solid #000;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 2px 0px
+    rgba(107.1734619140625, 33.08724597049923, 68.15095122623141, 0.5);
+}
+.stocky-button:hover {
+  background: linear-gradient(to right, #f2c253, #c84c87);
+  background-color: #f2c253;
   color: white;
-  width: 100px;
-  height: 40px;
-  border-radius: 25px;
-  border: 1px;
+}
+.stocky-button:active {
+  transform: scale(0.95);
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1399px) {
   .screen-991px img {
     width: 350px;
-    margin-top: 60px;
+    margin-top: 5px;
   }
   .title-and-sub-title {
     display: flex;
@@ -97,16 +121,16 @@
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.4);
   padding: 120px 20px 20px 20px;
   border-radius: 20px;
-  background: #3b3b3b;
+  background: white;
   margin: -120px 0px 0px 0px;
   line-height: 19px;
   font-size: 14px;
-  color: white;
+  color: black;
 }
 
 .text-container h3 {
   margin: 20px 0px 10px 0px;
-  color: white;
+  color: black;
   font-size: 18px;
 }
 

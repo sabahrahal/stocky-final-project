@@ -1,34 +1,44 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { InfoCard } from "../component/InfoCard.jsx";
+import { Roadmap } from "../component/Roadmap.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-3">
       <div className="row">
-        <div className="col-md-5 title-and-sub-title">
-          <h1 className="stocky-text-color">
-            A Smart, automatic inventory tool.
-          </h1>
-          <p className="stocky-text-color">
-            Stocky is the faster, safer way to manage inventory automatically,
-            keep track of vendors, monitor products profitability in real time,
-            and more...
-          </p>
-          <button className="stocky-button">Explore</button>
-        </div>
-        <div className="col-md-7 d-flex justify-content-center align-items-center screen-991px">
-          <img
-            src="https://cdn.discordapp.com/attachments/747040302988132352/1041237107454255124/logo_png_sabah.png"
-            width="500px"
-          />
+        <div className="col-md-6 title-and-sub-title mx-auto">
+          <div className="d-flex justify-content-center align-items-center screen-991px">
+            <img
+              src="https://cdn.discordapp.com/attachments/747040302988132352/1041237107454255124/logo_png_sabah.png"
+              width="600px"
+            />
+          </div>
+          <div className="d-flex flex-column align-items-center justify-content-center">
+            <h1 className="stocky-text-color text-center fs-1">
+              A Smart, automatic inventory tool.
+            </h1>
+            <p className="stocky-text-color text-center fs-5">
+              Stocky is the faster, safer way to manage inventory automatically,
+              keep track of vendors, monitor products profitability in real
+              time, and more...
+            </p>
+            <a id="road_map" href="#road_map" className="stocky-button">
+              Explore
+            </a>
+          </div>
         </div>
       </div>
-
+      <hr className="mt-5 hr-color" />
+      <div className="row">
+        <h2 className=" fs-1 mt-5 col-6 me-auto">
+          The path to your success has never looked so easy.
+        </h2>
+      </div>
+      <Roadmap />
       <div className="row mt-5">
         <div className="col-md d-flex justify-content-center">
           <InfoCard
