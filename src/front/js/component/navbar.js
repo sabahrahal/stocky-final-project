@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+  let navigate = useNavigate();
+
   return (
     <>
       {/* Open LogIn Modal NOTA: El Modal tiene que estar aquí porque el navabar esta fijo y si se crea después no funciona.*/}
@@ -46,7 +48,15 @@ export const Navbar = () => {
                 <div class="social-media">
                   <h5>
                     You can also Log In with your social networks. If you don't
-                    have an account, <Link to={"/signUp"}>Sign Up Now!</Link>
+                    have an account,{" "}
+                    <button
+                      data-bs-dismiss="modal"
+                      onClick={(event) => {
+                        navigate("/signUp");
+                      }}
+                    >
+                      Sign Up Now!
+                    </button>
                   </h5>
                   <div class="social-icons">
                     <a href="#">
