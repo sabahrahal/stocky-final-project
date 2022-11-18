@@ -7,39 +7,39 @@
 */
 
 .stocky-text-color {
-    color: #3b3b3b;
+  color: #3b3b3b;
 }
 
 .stocky-text-color h1 {
-    font-size: 60px;
+  font-size: 60px;
 }
 
 .hr-color {
-    background-color: #d3508e;
+  background-color: #d3508e;
 }
 
 @media only screen and (max-width: 1399px) {
-    .screen-991px img {
-        width: 350px;
-        margin-top: 5px;
-    }
-    .title-and-sub-title {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-    .title-and-sub-title h1 {
-        font-size: 40px;
-    }
-    .title-and-sub-title p {
-        font-size: 20px;
-    }
+  .screen-991px img {
+    width: 350px;
+    margin-top: 5px;
+  }
+  .title-and-sub-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .title-and-sub-title h1 {
+    font-size: 40px;
+  }
+  .title-and-sub-title p {
+    font-size: 20px;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
-    .about-us-img {
-        width: 150px;
-    }
+  .about-us-img {
+    width: 150px;
+  }
 }

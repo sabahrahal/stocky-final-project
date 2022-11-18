@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Roadmap } from "../component/Roadmap.jsx";
 import { AboutUs } from "../component/AboutUs.jsx";
 import { ContactFrom } from "../component/ContactForm.jsx";
-import { SignUpForm } from "../component/SignUpForm.jsx";
+import { ScrollToTopButton } from "../component/ScrollToTopButton.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -40,6 +40,7 @@ export const Home = () => {
       <AboutUs />
       <hr className="mt-5 hr-color" />
       <ContactFrom />
+      <ScrollToTopButton />
     </div>
   );
 };
