@@ -1,41 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const SignUpForm = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+
     return (
         <>
             <div className="row col-md-6 mx-auto d-flex flex-column align-items-center justify-content-center">
-                <h2 className=" fs-1 mt-5 text-center">Sign Up to start managing your business quickly and efficiently.</h2>
+                <h2 className=" fs-1 mt-5 text-center">
+                    Sign Up to start managing your business quickly and
+                    efficiently.
+                </h2>
             </div>
-            <div class="registration-form">
+            <div className="registration-form">
                 <form>
-                    <div class="form-icon">
-                        <span><i class="fas fa-solid fa-user"></i></span>
+                    <div className="form-icon">
+                        <span>
+                            <i className="fas fa-solid fa-user"></i>
+                        </span>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="username" placeholder="Username" />
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control item"
+                            id="username"
+                            placeholder="Username"
+                            onChange={(e) => {
+                                setUsername(e.target.value);
+                            }}
+                            value={username}
+                        />
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control item" id="password" placeholder="Password" />
+                    <div className="form-group">
+                        <input
+                            type="password"
+                            className="form-control item"
+                            id="password"
+                            placeholder="Password"
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                            value={password}
+                        />
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="email" placeholder="Email" />
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control item"
+                            id="email"
+                            placeholder="Email"
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                            value={email}
+                        />
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number" />
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control item"
+                            id="phone-number"
+                            placeholder="Phone Number"
+                            onChange={(e) => {
+                                setPhone(e.target.value);
+                            }}
+                            value={phone}
+                        />
                     </div>
-                    <div class="form-group d-flex justify-content-center">
-                        <button type="button" class="btn btn-block stocky-button">Create Account</button>
+                    <div className="form-group d-flex justify-content-center">
+                        <button
+                            type="button"
+                            className="btn btn-block stocky-button"
+                        >
+                            Create Account
+                        </button>
                     </div>
                 </form>
-                <div class="social-media">
+                <div className="social-media">
                     <h5>You can also register with your social networks</h5>
-                    <div class="social-icons">
-                        <a href="#"><i class="bi bi-facebook" title="Facebook"></i></a>
-                        <a href="#"><i class="bi bi-google" title="Google"></i></a>
-                        <a href="#"><i class="bi bi-twitter" title="Twitter"></i></a>
+                    <div className="social-icons">
+                        <a href="#">
+                            <i className="bi bi-facebook" title="Facebook"></i>
+                        </a>
+                        <a href="#">
+                            <i className="bi bi-google" title="Google"></i>
+                        </a>
+                        <a href="#">
+                            <i className="bi bi-twitter" title="Twitter"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </>
     );
-}
+};
