@@ -40,3 +40,34 @@
     margin-bottom: 50px;
     line-height: 100px;
 }
+
+.registration-form .social-media {
+    max-width: 600px;
+    margin: auto;
+    padding-top: 35px;
+    text-align: center;
+    color: black;
+}
+
+.registration-form .social-icons {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.registration-form .social-icons a {
+    font-size: 23px;
+    margin: 0 3px;
+    color: #ef802f;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.registration-form .social-icons a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
