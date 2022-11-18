@@ -3,6 +3,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
 a:hover {
   cursor: pointer;
 }
@@ -43,4 +47,15 @@ a:hover {
   }
 }
 
+.btn-scroll-to-top {
+  position: sticky;
+  left: 300vh;
+  bottom: 20px;
+  font-size: 60px;
+  color: #ef7f2fd5;
+}
 
+.btn-scroll-to-top:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
