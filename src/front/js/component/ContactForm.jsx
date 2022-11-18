@@ -1,41 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const ContactFrom = () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [message, setMessage] = useState("");
+
     return (
         <>
             <div className="row col-md-6 mx-auto d-flex flex-column align-items-center justify-content-center">
-                <h2 className=" fs-1 mt-5 text-center">Reach out to us for more information</h2>
+                <h2 className=" fs-1 mt-5 text-center">
+                    Reach out to us for more information
+                </h2>
             </div>
-            <div class="registration-form">
+            <div className="registration-form">
                 <form>
-                    <div class="form-icon">
-                        <span><i class="fas fa-solid fa-user"></i></span>
+                    <div className="form-icon">
+                        <span>
+                            <i className="fas fa-solid fa-user"></i>
+                        </span>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="full-name" placeholder="Full Name" />
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control item"
+                            id="full-name"
+                            placeholder="Full Name"
+                            onChange={(e) => {
+                                setName(e.target.value);
+                            }}
+                            value={name}
+                        />
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="email" placeholder="Email" />
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control item"
+                            id="email"
+                            placeholder="Email"
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
+                            value={email}
+                        />
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number" />
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control item"
+                            id="phone-number"
+                            placeholder="Phone Number"
+                            onChange={(e) => {
+                                setPhone(e.target.value);
+                            }}
+                            value={phone}
+                        />
                     </div>
-                    <div class="form-group">
-                        <textarea type="text" class="form-control item" id="information" placeholder="Write in this field your questions or reason for contact..." />
+                    <div className="form-group">
+                        <textarea
+                            type="text"
+                            className="form-control item"
+                            id="message"
+                            placeholder="Write in this field your questions or reason for contact..."
+                            onChange={(e) => {
+                                setMessage(e.target.value);
+                            }}
+                            value={message}
+                        />
                     </div>
-                    <div class="form-group d-flex justify-content-center">
-                        <button type="button" class="btn btn-block stocky-button">Send Contact Form</button>
+                    <div className="form-group d-flex justify-content-center">
+                        <button
+                            type="button"
+                            className="btn btn-block stocky-button"
+                        >
+                            Send Contact Form
+                        </button>
                     </div>
                 </form>
-                <div class="social-media">
-                    <h5>Visit and follow us in our social media</h5>
-                    <div class="social-icons">
-                        <a href="#"><i class="bi bi-facebook" title="Facebook"></i></a>
-                        <a href="#"><i class="bi bi-google" title="Google"></i></a>
-                        <a href="#"><i class="bi bi-twitter" title="Twitter"></i></a>
-                    </div>
-                </div>
+                
             </div>
         </>
     );
-}
+};

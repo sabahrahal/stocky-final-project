@@ -6,12 +6,13 @@ export const AboutUs = () => {
             <div className="row col-md-6 mx-auto d-flex flex-column align-items-center justify-content-center">
                 <h2 className="fs-1 mt-5 text-center">Learn More About Us</h2>
                 <p className="stocky-text-color text-center fs-5">
-                    Stocky is a web application created by 4Geeks Academy students looking
-                    to streamline inventory and sales control for both small and
-                    medium-sized businesses. We offer a fast, simple and effective
-                    solution where you only need a computer or a smartphone with an
-                    internet connection to have access and control of all the daily
-                    operations that are carried out in your business or venture.
+                    Stocky is a web application created by 4Geeks Academy
+                    students looking to streamline inventory and sales control
+                    for both small and medium-sized businesses. We offer a fast,
+                    simple and effective solution where you only need a computer
+                    or a smartphone with an internet connection to have access
+                    and control of all the daily operations that are carried out
+                    in your business or venture.
                 </p>
             </div>
             <div className="row mt-5">
@@ -22,7 +23,10 @@ export const AboutUs = () => {
                         width="250px"
                     />
                     <h3>Sabah Rahal</h3>
-                    <p className="text-center">"Cualquier idiota puede usar un ordenador. De hecho, muchos lo hacen"</p>
+                    <p className="text-center">
+                        "Cualquier idiota puede usar un ordenador. De hecho,
+                        muchos lo hacen"
+                    </p>
                 </div>
                 <div className="col-md-3 d-flex flex-column align-items-center">
                     <img
@@ -31,7 +35,7 @@ export const AboutUs = () => {
                         width="250px"
                     />
                     <h3>Jorge Oviedo</h3>
-                    <p className="text-center">"Cualquier idiota puede usar un ordenador. De hecho, muchos lo hacen"</p>
+                    <p className="text-center">"No importa come torta"</p>
                 </div>
                 <div className="col-md-3 d-flex flex-column align-items-center">
                     <img
@@ -40,7 +44,10 @@ export const AboutUs = () => {
                         width="250px"
                     />
                     <h3>Daniel Gonzales</h3>
-                    <p className="text-center">"Cualquier idiota puede usar un ordenador. De hecho, muchos lo hacen"</p>
+                    <p className="text-center">
+                        "Cualquier idiota puede usar un ordenador. De hecho,
+                        muchos lo hacen"
+                    </p>
                 </div>
                 <div className="col-md-3 d-flex flex-column align-items-center">
                     <img
@@ -49,7 +56,10 @@ export const AboutUs = () => {
                         width="250px"
                     />
                     <h3>Alfredo Rondon</h3>
-                    <p className="text-center">"Cualquier idiota puede usar un ordenador. De hecho, muchos lo hacen"</p>
+                    <p className="text-center">
+                        "Cualquier idiota puede usar un ordenador. De hecho,
+                        muchos lo hacen"
+                    </p>
                 </div>
             </div>
             <div className="d-flex justify-content-center mt-5">
@@ -59,4 +69,4 @@ export const AboutUs = () => {
             </div>
         </div>
     );
-}  
+};
