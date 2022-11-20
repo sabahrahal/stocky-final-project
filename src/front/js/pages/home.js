@@ -11,7 +11,7 @@ export const Home = () => {
 
   return (
     <div className="container mt-3" id="home">
-      <div className="row">
+      <div className="row hero d-flex justify-content-center align-items-center">
         <div className="col-md-6 title-and-sub-title mx-auto">
           <div className="d-flex justify-content-center align-items-center screen-991px">
             <img
@@ -28,12 +28,13 @@ export const Home = () => {
               keep track of vendors, monitor products profitability in real
               time, and more...
             </p>
-            <a id="road_map" href="#road_map" className="stocky-button">
+            <a href="#road_map" className="stocky-button">
               Explore
             </a>
           </div>
         </div>
       </div>
+      <span id="road_map"></span>
       <hr className="mt-5 hr-color" />
       <Roadmap />
       <hr className="mt-5 hr-color" />
