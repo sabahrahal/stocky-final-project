@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Roadmap } from "../component/Roadmap.jsx";
+import { useNavigate } from "react-router-dom";
 import { AboutUs } from "../component/AboutUs.jsx";
 import { ContactFrom } from "../component/ContactForm.jsx";
 import { ScrollToTopButton } from "../component/ScrollToTopButton.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
-
+  let navigate = useNavigate();
+  if (store.token && store.token != "" && store.token != undefined) navigate("/companies");
   return (
     <div className="container mt-3" id="home">
       <div className="row hero d-flex justify-content-center align-items-center">
