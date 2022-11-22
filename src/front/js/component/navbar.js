@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
   let navigate = useNavigate();
+  const { store, actions } = useContext(Context);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -63,7 +65,7 @@ export const Navbar = () => {
                       className="modal-signup-anchor"
                       data-bs-dismiss="modal"
                       onClick={(event) => {
-                        navigate("/signUp");
+                        navigate("/sign-up");
                       }}
                     >
                       Sign Up Now!
@@ -91,7 +93,13 @@ export const Navbar = () => {
               >
                 Close
               </button>
-              <button type="button" className="stocky-button">
+              <button
+                type="button"
+                className="stocky-button"
+                onClick={(event) => {
+                  actions.logIn(username, password);
+                }}
+              >
                 Log In
               </button>
             </div>

@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 export const SignUpForm = () => {
+    const { store, actions } = useContext(Context);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    let navigate = useNavigate();
 
+    if (store.token && store.token != "" && store.token != undefined) navigate("/companies");
     return (
         <>
             <div className="row col-md-6 mx-auto d-flex flex-column align-items-center justify-content-center">
@@ -73,6 +78,9 @@ export const SignUpForm = () => {
                         <button
                             type="button"
                             className="btn btn-block stocky-button"
+                            onClick={(event) => {
+                                actions.signUp(username, password, email, phone);
+                            }}
                         >
                             Create Account
                         </button>

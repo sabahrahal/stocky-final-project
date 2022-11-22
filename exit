@@ -1,0 +1,10 @@
+                                     Table "public.user"
+  Column  |          Type          | Collation | Nullable |             Default              
+----------+------------------------+-----------+----------+----------------------------------
+ id       | integer                |           | not null | nextval('user_id_seq'::regclass)
+ password | character varying(80)  |           | not null | 
+ username | character varying(120) |           | not null | 
+Indexes:
+    "user_pkey" PRIMARY KEY, btree (id)
+    "user_username_key" UNIQUE CONSTRAINT, btree (username)
+
