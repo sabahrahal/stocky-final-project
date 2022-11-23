@@ -11,7 +11,7 @@ import "../../styles/roadMap.css";
 export const Home = () => {
   const { store, actions } = useContext(Context);
   let navigate = useNavigate();
-  if (store.token && store.token != "" && store.token != undefined) navigate("/companies");
+  // if (store.token && store.token != "" && store.token != undefined) navigate("/companies");
   return (
     <div className="container mt-3" id="home">
       <div className="row hero d-flex justify-content-center align-items-center">
