@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 			],
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-tk3340r9skm.ws-us77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-5bys6pwn7ta.ws-eu77.gitpod.io/api",
 			token: ""
 		},
 		actions: {
@@ -91,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				sessionStorage.clear();
 				setStore({ token: undefined })
 			},
-			
+
 			getMessage: async () => {
 				try {
 					// fetching data from the backend

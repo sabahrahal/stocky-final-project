@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AboutUs } from "../component/AboutUs.jsx";
 import { ContactForm } from "../component/ContactForm.jsx";
 import { ScrollToTopButton } from "../component/ScrollToTopButton.jsx";
+import "../../styles/roadMap.css";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);

@@ -155,13 +155,21 @@ export const Navbar = () => {
             <ul className="navbar-nav ms-auto">
               <li className="navbar-item stocky-button-mobile">
                 {store.token && store.token != "" && store.token != undefined ?
-                  <button
-                    className="stocky-button"
-                    onClick={(event) => {
-                      actions.logOff();
-                      navigate("/");
-                    }}
-                  >Log Off</button>
+                  <>
+                    <button
+                      className="stocky-button me-2"
+                      onClick={(event) => {
+                        navigate("/companies");
+                      }}
+                    >My Companies</button>
+                    <button
+                      className="stocky-button"
+                      onClick={(event) => {
+                        actions.logOff();
+                        navigate("/");
+                      }}
+                    >Log Off</button>
+                  </>
                   : <button
                     className="stocky-button"
                     data-bs-toggle="modal"
