@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -97,8 +97,9 @@ export const Navbar = () => {
                 type="button"
                 className="stocky-button"
                 data-bs-dismiss="modal"
-                onClick={(event) => {
-                  actions.logIn(username, password);
+                onClick={async (event) => {
+                  const success = await actions.logIn(username, password);
+                  if (success) navigate('/companies');
                 }}
               >
                 Log In

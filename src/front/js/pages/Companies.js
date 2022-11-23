@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CompaniesNavbar } from "../component/companies/CompaniesNavbar.jsx";
 import { Context } from "../store/appContext";
 import "../../styles/companies.css";
 import { CardCompanies } from "../component/companies/CardCompanies.jsx";
@@ -11,10 +10,8 @@ export const Companies = () => {
 
     return (
         <div className="container">
-            PRUEBA BORRAR
             {store.token && store.token != "" && store.token != undefined ?
                 <>
-                    <CompaniesNavbar />
                     <div className="row">
                         <div className="col-md-6 title-and-sub-title mx-auto">
                             <div className="d-flex flex-column align-items-center justify-content-center my-5 stocky-text-color">

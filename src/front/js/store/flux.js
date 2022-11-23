@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 			],
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-5bys6pwn7ta.ws-eu77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-tk3340r9skm.ws-us77.gitpod.io/api",
 			token: ""
 		},
 		actions: {
@@ -56,8 +56,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					sessionStorage.setItem("user_id", body.user_id);
 					actions.syncToken();
 					console.log(body.token);
+					return true;
 				} catch (error) {
 					console.log(error);
+					return;
 				}
 			},
 			signUp: async (username, password, email, phone) => {

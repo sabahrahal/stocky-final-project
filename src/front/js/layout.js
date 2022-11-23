@@ -1,6 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ScrollToTop } from "./component/scrollToTop";
+import injectContext from "./store/appContext";
+import { Navbar } from "./component/navbar";
+import { Footer } from "./component/footer";
 
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
@@ -9,10 +12,9 @@ import { Companies } from "./pages/Companies";
 import { Dashboard } from "./pages/Dashboard";
 
 import { SignUpForm } from "./component/SignUpForm.jsx";
-import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { AddCompany } from "./component/companies/AddCompany.jsx";
+import { CompaniesNavbar } from "./component/companies/CompaniesNavbar.jsx";
 
 //create your first component
 const Layout = () => {
@@ -30,16 +32,23 @@ const Layout = () => {
                             <Home />
                             <Footer />
                         </>} path="/" />
-                        <Route element={<Demo />} path="/demo" />
                         <Route element={<>
                             <Navbar />
                             <SignUpForm />
                             <Footer />
                         </>} path="/sign-up" />
-                        <Route element={<Companies />} path="/companies" />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<h1>Not found!</h1>} />
+                        <Route element={<>
+                            <CompaniesNavbar />
+                            <Companies />
+                        </>} path="/companies" />
+                        <Route element={<>
+                            <CompaniesNavbar />
+                            <AddCompany />
+                        </>} path="/add-company" />
                         <Route element={<Dashboard />} path="/dashboard" />
+                        <Route element={<h1>Not found!</h1>} />
+                        <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<Demo />} path="/demo" />
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>
