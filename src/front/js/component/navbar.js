@@ -96,6 +96,7 @@ export const Navbar = () => {
               <button
                 type="button"
                 className="stocky-button"
+                data-bs-dismiss="modal"
                 onClick={(event) => {
                   actions.logIn(username, password);
                 }}
@@ -131,7 +132,7 @@ export const Navbar = () => {
           <div className="collapse navbar-collapse" id="menu">
             <ul className="navbar-nav navbar-mobile">
               <li className="navbar-item">
-                <Link to={"/"} className="nav-link active">
+                <Link to={"/"} className="nav-link">
                   Home
                 </Link>
               </li>
@@ -153,13 +154,21 @@ export const Navbar = () => {
             </ul>
             <ul className="navbar-nav ms-auto">
               <li className="navbar-item stocky-button-mobile">
-                <button
-                  className="stocky-button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  Log In
-                </button>
+                {store.token && store.token != "" && store.token != undefined ?
+                  <button
+                    className="stocky-button"
+                    onClick={(event) => {
+                      actions.logOff();
+                      navigate("/");
+                    }}
+                  >Log Off</button>
+                  : <button
+                    className="stocky-button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    Log In
+                  </button>}
               </li>
             </ul>
           </div>
