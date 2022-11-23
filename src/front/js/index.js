@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 
 //include your index.scss file into the bundle
 import "../styles/index.css";
-import "../styles/roadMap.css";
 import "../styles/contactForm.css";
 import "../styles/ModalLogInForm.css";
 

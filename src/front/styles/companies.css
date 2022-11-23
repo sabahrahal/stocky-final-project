@@ -1,0 +1,65 @@
+.title {
+  font-size: 80px;
+}
+
+.stocky-text-color {
+  color: #3b3b3b;
+}
+
+.stocky-text-color h1 {
+  font-size: 60px;
+}
+
+/*Profile Card 5*/
+.profile-card-5 {
+  margin-top: 20px;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #ffcc57, #d3508e) 1;
+}
+
+.profile-card-5 .card-img-block {
+  width: 91%;
+  margin: 0 auto;
+  position: relative;
+  top: -20px;
+}
+.profile-card-5 .card-img-block img {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
+}
+.profile-card-5 h5 {
+  color: black;
+  font-weight: 600;
+}
+.profile-card-5 p {
+  font-size: 14px;
+  font-weight: 300;
+}
+.profile-card-5:hover {
+  cursor: pointer;
+  background: linear-gradient(to right, #ffcc57, #d3508e) border-box;
+  color: white;
+}
+.profile-card-5:hover .company-card-title {
+  color: white;
+}
+.circle-card-companies {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 362px;
+  height: 345px;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, #ffcc57, #d3508e) border-box;
+  border: 2px solid transparent;
+}
+
+.plus-icon {
+  font-size: 200px;
+}
+
+.circle-card-companies:hover {
+  background: linear-gradient(to right, #ffcc57, #d3508e) border-box;
+  color: white;
+  cursor: pointer;
+}
+/*End Companies Cards*/
