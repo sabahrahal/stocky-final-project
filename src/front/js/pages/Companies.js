@@ -7,6 +7,7 @@ export const Companies = () => {
     let navigate = useNavigate();
     return (
         <div className="container">
+            PRUEBA BORRAR
             {store.token && store.token != "" && store.token != undefined ?
                 <>
                     <h1>PLEASE SELECT A COMPANY</h1>
