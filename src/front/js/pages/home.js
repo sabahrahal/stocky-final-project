@@ -4,7 +4,7 @@ import "../../styles/home.css";
 import { Roadmap } from "../component/Roadmap.jsx";
 import { useNavigate } from "react-router-dom";
 import { AboutUs } from "../component/AboutUs.jsx";
-import { ContactFrom } from "../component/ContactForm.jsx";
+import { ContactForm } from "../component/ContactForm.jsx";
 import { ScrollToTopButton } from "../component/ScrollToTopButton.jsx";
 
 export const Home = () => {
@@ -17,6 +17,7 @@ export const Home = () => {
         <div className="col-md-6 title-and-sub-title mx-auto">
           <div className="d-flex justify-content-center align-items-center screen-991px">
             <img
+
               src="https://cdn.discordapp.com/attachments/747040302988132352/1041237107454255124/logo_png_sabah.png"
               width="600px"
             />
@@ -42,7 +43,7 @@ export const Home = () => {
       <hr className="mt-5 hr-color" />
       <AboutUs />
       <hr className="mt-5 hr-color" />
-      <ContactFrom />
+      <ContactForm />
       <ScrollToTopButton />
     </div>
   );

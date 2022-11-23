@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 			],
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-fhrceixtpuf.ws-eu77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-tk3340r9skm.ws-us77.gitpod.io/api",
 			token: ""
 		},
 		actions: {
@@ -34,6 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//Login with JWT
 			logIn: async (username, password) => {
 				const store = getStore();
+				const actions = getActions();
 				const ops = {
 					method: "POST",
 					headers: {
@@ -53,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const body = await response.json();
 					sessionStorage.setItem("token", body.token);
 					sessionStorage.setItem("user_id", body.user_id);
+					actions.syncToken();
 					console.log(body.token);
 				} catch (error) {
 					console.log(error);
@@ -85,7 +87,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
-
+			logOff: () => {
+				sessionStorage.clear();
+				setStore({ token: undefined })
+			},
+			
 			getMessage: async () => {
 				try {
 					// fetching data from the backend

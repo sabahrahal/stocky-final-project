@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../../styles/footer.css";
 
+
 export const Footer = () => (
   <footer className="footer container pt-5">
     <div className="d-flex justify-content-between align-items-center footer-container-responsive">

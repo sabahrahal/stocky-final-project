@@ -6,6 +6,8 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Companies } from "./pages/Companies";
+import { Dashboard } from "./pages/Dashboard";
+
 import { SignUpForm } from "./component/SignUpForm.jsx";
 import injectContext from "./store/appContext";
 
@@ -22,16 +24,23 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar />
                     <Routes>
-                        <Route element={<Home />} path="/" />
+                        <Route element={<>
+                            <Navbar />
+                            <Home />
+                            <Footer />
+                        </>} path="/" />
                         <Route element={<Demo />} path="/demo" />
-                        <Route element={<SignUpForm />} path="/sign-up" />
+                        <Route element={<>
+                            <Navbar />
+                            <SignUpForm />
+                            <Footer />
+                        </>} path="/sign-up" />
                         <Route element={<Companies />} path="/companies" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
+                        <Route element={<Dashboard />} path="/dashboard" />
                     </Routes>
-                    <Footer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>
