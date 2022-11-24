@@ -33,3 +33,33 @@ class User(db.Model):
             "email" : self.email,
             "phone" : self.phone
         }
+
+class Company(db.Model): 
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False, unique=True)
+    rif = db.Column(db.String(120), unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __init__(self, **kwargs):
+        self.name = kwargs["name"]
+        self.rif = kwargs["rif"]
+        self.user_id = kwargs["user_id"]
+    
+    @classmethod
+    def create(cls, **kwargs):
+        new_company = cls(**kwargs)
+        db.session.add(new_company)
+
+        try:
+            db.session.commit()
+            return new_company
+        except Exception as Error: 
+            raise Exception(Error.args[0], 400)
+    
+    def serialize(self): 
+        return {
+            "id" : self.id,
+            "name" : self.name,
+            "rif" : self.rif,
+            "user_id" : self.user_id 
+        }
