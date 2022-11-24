@@ -2,9 +2,9 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Company
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 api = Blueprint('api', __name__)
 
@@ -39,6 +39,29 @@ def sign_up():
 
 
 #Start Company Endpoints
+@api.route('/create-company', methods=['POST'])
+def create_company():
+    new_company_data = request.json
+    try:
+        if "name" not in new_company_data or new_company_data["name"] == "":
+            raise Exception("Company name invalid",400)
+        if "rif" not in new_company_data or new_company_data["rif"] == "":
+            raise Exception("Company rif invalid",400)
+        new_company = Company.create(**new_company_data)
+        return jsonify(new_company.serialize()), 201
+    except Exception as error: 
+        return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+
+@api.route('/companies', methods=['GET'])
+@jwt_required()
+def get_companies():
+    current_user_id = get_jwt_identity()
+    companies_by_id = Company.query.filter_by(user_id = current_user_id)
+    companies_by_id_dictionaries = []
+    for company in companies_by_id:
+        companies_by_id_dictionaries.append(company.serialize())
+    
+    return jsonify(companies_by_id_dictionaries), 200
 
 #End Company Endpoints
 
