@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { DashboardNavbar } from "../component/dashboard/DashboardNavbar.jsx";
 import { useNavigate } from "react-router-dom";
 

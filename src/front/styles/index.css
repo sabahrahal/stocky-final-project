@@ -1,61 +1,63 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 * {
-  font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 html,
 body {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 a:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .stocky-button {
-  background: linear-gradient(to right, #ffcc57, #d3508e);
-  background-color: #ffcc57;
-  color: #fff;
-  font-size: 18px;
-  font-style: normal;
-  text-decoration: none;
-  padding: 12px 24px;
-  border: 0px solid #000;
-  border-radius: 10px;
-  display: inline-block;
-  box-shadow: 0px 0px 2px 0px
-    rgba(107.1734619140625, 33.08724597049923, 68.15095122623141, 0.5);
+    background: linear-gradient(to right, #ffcc57, #d3508e);
+    background-color: #ffcc57;
+    color: #fff;
+    font-size: 18px;
+    font-style: normal;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 0px solid #000;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0px 0px 2px 0px
+        rgba(107.1734619140625, 33.08724597049923, 68.15095122623141, 0.5);
 }
 .stocky-button:hover {
-  background: linear-gradient(to right, #f2c253, #c84c87);
-  background-color: #f2c253;
-  color: white;
+    background: linear-gradient(to right, #f2c253, #c84c87);
+    background-color: #f2c253;
+    color: white;
+    transform: scale(1.05);
+    transition: 0.2s;
 }
 .stocky-button:active {
-  transform: scale(0.95);
+    transform: scale(0.95);
 }
 
 @media only screen and (max-width: 768px) {
-  .stocky-button-mobile {
-    display: flex;
-    justify-content: center;
-    margin-top: 5px;
-  }
-  .navbar-mobile {
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-  }
+    .stocky-button-mobile {
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+    }
+    .navbar-mobile {
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+    }
 }
 
 .btn-scroll-to-top {
-  position: sticky;
-  left: 300vh;
-  bottom: 20px;
-  font-size: 60px;
-  color: #ef7f2fd5;
+    position: sticky;
+    left: 300vh;
+    bottom: 20px;
+    font-size: 60px;
+    color: #ef7f2fd5;
 }
 
 .btn-scroll-to-top:hover {
-  cursor: pointer;
-  transform: scale(1.2);
+    cursor: pointer;
+    transform: scale(1.2);
 }

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "../../styles/footer.css";
+import React from "react";
+import "../../../styles/footer.css";
 
 
 export const Footer = () => (
