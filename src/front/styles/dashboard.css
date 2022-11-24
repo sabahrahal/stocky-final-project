@@ -1,0 +1,34 @@
+.dashboard-navbar-container {
+  margin-top: 30px;
+  padding: 10px;
+  width: 100px;
+  background-color: white;
+  border-radius: 20px;
+  height: 95vh;
+  -webkit-box-shadow: 6px 7px 5px 3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 6px 7px 5px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 6px 7px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-company-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -webkit-box-shadow: 6px 7px 5px -1px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 6px 7px 5px -1px rgba(0, 0, 0, 0.12);
+  box-shadow: 6px 7px 5px -1px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-navbar-icons {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.dashboard-icon {
+  font-size: 30px;
+  color: black;
+}

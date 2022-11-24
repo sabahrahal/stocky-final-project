@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"https://3001-sabahrahal-stockyfinalp-bvbpvpbhlta.ws-eu77.gitpod.io/api",
 			token: "",
 			user_id: "",
-			companies: []
+			companies: [],
+			selectedCompanyId: ""
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
@@ -137,6 +138,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error)
 				}
+			},
+
+			selectCompany: (id) => {
+				setStore({
+					selectedCompanyId: id
+				})
 			}
 			// ---------------- END COMPANY ACTIONS -------------
 
