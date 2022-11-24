@@ -11,9 +11,11 @@ export const SignUpForm = () => {
     let navigate = useNavigate();
 
     useEffect(() => {
-        if (store.token && store.token != "" && store.token != undefined)
+        const authenticated = sessionStorage.getItem("authenticated");
+        if (authenticated) {
             navigate("/companies");
-    }, [store.token]);
+        }
+    }, []);
 
     return (
         <>

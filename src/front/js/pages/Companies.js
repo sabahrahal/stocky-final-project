@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/companies.css";
@@ -7,6 +7,12 @@ import { CardCompanies } from "../component/companies/CardCompanies.jsx";
 export const Companies = () => {
     const { store, actions } = useContext(Context);
     let navigate = useNavigate();
+    useEffect(() => {
+        const authenticated = sessionStorage.getItem("authenticated")
+        if (!authenticated) {
+            navigate("/")
+        }
+    }, [])
 
     return (
         <div className="container">

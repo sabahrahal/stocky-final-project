@@ -54,6 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const body = await response.json();
 					sessionStorage.setItem("token", body.token);
 					sessionStorage.setItem("user_id", body.user_id);
+					sessionStorage.setItem("authenticated", true);
 					actions.syncToken();
 					console.log(body.token);
 					return true;
