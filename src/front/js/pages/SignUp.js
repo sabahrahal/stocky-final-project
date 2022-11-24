@@ -15,7 +15,10 @@ export const SignUp = () => {
         if (authenticated) {
             navigate("/companies");
         }
-    }, []);
+        if (store.token && store.token != "" && store.token != undefined) {
+            navigate("/companies")
+        }
+    }, [store.token]);
 
     return (
         <>
