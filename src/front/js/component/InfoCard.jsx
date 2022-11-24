@@ -12,9 +12,7 @@ export const InfoCard = (props) => {
             </div>
             <div className="text-container">
                 <h3>{props.title}</h3>
-                <div>
-                    {props.description}
-                </div>
+                <div>{props.description}</div>
             </div>
         </div>
     );

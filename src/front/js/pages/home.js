@@ -1,10 +1,11 @@
 import React from "react";
+import { Roadmap } from "../component/home/Roadmap.jsx";
+import { AboutUs } from "../component/home/AboutUs.jsx";
+import { ContactForm } from "../component/home/ContactForm.jsx";
 import "../../styles/home.css";
-import { Roadmap } from "../component/Roadmap.jsx";
-import { AboutUs } from "../component/AboutUs.jsx";
-import { ContactForm } from "../component/ContactForm.jsx";
-import { ScrollToTopButton } from "../component/ScrollToTopButton.jsx";
 import "../../styles/roadMap.css";
+import "../../styles/contactForm.css";
+import "../../styles/ModalLogInForm.css";
 
 export const Home = () => {
   return (
@@ -40,7 +41,6 @@ export const Home = () => {
       <AboutUs />
       <hr className="mt-5 hr-color" />
       <ContactForm />
-      <ScrollToTopButton />
     </div>
   );
 };

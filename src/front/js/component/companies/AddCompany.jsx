@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const AddCompany = () => {
     const [companyName, setCompanyName] = useState("");
     const [companyRif, setCompanyRif] = useState("");
+    let navigate = useNavigate();
+    useEffect(() => {
+        const authenticated = sessionStorage.getItem("authenticated");
+        if (!authenticated) {
+            navigate("/");
+        }
+    }, []);
 
     return (
         <div className="container">

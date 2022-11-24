@@ -1,17 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ScrollToTop } from "./component/scrollToTop";
 import injectContext from "./store/appContext";
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { ScrollToTop } from "./component/utils/scrollToTop";
+import { Navbar } from "./component/utils/navbar";
+import { Footer } from "./component/utils/footer";
+import { ScrollToTopButton } from "./component/utils/ScrollToTopButton.jsx";
 
 import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
+import { SignUp } from "./pages/SignUp.js";
 import { Companies } from "./pages/Companies";
 import { Dashboard } from "./pages/Dashboard";
-
-import { SignUpForm } from "./component/SignUpForm.jsx";
 
 import { AddCompany } from "./component/companies/AddCompany.jsx";
 import { CompaniesNavbar } from "./component/companies/CompaniesNavbar.jsx";
@@ -30,11 +28,12 @@ const Layout = () => {
                         <Route element={<>
                             <Navbar />
                             <Home />
+                            <ScrollToTopButton />
                             <Footer />
                         </>} path="/" />
                         <Route element={<>
                             <Navbar />
-                            <SignUpForm />
+                            <SignUp />
                             <Footer />
                         </>} path="/sign-up" />
                         <Route element={<>
@@ -47,8 +46,6 @@ const Layout = () => {
                         </>} path="/add-company" />
                         <Route element={<Dashboard />} path="/dashboard" />
                         <Route element={<h1>Not found!</h1>} />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<Demo />} path="/demo" />
                     </Routes>
                 </ScrollToTop>
             </BrowserRouter>

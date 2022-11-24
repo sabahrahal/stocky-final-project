@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 
-export const SignUpForm = () => {
+export const SignUp = () => {
     const { store, actions } = useContext(Context);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -15,7 +15,10 @@ export const SignUpForm = () => {
         if (authenticated) {
             navigate("/companies");
         }
-    }, []);
+        if (store.token && store.token != "" && store.token != undefined) {
+            navigate("/companies")
+        }
+    }, [store.token]);
 
     return (
         <>
