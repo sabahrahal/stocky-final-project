@@ -15,7 +15,13 @@ export const CardCompanies = () => {
             {
                 store.companies.map((company) => {
                     return <div className="col-md-4 mt-4">
-                        <div key={company.id} className="card profile-card-5">
+                        <div key={company.id}
+                            className="card profile-card-5"
+                            onClick={(event) => {
+                                actions.selectCompany(company.id);
+                                sessionStorage.setItem("selectedCompanyId", company.id);
+                                navigate("/dashboard");
+                            }}>
                             <div className="card-img-block">
                                 <img
                                     className="card-img-top bg-white"
@@ -28,7 +34,7 @@ export const CardCompanies = () => {
                             <div className="card-body pt-0">
                                 <h5 className="company-card-title">{company.name}</h5>
                                 <p className="card-text">
-                                    {company.rif}
+                                    RIF: {company.rif}
                                 </p>
                             </div>
                         </div>
