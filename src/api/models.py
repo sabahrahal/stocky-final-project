@@ -63,3 +63,43 @@ class Company(db.Model):
             "rif" : self.rif,
             "user_id" : self.user_id 
         }
+
+class Supplier(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False, unique=True)
+    phone = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(80), nullable=False)
+    rif = db.Column(db.String(120))
+    address = db.Column(db.String(120))
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+
+    def __init__(self,**kwargs):
+        self.name = kwargs["name"]
+        self.phone = kwargs["phone"]
+        self.email = kwargs["email"]
+        self.rif = kwargs["rif"]
+        self.address = kwargs["address"]
+        self.company_id = kwargs["company_id"]
+
+    @classmethod
+    def create(cls, **kwargs):
+        new_supplier = cls(**kwargs)
+        db.session.add(new_supplier)
+
+        try:
+            db.session.commit()
+            return new_supplier
+        except Exception as Error: 
+            raise Exception(Error.args[0], 400)
+    
+    def serialize(self): 
+        return {
+            "id" : self.id,
+            "name" : self.name,
+            "phone" : self.phone,
+            "email" : self.email, 
+            "rif" : self.rif,
+            "address" : self.address,
+            "company_id" : self.company_id, 
+        }
+

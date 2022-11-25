@@ -90,11 +90,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
 					},
 					body: JSON.stringify({
 						name: name,
 						rif: rif,
-						user_id: store.user_id
 					}),
 				}
 				try {
