@@ -10,13 +10,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
-			syncToken: () => {
+			syncToken: async () => {
+				const store = getStore();
+				const actions = getActions();
 				const token = sessionStorage.getItem("token");
-				const user_id = sessionStorage.getItem("user_id")
-				if (token && token != "" && token != undefined) {
-					console.log("Sync token...")
-					setStore({ token: token })
-					setStore({ user_id: user_id })
+				setStore({ token: token })
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				}
+
+				try {
+					const response = await fetch(`${store.apiUrl}/verify-token-integrity`, ops);
+					if (response.ok) {
+						const token = sessionStorage.getItem("token");
+						const user_id = sessionStorage.getItem("user_id")
+						if (token && token != "" && token != undefined) {
+							console.log("Sync token...")
+							setStore({ user_id: user_id })
+						}
+					}
+					else {
+						actions.logOff();
+					}
+				} catch (error) {
+					console.log(error)
+					actions.logOff();
 				}
 			},
 			logIn: async (username, password) => {

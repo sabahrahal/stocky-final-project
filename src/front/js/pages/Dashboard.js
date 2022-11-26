@@ -13,9 +13,6 @@ export const Dashboard = () => {
         if (!authenticated) {
             navigate("/")
         }
-    }, [])
-
-    useEffect(() => {
         const id = sessionStorage.getItem("selectedCompanyId");
         if (!id || id == "" || id == "undefined") navigate("/companies");
         actions.selectCompany(id);

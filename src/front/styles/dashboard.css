@@ -1,5 +1,9 @@
+.h-100 {
+  height: auto !important;
+}
 .dashboard-navbar-container {
   margin-top: 30px;
+  margin-left: 20px;
   padding: 10px;
   width: 100px;
   background-color: white;
@@ -28,7 +32,15 @@
   color: black;
 }
 
+.dashboard-navbar-icons:hover {
+  cursor: pointer;
+}
+
 .dashboard-icon {
   font-size: 30px;
   color: black;
+}
+
+.dashboard-icon-back {
+  padding-bottom: 20px;
 }
