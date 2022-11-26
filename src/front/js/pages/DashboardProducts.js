@@ -1,10 +1,9 @@
 import React, { useEffect, useContext } from "react";
-import { DashboardNavbar } from "../component/dashboard/DashboardNavbar.jsx";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/dashboard.css"
 
-export const Dashboard = () => {
+export const DashboardProducts = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
@@ -19,8 +18,8 @@ export const Dashboard = () => {
     }, [])
 
     return (
-        <div className="container-fluid">
-            <DashboardNavbar />
+        <div className="dashboard-page-container">
+            <h1>PRODUCTS</h1>
         </div>
     );
 };
