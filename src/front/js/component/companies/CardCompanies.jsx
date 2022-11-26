@@ -9,19 +9,22 @@ export const CardCompanies = () => {
         actions.getCompanies();
     }, []);
 
-
     return (
         <div className="row">
-            {
-                store.companies.map((company) => {
-                    return <div className="col-md-4 mt-4">
-                        <div key={company.id}
+            {store.companies.map((company) => {
+                return (
+                    <div className="col-md-4 mt-4" key={company.id}>
+                        <div
                             className="card profile-card-5"
                             onClick={(event) => {
                                 actions.selectCompany(company.id);
-                                sessionStorage.setItem("selectedCompanyId", company.id);
-                                navigate("/dashboard");
-                            }}>
+                                sessionStorage.setItem(
+                                    "selectedCompanyId",
+                                    company.id
+                                );
+                                navigate("/dashboard/home");
+                            }}
+                        >
                             <div className="card-img-block">
                                 <img
                                     className="card-img-top bg-white"
@@ -31,14 +34,15 @@ export const CardCompanies = () => {
                                 />
                             </div>
                             <div className="card-body pt-0">
-                                <h5 className="company-card-title">{company.name}</h5>
-                                <p className="card-text">
-                                    RIF: {company.rif}
-                                </p>
+                                <h5 className="company-card-title">
+                                    {company.name}
+                                </h5>
+                                <p className="card-text">RIF: {company.rif}</p>
                             </div>
                         </div>
                     </div>
-                })}
+                );
+            })}
 
             <div
                 className="col-md-4 mt-4 d-flex align-items-center justify-content-center"

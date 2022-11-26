@@ -9,10 +9,13 @@ import { ScrollToTopButton } from "./component/utils/ScrollToTopButton.jsx";
 import { Home } from "./pages/home";
 import { SignUp } from "./pages/SignUp.js";
 import { Companies } from "./pages/Companies";
-import { Dashboard } from "./pages/Dashboard";
+import { DashboardHome } from "./pages/DashboardHome";
 
 import { AddCompany } from "./component/companies/AddCompany.jsx";
 import { CompaniesNavbar } from "./component/companies/CompaniesNavbar.jsx";
+import { DashboardNavbar } from "./component/dashboard/DashboardNavbar.jsx";
+import { DashboardProducts } from "./pages/DashboardProducts";
+import { DashboardSuppliers } from "./pages/DashboardSuppliers";
 
 //create your first component
 const Layout = () => {
@@ -44,7 +47,18 @@ const Layout = () => {
                             <CompaniesNavbar />
                             <AddCompany />
                         </>} path="/add-company" />
-                        <Route element={<Dashboard />} path="/dashboard" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardHome />
+                        </>} path="/dashboard/home" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardSuppliers />
+                        </>} path="/dashboard/suppliers" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardProducts />
+                        </>} path="/dashboard/products" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                 </ScrollToTop>
