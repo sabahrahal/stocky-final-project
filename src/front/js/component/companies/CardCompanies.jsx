@@ -28,7 +28,6 @@ export const CardCompanies = () => {
                                     src="https://adfinis.com/wp-content/uploads/sites/9/2021/09/Canonical_company-Logo.wine_-300x200.png"
                                     alt="Card image cap"
                                     width="350px"
-                                    height="250px"
                                 />
                             </div>
                             <div className="card-body pt-0">

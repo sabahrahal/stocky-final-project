@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const DashboardNavbar = () => {
     return (
@@ -24,10 +25,10 @@ export const DashboardNavbar = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <button className="stocky-button">
-                    <i class="bi bi-door-open-fill dashboard-icon text-white"></i>
-                </button>
+            <div className="dashboard-icon-back">
+                <Link to={"/companies"}>
+                    <i class="bi bi-door-open-fill dashboard-icon"></i>
+                </Link>
             </div>
         </div>
     );
