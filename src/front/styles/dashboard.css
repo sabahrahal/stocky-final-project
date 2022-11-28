@@ -1,114 +1,203 @@
 .h-100 {
-    height: auto !important;
+  height: auto !important;
 }
 
 /* ------------------  NAVBAR STYLES ----------- */
 
 .dashboard-navbar-container {
-    max-width: 700px;
-    margin: auto;
-    margin-bottom: 15px;
-    border-radius: 50px;
-    padding: 5px;
-    background: linear-gradient(to right, #ffcc57, #d3508e);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  max-width: 700px;
+  margin: auto;
+  margin-bottom: 15px;
+  border-radius: 50px;
+  padding: 5px;
+  background: linear-gradient(to right, #ffcc57, #d3508e);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .dashboard-company-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 5px;
-    box-shadow: 6px 7px 5px -1px rgba(0, 0, 0, 0.12);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 5px;
+  box-shadow: 6px 7px 5px -1px rgba(0, 0, 0, 0.12);
 }
 
 .dashboard-navbar-icons {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-size: 15px;
-    margin: 5px 20px;
-    color: rgb(238, 238, 238);
-    transition: 0.2s;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 15px;
+  margin: 5px 20px;
+  color: rgb(238, 238, 238);
+  transition: 0.2s;
 }
 
 .dashboard-navbar-icons-active {
-    color: white;
-    transform: scale(1.2);
+  color: white;
+  transform: scale(1.2);
 }
 
 .dashboard-navbar-icons:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: 0.2s;
-    color: white;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.2s;
+  color: white;
 }
 
 .dashboard-icon {
-    font-size: 30px !important;
+  font-size: 30px !important;
 }
 
 @media only screen and (max-width: 768px) {
-    .dashboard-navbar-text {
-        display: none;
-    }
-    .dashboard-company-img {
-        width: 40px;
-        height: 40px;
-    }
-    .dashboard-navbar-container {
-        max-width: 450px;
-        min-width: 360px;
-        margin-bottom: 0px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-    .dashboard-navbar-icons {
-        margin: 10px;
-    }
+  .dashboard-navbar-text {
+    display: none;
+  }
+  .dashboard-company-img {
+    width: 40px;
+    height: 40px;
+  }
+  .dashboard-navbar-container {
+    max-width: 768px;
+    min-width: 360px;
+    margin-bottom: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .dashboard-navbar-icons {
+    margin: 10px;
+  }
 }
 
 /* ------------------ PAGE STYLES ----------- */
 
 .dashboard-page-container {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* ------------------ ADD FORM STYLES ----------- */
 
 .dashboard-add-icon {
-    text-align: center;
-    background: linear-gradient(90deg, #ffcc57, #d3508e);
-    border-radius: 50%;
-    font-size: 15px;
-    color: white;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    margin-left: 15px;
+  text-align: center;
+  background: linear-gradient(90deg, #ffcc57, #d3508e);
+  border-radius: 50%;
+  font-size: 15px;
+  color: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 15px;
 }
 .dashboard-add-icon:hover {
-    transition: 0.2s;
-    transform: scale(1.1);
-    cursor: pointer;
+  transition: 0.2s;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .dashboard-add-form form {
-    background-color: #fff;
-    max-width: 400px;
-    margin-top: 5px;
-    padding: 50px 70px;
-    border-radius: 30px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  background-color: #fff;
+  max-width: 400px;
+  margin-top: 5px;
+  padding: 50px 70px;
+  border-radius: 30px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  margin-left: auto;
 }
 
 .dashboard-add-form .item {
-    border-radius: 20px;
-    margin-bottom: 25px;
-    padding: 10px 20px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  padding: 10px 20px;
 }
 .dashboard-add-form .item:focus {
-    box-shadow: 0 0 0 0.25rem rgba(211, 80, 142, 0.25);
-    border-color: #d3508e;
+  box-shadow: 0 0 0 0.25rem rgba(211, 80, 142, 0.25);
+  border-color: #d3508e;
+}
+
+/* ------------------ TOP NAVBAR PAGES ----------- */
+.navbar-dashboard-page-fist-seccion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar-dashboard-page-title {
+  font-size: 30px;
+}
+
+/* ------------------ SEARCH NAVBAR BTN ----------- */
+
+.search-box {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  border-radius: 20px;
+}
+.input-search {
+  height: 50px;
+  width: 50px;
+  border-style: none;
+  padding: 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  padding-right: 40px;
+  color: black;
+}
+.input-search::placeholder {
+  color: black;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+.btn-search {
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 0px;
+  color: black;
+  background-color: transparent;
+  pointer-events: painted;
+}
+.btn-search:focus ~ .input-search {
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+.input-search:focus {
+  width: 300px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-dashboard-page-fist-seccion {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .btn-search:focus ~ .input-search {
+    width: 250px;
+  }
+
+  .navbar-dashboard-page-fist-seccion div img {
+    width: 80px;
+  }
+
+  .navbar-dashboard-page-title {
+    font-size: 50px;
+  }
 }
