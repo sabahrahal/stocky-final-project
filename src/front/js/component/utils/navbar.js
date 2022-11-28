@@ -22,7 +22,7 @@ export const Navbar = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Log In
+                Welcome Back!
               </h1>
               <button
                 type="button"
@@ -162,14 +162,16 @@ export const Navbar = () => {
                       onClick={(event) => {
                         navigate("/companies");
                       }}
-                    >My Companies</button>
+                    >
+                      <i class="bi bi-three-dots me-2"></i>
+                      Dashboard</button>
                     <button
                       className="stocky-button"
                       onClick={(event) => {
                         actions.logOff();
                         navigate("/");
                       }}
-                    >Log Off</button>
+                    > <i class="bi bi-box-arrow-in-left pe-2"></i>Log Out</button>
                   </>
                   : <button
                     className="stocky-button"

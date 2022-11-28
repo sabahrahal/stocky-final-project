@@ -42,6 +42,7 @@ const Layout = () => {
                         <Route element={<>
                             <CompaniesNavbar />
                             <Companies />
+                            <ScrollToTopButton />
                         </>} path="/companies" />
                         <Route element={<>
                             <CompaniesNavbar />

@@ -6,7 +6,7 @@ import "../../styles/dashboard.css"
 export const DashboardHome = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
- 
+
 
     useEffect(() => {
         const authenticated = sessionStorage.getItem("authenticated")
@@ -19,7 +19,7 @@ export const DashboardHome = () => {
     }, [])
 
     return (
-        <div className="dashboard-page-container">
+        <div className="container dashboard-page-container">
             <h1>HOME</h1>
         </div>
     );

@@ -11,7 +11,7 @@ export const CardCompanies = () => {
 
     return (
         <div className="row">
-            {store.companies.map((company) => {
+            {store.companies.reverse().map((company) => {
                 return (
                     <div className="col-md-4 mt-4" key={company.id}>
                         <div

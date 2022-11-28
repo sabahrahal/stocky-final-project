@@ -41,7 +41,8 @@ export const CompaniesNavbar = () => {
                                         navigate("/");
                                     }}
                                 >
-                                    Log Off
+                                    <i class="bi bi-box-arrow-in-left pe-2"></i>
+                                    Log Out
                                 </button>
                             ) : (
                                 <button

@@ -2,27 +2,24 @@
     height: auto !important;
 }
 
-/* ------------------ ADD NAVBAR STYLES ----------- */
+/* ------------------  NAVBAR STYLES ----------- */
 
 .dashboard-navbar-container {
-    position: absolute;
-    left: 3vh;
-    top: 2.5vh;
-    width: 100px;
-    background-color: white;
-    border-radius: 20px;
-    height: 95vh;
-    -webkit-box-shadow: 6px 7px 5px 3px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 6px 7px 5px 3px rgba(0, 0, 0, 0.2);
-    box-shadow: 6px 7px 5px 3px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 50px;
+    padding: 5px;
+    background: linear-gradient(to right, #ffcc57, #d3508e);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .dashboard-company-img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    -webkit-box-shadow: 6px 7px 5px -1px rgba(0, 0, 0, 0.12);
-    -moz-box-shadow: 6px 7px 5px -1px rgba(0, 0, 0, 0.12);
+    margin: 5px;
     box-shadow: 6px 7px 5px -1px rgba(0, 0, 0, 0.12);
 }
 
@@ -30,33 +27,52 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    color: black;
+    font-size: 15px;
+    margin: 5px 20px;
+    color: rgb(238, 238, 238);
+    transition: 0.2s;
 }
 
-.dashboard-navbar-icons:hover,
-.dashboard-icon-back:hover {
+.dashboard-navbar-icons-active {
+    color: white;
+    transform: scale(1.2);
+}
+
+.dashboard-navbar-icons:hover {
     cursor: pointer;
     transform: scale(1.1);
-    transform: 0.2s;
+    transition: 0.2s;
+    color: white;
 }
 
 .dashboard-icon {
-    font-size: 30px;
-    color: black;
+    font-size: 30px !important;
 }
 
-.dashboard-icon-back {
-    padding-bottom: 20px;
+@media only screen and (max-width: 768px) {
+    .dashboard-navbar-text {
+        display: none;
+    }
+    .dashboard-company-img {
+        width: 40px;
+        height: 40px;
+    }
+    .dashboard-navbar-container {
+        max-width: 450px;
+        min-width: 360px;
+        margin-bottom: 0px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .dashboard-navbar-icons {
+        margin: 10px;
+    }
 }
+
+/* ------------------ PAGE STYLES ----------- */
 
 .dashboard-page-container {
-    position: absolute;
-    left: 20vh;
-    top: 2.5vh;
-    width: 80vw;
-    height: 95vh;
+    margin-top: 20px;
 }
 
 /* ------------------ ADD FORM STYLES ----------- */
