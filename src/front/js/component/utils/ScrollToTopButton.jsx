@@ -14,12 +14,12 @@ export const ScrollToTopButton = () => {
     return (
         <>
             {toTop && (
-                <span
+                <button
                     onClick={(event) => {
                         window.scrollTo(0, 0);
                     }}
                     className="bi bi-arrow-up-circle-fill btn-scroll-to-top me-2"
-                ></span>
+                ></button>
             )}
         </>
     );

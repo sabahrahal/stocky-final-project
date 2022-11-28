@@ -18,7 +18,7 @@ export const DashboardProducts = () => {
     }, [])
 
     return (
-        <div className="dashboard-page-container">
+        <div className="container dashboard-page-container">
             <h1>PRODUCTS</h1>
         </div>
     );

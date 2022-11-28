@@ -29,7 +29,9 @@ export const Roadmap = () => {
                                 <i className="fas fa-solid fa-warehouse fa-2x mb-3"></i>
                                 <h4>Add Company</h4>
                                 <p className="text-center">
-                                    So you can manage everything!
+                                    You can add multiple companies and manage
+                                    them sepparately, with Stocky everything is
+                                    well organized.
                                 </p>
                             </div>
                         </div>
@@ -40,8 +42,9 @@ export const Roadmap = () => {
                                 <i className="fas fa-solid fa-box fa-2x mb-3"></i>
                                 <h4>Add Products</h4>
                                 <p className="text-center">
-                                    To keep track of your stock, details and
-                                    much more.
+                                    Add new products and easily manage them,
+                                    with Stocky you can keep track of your stock
+                                    everywhere.
                                 </p>
                             </div>
                         </div>
@@ -51,7 +54,7 @@ export const Roadmap = () => {
                             <div className="card-body p-2 d-flex flex-column align-items-center">
                                 <i className="fas fa-solid fa-plus fa-2x mb-3"></i>
                                 <h4>Start Profiting</h4>
-                                <p className="text-center">It’s that easy!</p>
+                                <p className="text-center">In less than 2 minutes you can create your own inventory for all your needs. </p>
                             </div>
                         </div>
                     </div>

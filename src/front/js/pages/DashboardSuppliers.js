@@ -20,7 +20,7 @@ export const DashboardSuppliers = () => {
     }, [])
 
     return (
-        <div className="dashboard-page-container">
+        <div className="container dashboard-page-container">
             <div className="d-flex align-items-center">
                 <h1>Suppliers</h1>
                 <div className="dashboard-add-icon" onClick={(event) => {

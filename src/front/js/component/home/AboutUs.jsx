@@ -35,7 +35,7 @@ export const AboutUs = () => {
                         width="250px"
                     />
                     <h3>Jorge Oviedo</h3>
-                    <p className="text-center">"No importa come torta"</p>
+                    <p className="text-center">"No es magia, es código"</p>
                 </div>
                 <div className="col-md-3 d-flex flex-column align-items-center">
                     <img
