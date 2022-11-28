@@ -19,7 +19,7 @@ export const DashboardHome = () => {
     }, [])
 
     return (
-        <div className="container dashboard-page-container">
+        <div className="container-fluid dashboard-page-container">
             <h1>HOME</h1>
         </div>
     );

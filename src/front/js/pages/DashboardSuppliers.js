@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/dashboard.css"
 import { AddSupplier } from "../component/dashboard/suppliers/AddSupplier.jsx";
+import { NavbarSuppliers } from "../component/dashboard/suppliers/NavbarSuppliers.jsx";
 
 export const DashboardSuppliers = () => {
     const { store, actions } = useContext(Context);
@@ -20,19 +21,8 @@ export const DashboardSuppliers = () => {
     }, [])
 
     return (
-        <div className="container dashboard-page-container">
-            <div className="d-flex align-items-center">
-                <h1>Suppliers</h1>
-                <div className="dashboard-add-icon" onClick={(event) => {
-                    if (add == false) setAdd(true);
-                    else setAdd(false);
-                }}>
-                    {add ? <i class="fa fa-minus"></i> : <i className="fas fa-solid fa-plus"></i>}
-                </div>
-            </div>
-
-            {add && <AddSupplier />}
-
+        <div className="container-fluid dashboard-page-container">
+            <NavbarSuppliers />
         </div >
     );
 };
