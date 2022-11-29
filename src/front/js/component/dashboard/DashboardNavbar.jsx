@@ -56,7 +56,7 @@ export const DashboardNavbar = () => {
                             navigate("/dashboard/products");
                         }}
                     >
-                        <i class="bi bi-cash-stack dashboard-icon"></i>
+                        <i className="bi bi-cash-stack dashboard-icon"></i>
                         <span className="dashboard-navbar-text">Register</span>
                     </div>
                 </div>

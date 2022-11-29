@@ -163,7 +163,7 @@ export const Navbar = () => {
                         navigate("/companies");
                       }}
                     >
-                      <i class="bi bi-three-dots me-2"></i>
+                      <i className="bi bi-three-dots me-2"></i>
                       Dashboard</button>
                     <button
                       className="stocky-button"
@@ -171,7 +171,7 @@ export const Navbar = () => {
                         actions.logOff();
                         navigate("/");
                       }}
-                    > <i class="bi bi-box-arrow-in-left pe-2"></i>Log Out</button>
+                    > <i className="bi bi-box-arrow-in-left pe-2"></i>Log Out</button>
                   </>
                   : <button
                     className="stocky-button"

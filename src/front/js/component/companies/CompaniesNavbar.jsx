@@ -32,8 +32,8 @@ export const CompaniesNavbar = () => {
                     <ul className="navbar-nav ms-auto">
                         <li className="navbar-item stocky-button-mobile">
                             {store.token &&
-                            store.token != "" &&
-                            store.token != undefined ? (
+                                store.token != "" &&
+                                store.token != undefined ? (
                                 <button
                                     className="stocky-button"
                                     onClick={(event) => {
@@ -41,7 +41,7 @@ export const CompaniesNavbar = () => {
                                         navigate("/");
                                     }}
                                 >
-                                    <i class="bi bi-box-arrow-in-left pe-2"></i>
+                                    <i className="bi bi-box-arrow-in-left pe-2"></i>
                                     Log Out
                                 </button>
                             ) : (

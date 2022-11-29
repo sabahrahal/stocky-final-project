@@ -2,13 +2,12 @@ import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/dashboard.css"
-import { AddSupplier } from "../component/dashboard/suppliers/AddSupplier.jsx";
 import { NavbarSuppliers } from "../component/dashboard/suppliers/NavbarSuppliers.jsx";
+import { TableSuppliers } from "../component/dashboard/suppliers/TableSuppliers.jsx";
 
 export const DashboardSuppliers = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
-    const [add, setAdd] = useState(false);
 
     useEffect(() => {
         const authenticated = sessionStorage.getItem("authenticated")
@@ -23,6 +22,7 @@ export const DashboardSuppliers = () => {
     return (
         <div className="container-fluid dashboard-page-container">
             <NavbarSuppliers />
+            <TableSuppliers />
         </div >
     );
 };
