@@ -20,16 +20,16 @@ export const NavbarSuppliers = () => {
                 </div>
 
                 <div className="d-flex align-items-center">
-                    <div class="search-box">
-                        <button class="btn-search"><i class="fas fa-search"></i></button>
-                        <input type="text" class="input-search" placeholder="Type to Search..." />
+                    <div className="search-box">
+                        <button className="btn-search"><i className="fas fa-search"></i></button>
+                        <input type="text" className="input-search" placeholder="Type to Search..." />
                     </div>
 
                     <div className="dashboard-add-icon" onClick={(event) => {
                         if (add == false) setAdd(true);
                         else setAdd(false);
                     }}>
-                        {add ? <i class="fa fa-minus"></i> : <i className="fas fa-solid fa-plus"></i>}
+                        {add ? <i className="fa fa-minus"></i> : <i className="fas fa-solid fa-plus"></i>}
                     </div>
                 </div>
 

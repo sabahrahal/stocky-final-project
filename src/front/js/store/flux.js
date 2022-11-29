@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "",
 			user_id: "",
 			companies: [],
+			suppliers: [],
 			selectedCompanyId: ""
 		},
 		actions: {
@@ -166,8 +167,74 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					selectedCompanyId: id
 				})
-			}
+			},
 			// ---------------- END COMPANY ACTIONS -------------
+
+			// ---------------- START SUPPLIERS ACTIONS -------------
+			createSupplier: async (name, phone, email, rif, address) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						name: name,
+						phone: phone,
+						email: email,
+						rif: rif,
+						address: address,
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/create-supplier`, ops);
+					if (!response.ok) {
+						alert("Create supplier problem endpoint /create-supplier");
+						return;
+					}
+					console.log(`Create a supplier succefully! ${name}`);
+					actions.getSuppliers();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
+			getSuppliers: async () => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/suppliers/${companyId}`, ops);
+					if (!response.ok) {
+						alert("Get suppliers problem endpoint /suppliers");
+						return;
+					}
+
+					const body = await response.json();
+					setStore({
+						suppliers: body
+					})
+
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			}
+			// ---------------- END SUPPLIERS ACTIONS -------------
 
 		},
 	};

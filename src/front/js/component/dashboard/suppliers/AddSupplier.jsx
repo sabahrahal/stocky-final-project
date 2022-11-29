@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../../../store/appContext";
 
 export const AddSupplier = () => {
     const [name, setName] = useState("");
@@ -6,10 +7,13 @@ export const AddSupplier = () => {
     const [email, setEmail] = useState("");
     const [rif, setRif] = useState("");
     const [address, setAddress] = useState("");
+    const { store, actions } = useContext(Context);
 
     return (
         <div className="dashboard-add-form">
-            <form>
+            <form onClick={(event) => {
+                event.preventDefault();
+            }}>
                 <div className="form-group">
                     <input
                         type="text"
@@ -66,7 +70,18 @@ export const AddSupplier = () => {
                     />
                 </div>
                 <div className="form-group d-flex justify-content-center">
-                    <button className="btn btn-block stocky-button">Add</button>
+                    <button
+                        className="btn btn-block stocky-button"
+                        onClick={(event) => {
+                            actions.createSupplier(name, phone, email, rif, address);
+                            setName("");
+                            setPhone("");
+                            setEmail("");
+                            setRif("");
+                            setAddress("");
+                        }
+                        }
+                    >Add</button>
                 </div>
             </form>
         </div>
