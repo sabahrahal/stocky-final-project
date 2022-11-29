@@ -18,10 +18,6 @@ export const CardCompanies = () => {
                             className="card profile-card-5"
                             onClick={(event) => {
                                 actions.selectCompany(company.id);
-                                sessionStorage.setItem(
-                                    "selectedCompanyId",
-                                    company.id
-                                );
                                 navigate("/dashboard/home");
                             }}
                         >

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../../store/appContext";
 
 export const DashboardNavbar = () => {
+    const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
     return (
@@ -64,10 +66,12 @@ export const DashboardNavbar = () => {
             <div
                 className="dashboard-navbar-icons"
                 onClick={(event) => {
+                    actions.clearDashboardData();
                     navigate("/companies");
                 }}
             >
-                <i className="bi bi-door-open-fill dashboard-icon"></i>
+                {/* <i className="bi bi-door-open-fill dashboard-icon"></i> */}
+                <i className="bi bi-x-circle-fill dashboard-icon"></i>
             </div>
         </div>
     );

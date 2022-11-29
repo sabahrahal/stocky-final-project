@@ -2,6 +2,8 @@ import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/dashboard.css"
+import { NavbarProducts } from "../component/dashboard/products/NavbarProducts.jsx";
+
 
 export const DashboardProducts = () => {
     const { store, actions } = useContext(Context);
@@ -19,7 +21,7 @@ export const DashboardProducts = () => {
 
     return (
         <div className="container-fluid dashboard-page-container">
-            <h1>PRODUCTS</h1>
+            <NavbarProducts />
         </div>
     );
 };

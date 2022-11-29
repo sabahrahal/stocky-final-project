@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../../store/appContext";
 
-export const AddSupplier = () => {
+export const AddProduct = () => {
     const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [rif, setRif] = useState("");
-    const [address, setAddress] = useState("");
+    const [details, setDetails] = useState("");
+    const [serialNumber, setSerialNumber] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [buyCost, setBuyCost] = useState("");
+    const [sellCost, setSellCost] = useState("");
     const { store, actions } = useContext(Context);
 
     return (
@@ -18,7 +19,7 @@ export const AddSupplier = () => {
             >
                 <div>
                     <h4 className="mb-3 text-center">
-                        Add a new supplier to your inventory
+                        Add a new product to your inventory
                     </h4>
                 </div>
                 <div className="form-group">
@@ -36,65 +37,70 @@ export const AddSupplier = () => {
                     <input
                         type="text"
                         className="form-control item"
-                        placeholder="Phone"
+                        placeholder="Details"
                         onChange={(event) => {
-                            setPhone(event.target.value);
+                            setDetails(event.target.value);
                         }}
-                        value={phone}
+                        value={details}
                     />
                 </div>
                 <div className="form-group">
                     <input
                         type="text"
                         className="form-control item"
-                        placeholder="Email"
+                        placeholder="Serial Number"
                         onChange={(event) => {
-                            setEmail(event.target.value);
+                            setSerialNumber(event.target.value);
                         }}
-                        value={email}
+                        value={serialNumber}
                     />
                 </div>
                 <div className="form-group">
                     <input
-                        type="text"
+                        type="number"
                         className="form-control item"
-                        placeholder="Rif"
+                        placeholder="Quantity"
                         onChange={(event) => {
-                            setRif(event.target.value);
+                            setQuantity(event.target.value);
                         }}
-                        value={rif}
+                        value={quantity}
                     />
                 </div>
                 <div className="form-group">
                     <input
-                        type="text"
+                        type="number"
                         className="form-control item"
-                        placeholder="Address"
+                        placeholder="Buy Cost"
                         onChange={(event) => {
-                            setAddress(event.target.value);
+                            setBuyCost(event.target.value);
                         }}
-                        value={address}
+                        value={buyCost}
+                    />
+                </div>
+                <div className="form-group">
+                    <input
+                        type="number"
+                        className="form-control item"
+                        placeholder="Sell Cost"
+                        onChange={(event) => {
+                            setSellCost(event.target.value);
+                        }}
+                        value={sellCost}
                     />
                 </div>
                 <div className="form-group d-flex justify-content-center">
                     <button
                         className="btn btn-block stocky-button"
                         onClick={(event) => {
-                            actions.createSupplier(
-                                name,
-                                phone,
-                                email,
-                                rif,
-                                address
-                            );
                             setName("");
-                            setPhone("");
-                            setEmail("");
-                            setRif("");
-                            setAddress("");
+                            setDetails("");
+                            setSerialNumber("");
+                            setQuantity("");
+                            setBuyCost("");
+                            setSellCost("");
                         }}
                     >
-                        Save Supplier
+                        Save Product
                     </button>
                 </div>
             </form>

@@ -29,9 +29,8 @@ export const TableSuppliers = () => {
                                 <td>{supplier.email}</td>
                                 <td>{supplier.rif}</td>
                                 <td>{supplier.address}</td>
-                                <td className='d-flex text-center'><i class="bi bi-pencil-square table-edit-icon"></i></td>
+                                <td className='text-center'><i class="bi bi-pencil-square table-edit-icon"></i></td>
                             </tr>
-
                         })
                     }
                 </tbody>
