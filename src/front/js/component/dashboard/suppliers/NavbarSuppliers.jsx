@@ -15,11 +15,8 @@ export const NavbarSuppliers = () => {
                         src="https://cdn.discordapp.com/attachments/245471080829943820/1042278498254979112/Stocky_Logo_Only.png"
                         width="64px"
                     />
-                    <h4 className="ms-4 navbar-dashboard-page-title">
-                        Suppliers
-                    </h4>
                 </div>
-
+                <h4 className="ms-4 navbar-dashboard-page-title">Suppliers</h4>
                 <div className="d-flex align-items-center">
                     <div className="search-box">
                         <button className="btn-search">
