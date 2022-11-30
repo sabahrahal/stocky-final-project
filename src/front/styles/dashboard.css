@@ -2,7 +2,7 @@
     height: auto !important;
 }
 
-/* ------------------  NAVBAR STYLES ----------- */
+/* ------------------  BOTTOM NAVBAR STYLES ----------- */
 
 .dashboard-navbar-container {
     max-width: 700px;
@@ -46,6 +46,11 @@
     color: white;
 }
 
+.dashboard-navbar-icons:hover + .dashboard-navbar-icons {
+    transform: scale(0.95);
+    transition: 0.2s;
+}
+
 .dashboard-icon {
     font-size: 30px !important;
 }
@@ -59,7 +64,7 @@
         height: 40px;
     }
     .dashboard-navbar-container {
-        max-width: 768px;
+        max-width: 460px;
         min-width: 360px;
         margin-bottom: 0px;
         border-bottom-left-radius: 0;
@@ -73,60 +78,10 @@
 /* ------------------ PAGE STYLES ----------- */
 
 .dashboard-page-container {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-/* ------------------ ADD FORM STYLES ----------- */
-
-.dashboard-add-icon {
-    text-align: center;
-    background: linear-gradient(90deg, #ffcc57, #d3508e);
-    border-radius: 50%;
-    font-size: 15px;
-    color: white;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    margin-left: 15px;
-}
-.dashboard-add-icon:hover {
-    transition: 0.2s;
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.dashboard-add-form form {
-    background-color: #fff;
-    max-width: 400px;
-    margin-top: 5px;
-    padding: 30px 30px;
-    border-radius: 30px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
-    margin-left: auto;
-    position: absolute;
-    right: 10px;
-    z-index: 2;
-}
-
-.dashboard-add-form .item {
-    border-radius: 20px;
-    margin-bottom: 25px;
-    padding: 10px 20px;
-}
-.dashboard-add-form .item:focus {
-    box-shadow: 0 0 0 0.25rem rgba(211, 80, 142, 0.25);
-    border-color: #d3508e;
-}
-
-@media only screen and (max-width: 768px) {
-    .dashboard-add-form form {
-        position: static;
-        z-index: 0;
-        margin: auto;
-    }
-}
-
-/* ------------------ TOP NAVBAR PAGES ----------- */
+/* ------------------ TOP DASHBOARD NAVBAR STYLES ----------- */
 .navbar-dashboard-page-first-section {
     display: flex;
     justify-content: space-between;
@@ -135,7 +90,23 @@
 }
 
 .navbar-dashboard-page-title {
-    font-size: 50px;
+    font-size: 30px;
+}
+
+.navbar-dashboard-page-title-container {
+    border-radius: 15px;
+    padding: 15px;
+    background: linear-gradient(90deg, #ffcc57, #d3508e);
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar-dashboard-page-title-container {
+        margin: 10px;
+        padding: 5px;
+    }
 }
 
 /* ------------------ SEARCH NAVBAR BTN ----------- */
@@ -218,6 +189,56 @@
     }
 }
 
+/* ------------------ ADD FORM STYLES ----------- */
+
+.dashboard-add-icon {
+    text-align: center;
+    background: linear-gradient(90deg, #ffcc57, #d3508e);
+    border-radius: 50%;
+    font-size: 15px;
+    color: white;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 15px;
+}
+.dashboard-add-icon:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.dashboard-add-form form {
+    background-color: #fff;
+    max-width: 400px;
+    margin-top: 5px;
+    padding: 30px 30px;
+    border-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+    margin-left: auto;
+    position: absolute;
+    right: 10px;
+    z-index: 2;
+}
+
+.dashboard-add-form .item {
+    border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+}
+.dashboard-add-form .item:focus {
+    box-shadow: 0 0 0 0.25rem rgba(211, 80, 142, 0.25);
+    border-color: #d3508e;
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard-add-form form {
+        position: static;
+        z-index: 0;
+        margin: auto;
+    }
+}
+
 /* ------------------ TABLE DATA ----------- */
 
 .content-table {
@@ -237,13 +258,18 @@
     font-weight: bold;
 }
 
+.scroll-table {
+    margin-top: 40px;
+}
+
+.table-text {
+    width: 70vw;
+    margin: auto;
+}
+
 .content-table th,
 .content-table td {
     padding: 12px 15px;
-}
-
-.content-table tbody tr {
-    border-bottom: 1px solid #dddddd;
 }
 
 .content-table tbody tr:nth-of-type(even) {

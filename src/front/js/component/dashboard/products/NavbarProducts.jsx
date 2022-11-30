@@ -17,7 +17,12 @@ export const NavbarProducts = () => {
                         width="64px"
                     />
                 </div>
-                <h4 className="ms-4 navbar-dashboard-page-title">Products</h4>
+                <div className="d-flex align-items-center navbar-dashboard-page-title-container">
+                    <i className="bi bi-box-seam-fill fs-3"></i>
+                    <h4 className="ms-2 navbar-dashboard-page-title">
+                        Products
+                    </h4>
+                </div>
                 <div className="d-flex align-items-center">
                     <div className="search-box">
                         <button className="btn-search">
