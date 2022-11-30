@@ -1,14 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from "react";
 import { Context } from "../../../store/appContext";
 
 export const TableSuppliers = () => {
     const { store, actions } = useContext(Context);
     useEffect(() => {
         actions.getSuppliers();
-    }, [])
+    }, []);
 
     return (
-        <div className='scroll-table'>
+        <div className="scroll-table">
+            <h2 className="table-text">All suppliers</h2>
             <table className="content-table">
                 <thead>
                     <tr>
@@ -17,24 +18,32 @@ export const TableSuppliers = () => {
                         <th>Email</th>
                         <th>Rif</th>
                         <th>Address</th>
-                        <th className='text-center'>Edit</th>
+                        <th className="text-center">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        store.suppliers.reverse().map((supplier) => {
-                            return <tr>
-                                <td>{supplier.name}</td>
-                                <td>{supplier.phone}</td>
-                                <td>{supplier.email}</td>
-                                <td>{supplier.rif}</td>
-                                <td>{supplier.address}</td>
-                                <td className='text-center'><i class="bi bi-pencil-square table-edit-icon"></i></td>
-                            </tr>
+                    {store.suppliers
+                        .sort((a, b) => {
+                            if (a.id > b.id) return -1;
+                            if (b.id > a.id) return 1;
+                            return 0;
                         })
-                    }
+                        .map((supplier) => {
+                            return (
+                                <tr>
+                                    <td>{supplier.name}</td>
+                                    <td>{supplier.phone}</td>
+                                    <td>{supplier.email}</td>
+                                    <td>{supplier.rif}</td>
+                                    <td>{supplier.address}</td>
+                                    <td className="text-center">
+                                        <i class="bi bi-pencil-square table-edit-icon"></i>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                 </tbody>
             </table>
         </div>
-    )
-}
+    );
+};

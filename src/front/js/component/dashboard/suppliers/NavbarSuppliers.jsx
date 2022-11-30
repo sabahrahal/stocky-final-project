@@ -2,11 +2,14 @@ import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../../store/appContext";
 import { AddSupplier } from "./AddSupplier.jsx";
+import { SearchResultsSuppliers } from "./SearchResultsSuppliers.jsx";
 
-export const NavbarSuppliers = () => {
+export const NavbarSuppliers = (props) => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
+    // const [searchInput, setSearchInput] = useState("");
     const [add, setAdd] = useState(false);
+
     return (
         <div className="navbar-dashboard-page-container">
             <div className="navbar-dashboard-page-first-section">
@@ -16,7 +19,12 @@ export const NavbarSuppliers = () => {
                         width="64px"
                     />
                 </div>
-                <h4 className="ms-4 navbar-dashboard-page-title">Suppliers</h4>
+                <div className="d-flex align-items-center navbar-dashboard-page-title-container">
+                    <i className="bi bi-building-fill-check fs-3"></i>
+                    <h4 className="ms-2 navbar-dashboard-page-title">
+                        Suppliers
+                    </h4>
+                </div>
                 <div className="d-flex align-items-center">
                     <div className="search-box">
                         <button className="btn-search">
@@ -26,6 +34,11 @@ export const NavbarSuppliers = () => {
                             type="text"
                             className="input-search"
                             placeholder="Type to Search..."
+                            onChange={(event) => {
+                                console.log(props.searchInput);
+                                props.setSearchInput(event.target.value);
+                            }}
+                            value={props.searchInput}
                         />
                     </div>
 
@@ -45,6 +58,7 @@ export const NavbarSuppliers = () => {
                 </div>
             </div>
             {add && <AddSupplier />}
+            <SearchResultsSuppliers input={props.searchInput} />
         </div>
     );
 };
