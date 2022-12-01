@@ -25,9 +25,7 @@ export const NavbarSuppliers = (props) => {
                 </div>
                 <div className="d-flex align-items-center">
                     <div className="search-box">
-                        <button
-                            className="btn-search"
-                        >
+                        <button className="btn-search">
                             <i className="fas fa-search"></i>
                         </button>
                         <input
@@ -35,14 +33,14 @@ export const NavbarSuppliers = (props) => {
                             className="input-search"
                             placeholder="Type to Search..."
                             onChange={(event) => {
-                                props.setSearchInput(event.target.value)
+                                props.setSearchInput(event.target.value);
                             }}
                             value={props.searchInput}
                         />
                     </div>
 
                     <div
-                        className="dashboard-add-icon"
+                        className="dashboard-add-icon me-2"
                         onClick={(event) => {
                             if (add == false) setAdd(true);
                             else setAdd(false);
@@ -53,6 +51,15 @@ export const NavbarSuppliers = (props) => {
                         ) : (
                             <i className="fas fa-solid fa-plus"></i>
                         )}
+                    </div>
+                    <div
+                        className="dashboard-add-icon "
+                        onClick={(event) => {
+                            actions.logOff();
+                            navigate("/");
+                        }}
+                    >
+                        <i className="bi bi-box-arrow-in-left fs-4 ms-1"></i>
                     </div>
                 </div>
             </div>

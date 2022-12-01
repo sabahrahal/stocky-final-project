@@ -6,7 +6,6 @@ export const DashboardNavbar = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
-
     return (
         <div className="dashboard-navbar-container fixed-bottom d-flex flex-row align-items-center justify-content-center">
             <div className="d-flex flex-row align-items-center">
@@ -18,7 +17,11 @@ export const DashboardNavbar = () => {
                 </div>
                 <div className="d-flex flex-row">
                     <div
-                        className={location.pathname.includes("home") ? "dashboard-navbar-icons dashboard-navbar-icons-active" : "dashboard-navbar-icons"}
+                        className={
+                            location.pathname.includes("home")
+                                ? "dashboard-navbar-icons dashboard-navbar-icons-active"
+                                : "dashboard-navbar-icons"
+                        }
                         // className="dashboard-navbar-icons dashboard-navbar-icons-active"
                         onClick={(event) => {
                             navigate("/dashboard/home");
@@ -28,7 +31,11 @@ export const DashboardNavbar = () => {
                         <span className="dashboard-navbar-text">Home</span>
                     </div>
                     <div
-                        className={location.pathname.includes("suppliers") ? "dashboard-navbar-icons dashboard-navbar-icons-active" : "dashboard-navbar-icons"}
+                        className={
+                            location.pathname.includes("suppliers")
+                                ? "dashboard-navbar-icons dashboard-navbar-icons-active"
+                                : "dashboard-navbar-icons"
+                        }
                         onClick={(event) => {
                             navigate("/dashboard/suppliers");
                         }}
@@ -37,7 +44,11 @@ export const DashboardNavbar = () => {
                         <span className="dashboard-navbar-text">Suppliers</span>
                     </div>
                     <div
-                        className={location.pathname.includes("products") ? "dashboard-navbar-icons dashboard-navbar-icons-active" : "dashboard-navbar-icons"}
+                        className={
+                            location.pathname.includes("products")
+                                ? "dashboard-navbar-icons dashboard-navbar-icons-active"
+                                : "dashboard-navbar-icons"
+                        }
                         onClick={(event) => {
                             navigate("/dashboard/products");
                         }}
@@ -45,7 +56,7 @@ export const DashboardNavbar = () => {
                         <i className="bi bi-box-seam-fill dashboard-icon"></i>
                         <span className="dashboard-navbar-text">Products</span>
                     </div>
-                     {/* ---------------------!!!!!!!!PREGUNTAR ERNESTO POR QUE SE MUEVEN LOS OTROS!!!!!!!!!-----------------------*/}
+                    {/* ---------------------!!!!!!!!PREGUNTAR ERNESTO POR QUE SE MUEVEN LOS OTROS!!!!!!!!!-----------------------*/}
                     <div
                         className="dashboard-navbar-icons"
                         onClick={(event) => {

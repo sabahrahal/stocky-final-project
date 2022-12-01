@@ -25,7 +25,7 @@ export const AddSupplier = () => {
                     <input
                         type="text"
                         className="form-control item"
-                        placeholder="Name"
+                        placeholder="Name*"
                         onChange={(event) => {
                             setName(event.target.value);
                         }}
@@ -77,25 +77,34 @@ export const AddSupplier = () => {
                     />
                 </div>
                 <div className="form-group d-flex justify-content-center">
-                    <button
-                        className="btn btn-block stocky-button"
-                        onClick={(event) => {
-                            actions.createSupplier(
-                                name,
-                                phone,
-                                email,
-                                rif,
-                                address
-                            );
-                            setName("");
-                            setPhone("");
-                            setEmail("");
-                            setRif("");
-                            setAddress("");
-                        }}
-                    >
-                        Save Supplier
-                    </button>
+                    {name == "" ? (
+                        <button
+                            className="btn btn-block stocky-button"
+                            disabled
+                        >
+                            Save Supplier
+                        </button>
+                    ) : (
+                        <button
+                            className="btn btn-block stocky-button"
+                            onClick={(event) => {
+                                actions.createSupplier(
+                                    name,
+                                    phone,
+                                    email,
+                                    rif,
+                                    address
+                                );
+                                setName("");
+                                setPhone("");
+                                setEmail("");
+                                setRif("");
+                                setAddress("");
+                            }}
+                        >
+                            Save Supplier
+                        </button>
+                    )}
                 </div>
             </form>
         </div>
