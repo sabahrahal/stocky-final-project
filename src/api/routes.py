@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Company, Supplier
+from api.models import db, User, Company, Supplier, Product
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
@@ -171,5 +171,85 @@ def get_supplier_by_id(company_id_param, supplier_id_param):
 
 
 #Start Product Endpoints
+
+@api.route('/create-product', methods=['POST'])
+@jwt_required()
+def create_product():
+    current_user_id = get_jwt_identity()
+    new_product_data = request.json
+    verify_company_id = Company.query.filter_by(id = new_product_data["company_id"], user_id = current_user_id).one_or_none()
+    verify_supplier_id = Supplier.query.filter_by(id = new_product_data["supplier_id"], company_id = new_product_data["company_id"]).one_or_none()
+
+    if verify_company_id and verify_supplier_id:
+        try:
+            if "name" not in new_product_data or new_product_data["name"] == "":
+                raise Exception("Supplier name invalid", 400)
+            if "quantity" not in new_product_data or new_product_data["quantity"] == "":
+                raise Exception("Supplier phone invalid", 400)
+            if "buying_cost" not in new_product_data or new_product_data["buying_cost"] == "":
+                raise Exception("Supplier email invalid", 400)
+            if "selling_cost" not in new_product_data or new_product_data["selling_cost"] == "":
+                raise Exception("Supplier email invalid", 400)
+            new_product = Product.create(**new_product_data)
+            return jsonify(new_product.serialize()), 201
+        except Exception as error: 
+            return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+    else: 
+        return jsonify("Company/Supplier doesn't exists or token is not verified"), 400
+
+@api.route('/products/<int:company_id_param>', methods=['GET'])
+@jwt_required()
+def get_products(company_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id = company_id_param, user_id = current_user_id).one_or_none()
+    
+    if verify_company_id:
+        products_by_id = Product.query.filter_by(company_id = company_id_param)
+        products_by_id_dictionary = []
+        for product in products_by_id:
+            products_by_id_dictionary.append(product.serialize())
+
+        return jsonify(products_by_id_dictionary), 200
+    else:
+        return jsonify("Company/Product doesn't exists or token is not verified"), 400
+
+@api.route('/update-product/<int:product_id_param>', methods=['PUT'])
+@jwt_required()
+def update_product(product_id_param):
+    new_product_data = request.json
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= new_product_data["company_id"], user_id = current_user_id).one_or_none()
+    verify_supplier_id = Supplier.query.filter_by(id = new_product_data["supplier_id"], company_id = new_product_data["company_id"]).one_or_none()
+
+    if verify_company_id and verify_supplier_id:
+        product = Product.query.filter_by(id = product_id_param, company_id= new_product_data["company_id"] ).one_or_none()
+        if product:
+            try:
+                if "name" not in new_product_data or new_product_data["name"] == "":
+                    raise Exception("Supplier name invalid", 400)
+                if "quantity" not in new_product_data or new_product_data["quantity"] == "":
+                    raise Exception("Supplier phone invalid", 400)
+                if "buying_cost" not in new_product_data or new_product_data["buying_cost"] == "":
+                    raise Exception("Supplier email invalid", 400)
+                if "selling_cost" not in new_product_data or new_product_data["selling_cost"] == "":
+                    raise Exception("Supplier email invalid", 400)
+
+                product.id = product_id_param
+                product.supplier_id = new_product_data["supplier_id"]
+                product.company_id = new_product_data["company_id"]
+                product.name = new_product_data["name"]
+                product.quantity = new_product_data["quantity"]
+                product.buying_cost = new_product_data["buying_cost"]
+                product.selling_cost = new_product_data["selling_cost"]
+                product.details = new_product_data["details"]
+                product.serial_number = new_product_data["serial_number"]
+                db.session.commit()
+
+                return jsonify(product.serialize()), 201
+            except Exception as error: 
+                return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+                
+    else: 
+        return jsonify("Company/Supplier/Product doesn't exists or token is not verified"), 400
 
 #End Product Endpoints
