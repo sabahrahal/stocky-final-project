@@ -40,7 +40,7 @@ export const SignUp = () => {
                             type="text"
                             className="form-control item"
                             id="username"
-                            placeholder="Username"
+                            placeholder="Username*"
                             onChange={(e) => {
                                 setUsername(e.target.value);
                             }}
@@ -52,7 +52,7 @@ export const SignUp = () => {
                             type="password"
                             className="form-control item"
                             id="password"
-                            placeholder="Password"
+                            placeholder="Password*"
                             onChange={(e) => {
                                 setPassword(e.target.value);
                             }}
@@ -64,7 +64,7 @@ export const SignUp = () => {
                             type="text"
                             className="form-control item"
                             id="email"
-                            placeholder="Email"
+                            placeholder="Email*"
                             onChange={(e) => {
                                 setEmail(e.target.value);
                             }}
@@ -76,7 +76,7 @@ export const SignUp = () => {
                             type="text"
                             className="form-control item"
                             id="phone-number"
-                            placeholder="Phone Number"
+                            placeholder="Phone Number*"
                             onChange={(e) => {
                                 setPhone(e.target.value);
                             }}
@@ -84,20 +84,28 @@ export const SignUp = () => {
                         />
                     </div>
                     <div className="form-group d-flex justify-content-center">
-                        <button
-                            type="button"
-                            className="btn btn-block stocky-button"
-                            onClick={(event) => {
-                                actions.signUp(
-                                    username,
-                                    password,
-                                    email,
-                                    phone
-                                );
-                            }}
-                        >
-                            Create Account
-                        </button>
+                        {username === "" || password === "" || email === "" || phone === "" ?
+                            <button
+                                className="btn btn-block stocky-button"
+                                disabled
+                            >
+                                Create Account
+                            </button> :
+                            <button
+                                type="button"
+                                className="btn btn-block stocky-button"
+                                onClick={(event) => {
+                                    actions.signUp(
+                                        username,
+                                        password,
+                                        email,
+                                        phone
+                                    );
+                                }}
+                            >
+                                Create Account
+                            </button>
+                        }
                     </div>
                 </form>
                 <div className="social-media">

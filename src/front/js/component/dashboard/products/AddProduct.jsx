@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../../store/appContext";
 
 export const AddProduct = () => {
@@ -8,7 +8,13 @@ export const AddProduct = () => {
     const [quantity, setQuantity] = useState("");
     const [buyCost, setBuyCost] = useState("");
     const [sellCost, setSellCost] = useState("");
+    const [selectedSupplier, setSelectedSupplier] = useState("");
+    const [searchSupplier, setSearchSupplier] = useState("");
     const { store, actions } = useContext(Context);
+
+    useEffect(() => {
+        actions.getSuppliers();
+    }, []);
 
     return (
         <div className="dashboard-add-form">
@@ -88,20 +94,87 @@ export const AddProduct = () => {
                         value={sellCost}
                     />
                 </div>
-                <div className="form-group d-flex justify-content-center">
-                    <button
-                        className="btn btn-block stocky-button"
-                        onClick={(event) => {
-                            setName("");
-                            setDetails("");
-                            setSerialNumber("");
-                            setQuantity("");
-                            setBuyCost("");
-                            setSellCost("");
+                <div className="form-group">
+                    <h4 className="text-center">Supplier</h4>
+                    <div className="d-flex align-items-center">
+                        <i className="fas fa-search dashboard-add-form item"></i>
+                        <input
+                            className="form-control item"
+                            placeholder="Search"
+                            value={searchSupplier}
+                            onChange={(event) => {
+                                setSearchSupplier(event.target.value);
+                            }}
+                        ></input>
+                    </div>
+
+                    <select
+                        name="supplier"
+                        className="form-control form-select item mb-4"
+                        value={selectedSupplier}
+                        onChange={(event) => {
+                            setSelectedSupplier(event.target.value);
                         }}
                     >
-                        Save Product
-                    </button>
+                        {searchSupplier === "" ? (
+                            <option value="Select">Select Supplier</option>
+                        ) : (
+                            <option value="Select">
+                                Search results for {searchSupplier}
+                            </option>
+                        )}
+
+                        {store.suppliers
+                            .filter((supplier) => {
+                                return supplier.name
+                                    .toLowerCase()
+                                    .includes(searchSupplier.toLowerCase());
+                            })
+                            .map((supplier) => {
+                                return (
+                                    <option
+                                        key={supplier.id}
+                                        value={supplier.id}
+                                    >
+                                        {supplier.name}
+                                    </option>
+                                );
+                            })}
+                    </select>
+                </div>
+
+                <div className="form-group d-flex justify-content-center">
+                    {selectedSupplier == "Select" || selectedSupplier == "" ? (
+                        <button
+                            className="btn btn-block stocky-button"
+                            disabled
+                        >
+                            Save Product
+                        </button>
+                    ) : (
+                        <button
+                            className="btn btn-block stocky-button"
+                            onClick={(event) => {
+                                actions.createProduct(
+                                    selectedSupplier,
+                                    name,
+                                    quantity,
+                                    buyCost,
+                                    sellCost,
+                                    details,
+                                    serialNumber
+                                );
+                                setName("");
+                                setDetails("");
+                                setSerialNumber("");
+                                setQuantity("");
+                                setBuyCost("");
+                                setSellCost("");
+                            }}
+                        >
+                            Save Product
+                        </button>
+                    )}
                 </div>
             </form>
         </div>

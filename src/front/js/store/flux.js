@@ -2,12 +2,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-bvbpvpbhlta.ws-eu77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-zuq0a6iqom2.ws-us77.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
 			suppliers: [],
-			selectedCompanyId: ""
+			products: []
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
@@ -272,6 +272,78 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			// ---------------- END SUPPLIERS ACTIONS -------------
+
+
+			// ---------------- START PRODUCT ACTIONS -------------
+
+			createProduct: async (supplier_id,name, quantity, buying_cost, selling_cost, details, serial_number) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						supplier_id: supplier_id,
+						name: name,
+						quantity: quantity,
+						buying_cost: buying_cost,
+						selling_cost: selling_cost,
+						details: details,
+						serial_number: serial_number,
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/create-product`, ops);
+					if (!response.ok) {
+						alert("Create product problem endpoint /create-product");
+						return;
+					}
+					console.log(`Create a Product succefully! ${name}`);
+					actions.getProducts();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
+
+			getProducts: async () => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/products/${companyId}`, ops);
+					if (!response.ok) {
+						alert("Get products problem endpoint /products");
+						return;
+					}
+
+					const body = await response.json();
+					setStore({
+						products: body
+					})
+
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
+			// ---------------- END PRODUCTS ACTIONS -------------
 
 
 			// ---------------- START DASHBOARD ACTIONS -------------

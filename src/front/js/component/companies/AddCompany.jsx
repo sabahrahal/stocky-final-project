@@ -59,16 +59,28 @@ export const AddCompany = () => {
                         <Link className="stocky-button" to={"/companies"}>
                             Go back
                         </Link>
-                        <button
-                            type="button"
-                            className="btn btn-block stocky-button"
-                            onClick={async (event) => {
-                                const success = await actions.createCompany(companyName, companyRif);
-                                if (success) navigate("/companies");
-                            }}
-                        >
-                            Add Company
-                        </button>
+                        {companyName === "" || companyRif === "" ? (
+                            <button
+                                className="btn btn-block stocky-button"
+                                disabled
+                            >
+                                Add Company
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                className="btn btn-block stocky-button"
+                                onClick={async (event) => {
+                                    const success = await actions.createCompany(
+                                        companyName,
+                                        companyRif
+                                    );
+                                    if (success) navigate("/companies");
+                                }}
+                            >
+                                Add Company
+                            </button>
+                        )}
                     </div>
                 </form>
             </div>

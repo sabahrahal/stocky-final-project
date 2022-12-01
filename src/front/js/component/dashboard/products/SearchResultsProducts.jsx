@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../../../store/appContext";
-import { EditSupplier } from "./EditSupplier.jsx";
 
-export const SearchResultsSuppliers = (props) => {
+export const SearchResultsProducts = (props) => {
     const { store, actions } = useContext(Context);
 
     return (
@@ -21,39 +20,40 @@ export const SearchResultsSuppliers = (props) => {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Rif</th>
-                            <th>Address</th>
+                            <th>Quantity</th>
+                            <th>Buy Cost (UNIT)</th>
+                            <th>Sell Cost (UNIT)</th>
+                            <th>Details</th>
+                            <th>Serial #</th>
                             <th className="text-center">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {store.suppliers
+                        {store.products
                             .sort((a, b) => {
                                 if (a.id > b.id) return -1;
                                 if (b.id > a.id) return 1;
                                 return 0;
                             })
-                            .filter((supplier) => {
-                                return supplier.name
+                            .filter((product) => {
+                                return product.name
                                     .toLowerCase()
                                     .includes(props.searchInput.toLowerCase());
                             })
-                            .map((supplier) => {
+                            .map((product) => {
                                 return (
-                                    <tr key={supplier.id}>
-                                        <td>{supplier.name}</td>
-                                        <td>{supplier.phone}</td>
-                                        <td>{supplier.email}</td>
-                                        <td>{supplier.rif}</td>
-                                        <td>{supplier.address}</td>
+                                    <tr>
+                                        <td>{product.name}</td>
+                                        <td>{product.quantity}</td>
+                                        <td>{product.buying_cost}</td>
+                                        <td>{product.selling_cost}</td>
+                                        <td>{product.details}</td>
+                                        <td>{product.serial_number}</td>
                                         <td className="text-center">
-                                            <EditSupplier supplier={supplier} />
                                             <i
                                                 className="bi bi-pencil-square table-edit-icon"
                                                 data-bs-toggle="modal"
-                                                data-bs-target={`#modal-${supplier.id}`}
+                                                data-bs-target={`#modal-${product.id}`}
                                             ></i>
                                             {/* preguntar a ERNESTO porque al buscar uno no trae la informacion correspondiente y al buscar varios si la trae */}
                                         </td>
