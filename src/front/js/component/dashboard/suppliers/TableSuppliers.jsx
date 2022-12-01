@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../../../store/appContext";
+import { EditSupplier } from "./EditSupplier.jsx";
 
 export const TableSuppliers = () => {
     const { store, actions } = useContext(Context);
@@ -30,14 +31,15 @@ export const TableSuppliers = () => {
                         })
                         .map((supplier) => {
                             return (
-                                <tr>
+                                <tr key={supplier.id}>
                                     <td>{supplier.name}</td>
                                     <td>{supplier.phone}</td>
                                     <td>{supplier.email}</td>
                                     <td>{supplier.rif}</td>
                                     <td>{supplier.address}</td>
                                     <td className="text-center">
-                                        <i class="bi bi-pencil-square table-edit-icon"></i>
+                                        <EditSupplier supplier={supplier} />
+                                        <i className="bi bi-pencil-square table-edit-icon" data-bs-toggle="modal" data-bs-target={`#modal-${supplier.id}`}></i>
                                     </td>
                                 </tr>
                             );
