@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../store/appContext";
 
 export const DashboardNavbar = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
+
 
     return (
         <div className="dashboard-navbar-container fixed-bottom d-flex flex-row align-items-center justify-content-center">
@@ -17,7 +18,8 @@ export const DashboardNavbar = () => {
                 </div>
                 <div className="d-flex flex-row">
                     <div
-                        className="dashboard-navbar-icons dashboard-navbar-icons-active"
+                        className={location.pathname.includes("home") ? "dashboard-navbar-icons dashboard-navbar-icons-active" : "dashboard-navbar-icons"}
+                        // className="dashboard-navbar-icons dashboard-navbar-icons-active"
                         onClick={(event) => {
                             navigate("/dashboard/home");
                         }}
@@ -26,7 +28,7 @@ export const DashboardNavbar = () => {
                         <span className="dashboard-navbar-text">Home</span>
                     </div>
                     <div
-                        className="dashboard-navbar-icons"
+                        className={location.pathname.includes("suppliers") ? "dashboard-navbar-icons dashboard-navbar-icons-active" : "dashboard-navbar-icons"}
                         onClick={(event) => {
                             navigate("/dashboard/suppliers");
                         }}
@@ -35,7 +37,7 @@ export const DashboardNavbar = () => {
                         <span className="dashboard-navbar-text">Suppliers</span>
                     </div>
                     <div
-                        className="dashboard-navbar-icons"
+                        className={location.pathname.includes("products") ? "dashboard-navbar-icons dashboard-navbar-icons-active" : "dashboard-navbar-icons"}
                         onClick={(event) => {
                             navigate("/dashboard/products");
                         }}
@@ -43,6 +45,7 @@ export const DashboardNavbar = () => {
                         <i className="bi bi-box-seam-fill dashboard-icon"></i>
                         <span className="dashboard-navbar-text">Products</span>
                     </div>
+                     {/* ---------------------!!!!!!!!PREGUNTAR ERNESTO POR QUE SE MUEVEN LOS OTROS!!!!!!!!!-----------------------*/}
                     <div
                         className="dashboard-navbar-icons"
                         onClick={(event) => {

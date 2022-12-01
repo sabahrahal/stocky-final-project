@@ -93,17 +93,25 @@ export const Navbar = () => {
               >
                 Close
               </button>
+              {username === "" || password === ""?
               <button
-                type="button"
-                className="stocky-button"
-                data-bs-dismiss="modal"
-                onClick={async (event) => {
-                  const success = await actions.logIn(username, password);
-                  if (success) navigate('/companies');
-                }}
-              >
-                Log In
-              </button>
+              className="btn btn-block stocky-button"
+              disabled
+          >
+              Log In
+          </button>:
+              <button
+              type="button"
+              className="stocky-button"
+              data-bs-dismiss="modal"
+              onClick={async (event) => {
+                const success = await actions.logIn(username, password);
+                if (success) navigate('/companies');
+              }}
+            >
+              Log In
+            </button>
+              }
             </div>
           </div>
         </div>
