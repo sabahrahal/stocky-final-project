@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../../../store/appContext";
 import { AddProduct } from "./AddProduct.jsx";
 
-export const NavbarProducts = () => {
+export const NavbarProducts = (props) => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
     const [add, setAdd] = useState(false);
@@ -32,6 +32,10 @@ export const NavbarProducts = () => {
                             type="text"
                             className="input-search"
                             placeholder="Type to Search..."
+                            onChange={(event) => {
+                                props.setSearchInput(event.target.value);
+                            }}
+                            value={props.searchInput}
                         />
                     </div>
 
@@ -50,7 +54,6 @@ export const NavbarProducts = () => {
                     </div>
                 </div>
             </div>
-
             {add && <AddProduct />}
         </div>
     );

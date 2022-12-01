@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../../store/appContext";
 import { AddSupplier } from "./AddSupplier.jsx";
@@ -25,7 +25,9 @@ export const NavbarSuppliers = (props) => {
                 </div>
                 <div className="d-flex align-items-center">
                     <div className="search-box">
-                        <button className="btn-search">
+                        <button
+                            className="btn-search"
+                        >
                             <i className="fas fa-search"></i>
                         </button>
                         <input
@@ -33,8 +35,7 @@ export const NavbarSuppliers = (props) => {
                             className="input-search"
                             placeholder="Type to Search..."
                             onChange={(event) => {
-                                console.log(props.searchInput);
-                                props.setSearchInput(event.target.value);
+                                props.setSearchInput(event.target.value)
                             }}
                             value={props.searchInput}
                         />

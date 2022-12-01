@@ -19,6 +19,7 @@ export const DashboardSuppliers = () => {
         const id = sessionStorage.getItem("selectedCompanyId");
         if (!id || id == "" || id == "undefined") navigate("/companies");
         actions.selectCompany(id);
+        actions.getSuppliers();
     }, [])
 
     return (
