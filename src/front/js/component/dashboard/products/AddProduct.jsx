@@ -32,7 +32,7 @@ export const AddProduct = () => {
                     <input
                         type="text"
                         className="form-control item"
-                        placeholder="Name"
+                        placeholder="Name*"
                         onChange={(event) => {
                             setName(event.target.value);
                         }}
@@ -65,7 +65,7 @@ export const AddProduct = () => {
                     <input
                         type="number"
                         className="form-control item"
-                        placeholder="Quantity"
+                        placeholder="Quantity*"
                         onChange={(event) => {
                             setQuantity(event.target.value);
                         }}
@@ -76,7 +76,7 @@ export const AddProduct = () => {
                     <input
                         type="number"
                         className="form-control item"
-                        placeholder="Buy Cost"
+                        placeholder="Buy Cost*"
                         onChange={(event) => {
                             setBuyCost(event.target.value);
                         }}
@@ -117,7 +117,7 @@ export const AddProduct = () => {
                         }}
                     >
                         {searchSupplier === "" ? (
-                            <option value="Select">Select Supplier</option>
+                            <option value="Select">Select Supplier*</option>
                         ) : (
                             <option value="Select">
                                 Search results for {searchSupplier}
@@ -144,7 +144,11 @@ export const AddProduct = () => {
                 </div>
 
                 <div className="form-group d-flex justify-content-center">
-                    {selectedSupplier == "Select" || selectedSupplier == "" ? (
+                    {selectedSupplier == "Select" ||
+                    selectedSupplier == "" ||
+                    name == "" ||
+                    quantity == "" ||
+                    buyCost == "" ? (
                         <button
                             className="btn btn-block stocky-button"
                             disabled

@@ -13,7 +13,7 @@ export const EditSupplier = (props) => {
         <div key={props.supplier.id}>
             <div className="modal fade" id={`modal-${props.supplier.id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
-                    <div className="modal-content border-0">
+                    <div className="modal-content border-0 edit-modal">
                         <div className="dashboard-add-form">
                             <form
                                 onClick={(event) => {

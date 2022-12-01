@@ -40,7 +40,7 @@ export const NavbarProducts = (props) => {
                     </div>
 
                     <div
-                        className="dashboard-add-icon"
+                        className="dashboard-add-icon me-2"
                         onClick={(event) => {
                             if (add == false) setAdd(true);
                             else setAdd(false);
@@ -51,6 +51,15 @@ export const NavbarProducts = (props) => {
                         ) : (
                             <i className="fas fa-solid fa-plus"></i>
                         )}
+                    </div>
+                    <div
+                        className="dashboard-add-icon "
+                        onClick={(event) => {
+                            actions.logOff();
+                            navigate("/");
+                        }}
+                    >
+                        <i className="bi bi-box-arrow-in-left fs-4 ms-1"></i>
                     </div>
                 </div>
             </div>

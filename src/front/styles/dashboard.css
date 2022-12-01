@@ -5,6 +5,7 @@
 /* ------------------  BOTTOM NAVBAR STYLES ----------- */
 
 .dashboard-navbar-container {
+    animation: fadeInBottom 1s ease 0s 1 normal both;
     max-width: 700px;
     margin: auto;
     margin-bottom: 15px;
@@ -35,7 +36,7 @@
 
 .dashboard-navbar-icons-active {
     color: white;
-    transform: scale(1.2);
+    transform: scale(1.1);
     border-bottom: 1.5px solid white;
 }
 
@@ -74,6 +75,12 @@
 
 .dashboard-page-container {
     margin-top: 10px;
+    margin-bottom: 150px;
+}
+@media only screen and (max-width: 768px) {
+    .dashboard-page-container {
+        margin-bottom: 100px;
+    }
 }
 
 /* ------------------ TOP DASHBOARD NAVBAR STYLES ----------- */
@@ -94,6 +101,7 @@
     padding: 15px;
     background: linear-gradient(90deg, #ffcc57, #d3508e);
     color: white;
+    margin-left: 40px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
         rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
@@ -125,6 +133,7 @@
     transition: all 0.5s ease-in-out;
     padding-right: 40px;
     color: black;
+    background-color: transparent;
 }
 .input-search::placeholder {
     color: black;
@@ -196,7 +205,6 @@
     width: 40px;
     height: 40px;
     line-height: 40px;
-    margin-left: 15px;
 }
 .dashboard-add-icon:hover {
     transition: 0.2s;
@@ -280,10 +288,18 @@
     transform: scale(1.2);
     transition: 0.2s;
 }
+.edit-modal {
+    position: absolute !important;
+    right: 70px !important;
+}
 
 @media only screen and (max-width: 768px) {
     .scroll-table {
         overflow-x: scroll;
+    }
+    .edit-modal {
+        right: 0px !important;
+        background: transparent;
     }
 }
 
