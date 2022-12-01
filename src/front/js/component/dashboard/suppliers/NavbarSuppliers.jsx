@@ -2,12 +2,10 @@ import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../../store/appContext";
 import { AddSupplier } from "./AddSupplier.jsx";
-import { SearchResultsSuppliers } from "./SearchResultsSuppliers.jsx";
 
 export const NavbarSuppliers = (props) => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
-    // const [searchInput, setSearchInput] = useState("");
     const [add, setAdd] = useState(false);
 
     return (
@@ -58,7 +56,6 @@ export const NavbarSuppliers = (props) => {
                 </div>
             </div>
             {add && <AddSupplier />}
-            <SearchResultsSuppliers input={props.searchInput} />
         </div>
     );
 };

@@ -4,10 +4,11 @@ import { Context } from "../store/appContext";
 import "../../styles/dashboard.css"
 import { NavbarSuppliers } from "../component/dashboard/suppliers/NavbarSuppliers.jsx";
 import { TableSuppliers } from "../component/dashboard/suppliers/TableSuppliers.jsx";
+import { SearchResultsSuppliers } from "../component/dashboard/suppliers/SearchResultsSuppliers.jsx";
 
 export const DashboardSuppliers = () => {
     const { store, actions } = useContext(Context);
-    const  [search, setSearch]  = useState("");
+    const [search, setSearch] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,7 +24,8 @@ export const DashboardSuppliers = () => {
     return (
         <div className="container-fluid dashboard-page-container">
             <NavbarSuppliers searchInput={search} setSearchInput={setSearch} />
-            {search === "" && <TableSuppliers />}
+            {search === "" ? <TableSuppliers /> :
+                <SearchResultsSuppliers searchInput={search} setSearchInput={setSearch} />}
         </div >
     );
 };

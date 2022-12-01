@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-tk3340r9skm.ws-us77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-bvbpvpbhlta.ws-eu77.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
@@ -236,6 +236,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				} catch (error) {
 					console.log(error)
+				}
+			},
+			updateSupplier: async (supplierId, name, phone, email, rif, address) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						name: name,
+						phone: phone,
+						email: email,
+						rif: rif,
+						address: address,
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/update-supplier/${supplierId}`, ops);
+					if (!response.ok) {
+						alert("Update supplier has a problem with endpoint /update-supplier");
+						return;
+					}
+					console.log(`Update a supplier succefully! ${name}`);
+					actions.getSuppliers();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
 				}
 			},
 			// ---------------- END SUPPLIERS ACTIONS -------------
