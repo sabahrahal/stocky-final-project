@@ -103,3 +103,50 @@ class Supplier(db.Model):
             "company_id" : self.company_id, 
         }
 
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    buying_cost = db.Column(db.Float, nullable=False)
+    selling_cost = db.Column(db.Float, nullable=False)
+    details = db.Column(db.String(120))
+    serial_number = db.Column(db.String(120))
+    supplier_id = db.Column(db.Integer, db.ForeignKey('supplier.id'))
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+
+    def __init__(self, **kwargs):
+        self.name = kwargs["name"]
+        self.quantity = kwargs["quantity"]
+        self.buying_cost = kwargs["buying_cost"]
+        self.selling_cost = kwargs["selling_cost"]
+        self.details = kwargs["details"]
+        self.serial_number = kwargs["serial_number"]
+        self.supplier_id = kwargs["supplier_id"]
+        self.company_id = kwargs["company_id"]
+    
+    @classmethod
+    def create(cls, **kwargs):
+        new_product = cls(**kwargs)
+        db.session.add(new_product)
+
+        try:
+            db.session.commit()
+            return new_product
+        except Exception as Error: 
+            raise Exception(Error.args[0], 400)
+    
+    def serialize(self): 
+        return {
+            "id" : self.id,
+            "name" : self.name,
+            "quantity" : self.quantity,
+            "buying_cost" : self.buying_cost, 
+            "selling_cost" : self.selling_cost,
+            "details" : self.details,
+            "serial_number" : self.serial_number, 
+            "supplier_id" : self.supplier_id,
+            "company_id" : self.company_id
+        }
+
+
+
