@@ -1,17 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../../store/appContext";
 
-export const EditSupplier = (props) => {
+export const EditProduct = (props) => {
     const { store, actions } = useContext(Context);
-    const [name, setName] = useState(props.supplier.name);
-    const [phone, setPhone] = useState(props.supplier.phone);
-    const [email, setEmail] = useState(props.supplier.email);
-    const [rif, setRif] = useState(props.supplier.rif);
-    const [address, setAddress] = useState(props.supplier.address);
+    const [name, setName] = useState(props.product.name);
+    const [details, setDetails] = useState(props.product.details);
+    const [serialNumber, setSerialNumber] = useState(props.product.serial_number);
+    const [quantity, setQuantity] = useState(props.product.quantity);
+    const [buyingCost, setBuyingCost] = useState(props.product.buying_cost);
+    const [sellingCost, setSellingCost] = useState(props.product.selling_cost);
 
     return (
-        <div key={props.supplier.id}>
-            <div className="modal fade" id={`modal-${props.supplier.id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div key={props.product.id}>
+            <div className="modal fade" id={`modal-${props.product.id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content border-0 edit-modal">
                         <div className="dashboard-add-form">
@@ -22,7 +23,7 @@ export const EditSupplier = (props) => {
                             >
                                 <div>
                                     <h4 className="mb-3 text-center">
-                                        Update Supplier <br />
+                                        Update Product <br />
                                         "{name}"
                                     </h4>
                                 </div>
@@ -40,55 +41,68 @@ export const EditSupplier = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="phone">Phone</label>
+                                    <label for="details">Details</label>
                                     <input
-                                        name="phone"
+                                        name="details"
                                         type="text"
                                         className="form-control item"
-                                        placeholder="Phone"
+                                        placeholder="Details"
                                         onChange={(event) => {
-                                            setPhone(event.target.value);
+                                            setDetails(event.target.value);
                                         }}
-                                        value={phone}
+                                        value={details}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="email">Email</label>
+                                    <label for="serial">Serial Number</label>
                                     <input
-                                        name="email"
+                                        name="serial"
                                         type="text"
                                         className="form-control item"
-                                        placeholder="Email"
+                                        placeholder="Serial #"
                                         onChange={(event) => {
-                                            setEmail(event.target.value);
+                                            setSerialNumber(event.target.value);
                                         }}
-                                        value={email}
+                                        value={serialNumber}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="rif">Rif</label>
+                                    <label for="quantity">Quantity</label>
                                     <input
-                                        name="rif"
+                                        name="quantity"
                                         type="text"
                                         className="form-control item"
-                                        placeholder="Rif"
+                                        placeholder="Quantity"
                                         onChange={(event) => {
-                                            setRif(event.target.value);
+                                            setQuantity(event.target.value);
                                         }}
-                                        value={rif}
+                                        value={quantity}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="address">Address</label>
+                                    <label for="buy_cost">Buy Cost (Unit)</label>
                                     <input
-                                        name="Address"
+                                        name="buy_cost"
                                         type="text"
                                         className="form-control item"
-                                        placeholder="Address"
+                                        placeholder="Buy Cost"
                                         onChange={(event) => {
-                                            setAddress(event.target.value);
+                                            setBuyingCost(event.target.value);
                                         }}
-                                        value={address}
+                                        value={buyingCost}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label for="sell_cost">Sell Cost (Unit)</label>
+                                    <input
+                                        name="sell_cost"
+                                        type="text"
+                                        className="form-control item"
+                                        placeholder="Sell Cost"
+                                        onChange={(event) => {
+                                            setSellingCost(event.target.value);
+                                        }}
+                                        value={sellingCost}
                                     />
                                 </div>
                                 <div className="form-group d-flex justify-content-center">
@@ -103,10 +117,18 @@ export const EditSupplier = (props) => {
                                         className="btn btn-block stocky-button ms-3"
                                         data-bs-dismiss="modal"
                                         onClick={(event) => {
-                                            actions.updateSupplier(props.supplier.id, name, phone, email, rif, address);
+                                            actions.updateProduct(
+                                                props.product.id,
+                                                props.product.supplier_id,
+                                                name,
+                                                details,
+                                                serialNumber,
+                                                quantity,
+                                                buyingCost,
+                                                sellingCost)
                                         }}
                                     >
-                                        Update Supplier
+                                        Update Product
                                     </button>
                                 </div>
                             </form>

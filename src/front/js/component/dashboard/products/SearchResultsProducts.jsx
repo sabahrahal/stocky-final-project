@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../../../store/appContext";
+import { EditProduct } from "./EditProduct.jsx";
 
 export const SearchResultsProducts = (props) => {
     const { store, actions } = useContext(Context);
@@ -20,6 +21,7 @@ export const SearchResultsProducts = (props) => {
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Supplier</th>
                             <th>Quantity</th>
                             <th>Buy Cost (UNIT)</th>
                             <th>Sell Cost (UNIT)</th>
@@ -44,12 +46,14 @@ export const SearchResultsProducts = (props) => {
                                 return (
                                     <tr>
                                         <td>{product.name}</td>
+                                        <td>{product.supplier_name}</td>
                                         <td>{product.quantity}</td>
                                         <td>{product.buying_cost}</td>
                                         <td>{product.selling_cost}</td>
                                         <td>{product.details}</td>
                                         <td>{product.serial_number}</td>
                                         <td className="text-center">
+                                            <EditProduct product={product} />
                                             <i
                                                 className="bi bi-pencil-square table-edit-icon"
                                                 data-bs-toggle="modal"

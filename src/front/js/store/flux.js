@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-zuq0a6iqom2.ws-us77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-bvbpvpbhlta.ws-eu77.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
@@ -276,7 +276,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// ---------------- START PRODUCT ACTIONS -------------
 
-			createProduct: async (supplier_id,name, quantity, buying_cost, selling_cost, details, serial_number) => {
+			createProduct: async (supplier_id, name, quantity, buying_cost, selling_cost, details, serial_number) => {
 				const store = getStore();
 				const actions = getActions();
 				const companyId = sessionStorage.getItem("selectedCompanyId");
@@ -340,6 +340,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				} catch (error) {
 					console.log(error)
+				}
+			},
+			updateProduct: async (productId, supplierId, name, details, serialNumber, quantity, buyingCost, sellingCost) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						supplier_id: supplierId,
+						name: name,
+						details: details,
+						serial_number: serialNumber,
+						quantity: quantity,
+						buying_cost: buyingCost,
+						selling_cost: sellingCost,
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/update-product/${productId}`, ops);
+					if (!response.ok) {
+						alert("Update product has a problem with endpoint /update-product");
+						return;
+					}
+					console.log(`Update a product succefully! ${name}`);
+					actions.getProducts();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
 				}
 			},
 
