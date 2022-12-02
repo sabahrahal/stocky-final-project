@@ -72,6 +72,7 @@ class Supplier(db.Model):
     rif = db.Column(db.String(120))
     address = db.Column(db.String(120))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+    product = db.relationship("Product", backref="supplier")
 
     def __init__(self,**kwargs):
         self.name = kwargs["name"]
@@ -145,7 +146,8 @@ class Product(db.Model):
             "details" : self.details,
             "serial_number" : self.serial_number, 
             "supplier_id" : self.supplier_id,
-            "company_id" : self.company_id
+            "company_id" : self.company_id,
+            "supplier_name" : self.supplier.name
         }
 
 
