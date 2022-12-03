@@ -15,7 +15,7 @@
     margin-top: 20px;
     border: 2px solid black;
     border-radius: 15px;
-    /* border: 2px solid transparent;
+    border: 2px solid transparent;
     border-image: linear-gradient(to right, #ffcc57, #d3508e) 1;
     transition: 0.2s;
 }
