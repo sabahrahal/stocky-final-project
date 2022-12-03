@@ -6,7 +6,7 @@ import CloudinaryUploadWidget from "../cloudinary/CloudinaryUploadWidget";
 export const AddCompany = () => {
     const [companyName, setCompanyName] = useState("");
     const [companyRif, setCompanyRif] = useState("");
-    const [companyImg, setCompanyImg] = useState("https://cdn.discordapp.com/attachments/747040302988132352/1041237107454255124/logo_png_sabah.png");
+    const [companyImg, setCompanyImg] = useState("https://cdn.discordapp.com/attachments/747040302988132352/1048719476402696242/sabah_350x350-01.jpg");
     let navigate = useNavigate();
     const { store, actions } = useContext(Context);
 
@@ -28,9 +28,18 @@ export const AddCompany = () => {
                 <form onClick={(event) => {
                     event.preventDefault();
                 }}>
-                    <div className="form-icon upload-logo-icon" id="upload_widget">
-                        <CloudinaryUploadWidget companyImg={companyImg} setCompanyImg={setCompanyImg} />
-                    </div>
+                    {companyImg == "https://cdn.discordapp.com/attachments/747040302988132352/1048719476402696242/sabah_350x350-01.jpg" ?
+                        <div className="form-icon upload-logo-icon" id="upload_widget">
+                            <CloudinaryUploadWidget companyImg={companyImg} setCompanyImg={setCompanyImg} />
+                        </div> :
+                        <div className="d-flex justify-content-center align-items-center">
+                            <img src={companyImg}
+                                width="150px"
+                            />
+                        </div>
+                    }
+
+
                     <p className="text-center fs-3">Upload Logo</p>
                     <div className="form-group">
                         <input
