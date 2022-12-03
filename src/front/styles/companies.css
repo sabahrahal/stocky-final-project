@@ -12,12 +12,10 @@
 
 /*Profile Card 5*/
 .profile-card-5 {
-    margin-top: 20px;
-    border: 2px solid black;
-    border-radius: 15px;
-    border: 2px solid transparent;
-    border-image: linear-gradient(to right, #ffcc57, #d3508e) 1;
-    transition: 0.2s;
+  margin-top: 20px;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to right, #ffcc57, #d3508e) 1;
+  transition: 0.2s;
 }
 
 .profile-card-5 .card-img-block {
@@ -39,29 +37,30 @@
   font-weight: 300;
 }
 .profile-card-5:hover {
-    cursor: pointer;
-    background: linear-gradient(to right, #ffcc57, #d3508e) border-box;
-    color: white;
-    transform: scale(1.05);
-    transition: 0.2s;
-    border-color: white;
+  cursor: pointer;
+  background: linear-gradient(to right, #ffcc57, #d3508e) border-box;
+  color: white;
+  transform: scale(1.05);
+  transition: 0.2s;
+  border-color: white;
 }
 .profile-card-5:hover .company-card-title {
   color: white;
 }
 .circle-card-companies {
-
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 80px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 80px;
+  background: -webkit-linear-gradient(#ffcc57, #d3508e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: 0.2s;
 }
 
 .circle-card-companies:hover {
-    background-color: linear-gradient(to right, #ffcc57, #d3508e);
-    background-clip: initial;
-    cursor: pointer;
-    transform: scale(1.05);
-    transition: 0.2s;
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.2s;
 }
 /*End Companies Cards*/
 

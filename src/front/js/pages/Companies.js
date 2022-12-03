@@ -18,7 +18,7 @@ export const Companies = () => {
         <div className="container">
             {store.token && store.token != "" && store.token != undefined ?
                 <>
-                    <div className="full-width-widget-container">
+                    <div className="full-width-widget-container mb-4">
                         <div className="welcome-widget-text-container">
                             <h1>Select a company...</h1>
                             <p>

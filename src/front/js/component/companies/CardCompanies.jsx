@@ -30,9 +30,10 @@ export const CardCompanies = () => {
                                 <div className="card-img-block">
                                     <img
                                         className="card-img-top bg-white"
-                                        src="https://adfinis.com/wp-content/uploads/sites/9/2021/09/Canonical_company-Logo.wine_-300x200.png"
+                                        src={company.img_url}
                                         alt="Card image cap"
                                         width="350px"
+                                        height="350px"
                                     />
                                 </div>
                                 <div className="card-body pt-0">

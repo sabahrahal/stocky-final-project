@@ -6,12 +6,17 @@ export const DashboardNavbar = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        actions.syncCompany();
+    }, [])
+
+
     return (
         <div className="dashboard-navbar-container fixed-bottom d-flex flex-row align-items-center justify-content-center">
             <div className="d-flex flex-row align-items-center">
                 <div>
                     <img
-                        src="https://adfinis.com/wp-content/uploads/sites/9/2021/09/Canonical_company-Logo.wine_-300x200.png"
+                        src={store.selectedCompany.img_url}
                         className="dashboard-company-img bg-white"
                     />
                 </div>

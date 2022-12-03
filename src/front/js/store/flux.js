@@ -2,12 +2,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-a454wouyluv.ws-us77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-9pmh1or9y2p.ws-eu77.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
 			suppliers: [],
 			products: [],
+			selectedCompany: {},
+			currentUser: {}
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
@@ -42,6 +44,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 					actions.logOff();
 				}
 			},
+			getUser: async () => {
+				const store = getStore();
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				}
+
+				try {
+					const response = await fetch(`${store.apiUrl}/get-user-by-id`, ops);
+					if (!response.ok) {
+						alert("Get User has a problem with endpoint /get-user-by-id");
+						return;
+					}
+
+					const body = await response.json();
+					setStore({
+						currentUser: body
+					})
+
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
 			logIn: async (username, password) => {
 				const store = getStore();
 				const actions = getActions();
@@ -164,14 +196,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			selectCompany: (id) => {
-				setStore({
-					selectedCompanyId: id
-				})
+			selectCompany: async (id) => {
 				sessionStorage.setItem(
 					"selectedCompanyId",
 					id
 				)
+				const token = sessionStorage.getItem("token");
+				const store = getStore();
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/get-company-by-id/${id}`, ops);
+					if (!response.ok) {
+						alert("Get company by id problem endpoint /get-company-by-id");
+						return;
+					}
+
+					const body = await response.json();
+					setStore({
+						selectedCompany: body
+					})
+
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
+			syncCompany: () => {
+				const actions = getActions();
+				const selectedCompanyId = sessionStorage.getItem("selectedCompanyId");
+				actions.selectCompany(selectedCompanyId);
 			},
 			// ---------------- END COMPANY ACTIONS -------------
 

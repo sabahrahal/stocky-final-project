@@ -44,6 +44,16 @@ def sign_up():
         return jsonify(new_user.serialize()), 201
     except Exception as error: 
         return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+
+@api.route("/get-user-by-id", methods=['GET'])
+@jwt_required()
+def get_user_by_id():
+    current_user_id = get_jwt_identity()
+    user = User.query.filter_by(id = current_user_id).one_or_none()
+    if user is not None:
+        return jsonify(user.serialize()), 201
+    else: 
+        return jsonify("User doesn't exists or token is not verified"), 400
 #End User Endpoints
 
 
@@ -74,6 +84,19 @@ def get_companies():
         companies_by_id_dictionaries.append(company.serialize())
     
     return jsonify(companies_by_id_dictionaries), 200
+
+@api.route("/get-company-by-id/<int:company_id_param>", methods=['GET'])
+@jwt_required()
+def get_company_by_id(company_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= company_id_param, user_id = current_user_id).one_or_none()
+    if verify_company_id:
+        try:
+            return jsonify(verify_company_id.serialize()), 201
+        except Exception as error: 
+            return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+    else: 
+        return jsonify("Company doesn't exists or token is not verified"), 400
 
 #End Company Endpoints
 

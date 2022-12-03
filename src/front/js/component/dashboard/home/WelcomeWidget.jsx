@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { Context } from "../../../store/appContext";
 
 export const WelcomeWidget = () => {
+    const { store, actions } = useContext(Context);
+
+    useEffect(() => {
+        actions.getUser()
+    }, [])
+
     return (
         <div className="full-width-widget-container">
             <div className="welcome-widget-text-container">
-                <h1>Welcome Jorge!</h1>
+                <h1>Welcome {store.currentUser.username}!</h1>
                 <p>
                     You are now at the dashboard, start navigating it with the
                     bottom navbar. Thank your for using Stocky ❤
