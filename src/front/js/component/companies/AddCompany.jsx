@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../store/appContext";
+import CloudinaryUploadWidget from "../cloudinary/CloudinaryUploadWidget";
 
 export const AddCompany = () => {
     const [companyName, setCompanyName] = useState("");
     const [companyRif, setCompanyRif] = useState("");
+    const [companyImg, setCompanyImg] = useState("https://cdn.discordapp.com/attachments/747040302988132352/1041237107454255124/logo_png_sabah.png");
     let navigate = useNavigate();
     const { store, actions } = useContext(Context);
 
@@ -23,12 +25,13 @@ export const AddCompany = () => {
                 </h2>
             </div>
             <div className="registration-form">
-                <form>
-                    <div className="form-icon">
-                        <span>
-                            <i className="fas fa-solid fa-plus"></i>
-                        </span>
+                <form onClick={(event) => {
+                    event.preventDefault();
+                }}>
+                    <div className="form-icon upload-logo-icon" id="upload_widget">
+                        <CloudinaryUploadWidget companyImg={companyImg} setCompanyImg={setCompanyImg} />
                     </div>
+                    <p className="text-center fs-3">Upload Logo</p>
                     <div className="form-group">
                         <input
                             type="text"
@@ -51,9 +54,6 @@ export const AddCompany = () => {
                             value={companyRif}
                         />
                     </div>
-                    <div className="form-group">
-                        <input type="file" className="form-control item" />
-                    </div>
 
                     <div className="form-group d-flex justify-content-between">
                         <Link className="stocky-button" to={"/companies"}>
@@ -73,7 +73,8 @@ export const AddCompany = () => {
                                 onClick={async (event) => {
                                     const success = await actions.createCompany(
                                         companyName,
-                                        companyRif
+                                        companyRif,
+                                        companyImg
                                     );
                                     if (success) navigate("/companies");
                                 }}

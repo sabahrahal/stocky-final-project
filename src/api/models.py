@@ -38,12 +38,14 @@ class Company(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False, unique=True)
     rif = db.Column(db.String(120), unique=True)
+    img_url = db.Column(db.String(240))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __init__(self, **kwargs):
         self.name = kwargs["name"]
         self.rif = kwargs["rif"]
         self.user_id = kwargs["user_id"]
+        self.img_url = kwargs["img_url"]
     
     @classmethod
     def create(cls, **kwargs):
@@ -61,6 +63,7 @@ class Company(db.Model):
             "id" : self.id,
             "name" : self.name,
             "rif" : self.rif,
+            "img_url": self.img_url,
             "user_id" : self.user_id 
         }
 
