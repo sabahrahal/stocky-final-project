@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/dashboard.css"
 import { ProductStockAlert } from "../component/dashboard/home/ProductStockAlert.jsx";
+import { NavbarHome } from "../component/dashboard/home/NavbarHome.jsx";
+import { WelcomeWidget } from "../component/dashboard/home/WelcomeWidget.jsx";
 
 export const DashboardHome = () => {
     const { store, actions } = useContext(Context);
@@ -21,7 +23,12 @@ export const DashboardHome = () => {
 
     return (
         <div className="container-fluid dashboard-page-container">
-            <ProductStockAlert />
+            <NavbarHome />
+            <WelcomeWidget />
+            <div id="widgets-container">
+                <ProductStockAlert />
+                <ProductStockAlert />
+            </div>
         </div>
     );
 };

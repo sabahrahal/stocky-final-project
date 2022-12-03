@@ -12,6 +12,7 @@ export const Home = () => {
     <div className="container mt-3" id="home">
       <div className="row hero d-flex justify-content-center align-items-center">
         <div className="col-md-6 title-and-sub-title mx-auto">
+          <img className="stocky-pull-image" src="https://cdn.discordapp.com/attachments/245471080829943820/1048665314860204112/business-3d-businessman-in-blue-suit-leaning-hand-on-wall.png" />
           <div className="d-flex justify-content-center align-items-center screen-991px">
             <img
 

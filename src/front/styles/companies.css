@@ -13,9 +13,11 @@
 /*Profile Card 5*/
 .profile-card-5 {
     margin-top: 20px;
-    border: 2px solid transparent;
+    border: 2px solid black;
+    border-radius: 15px;
+    /* border: 2px solid transparent;
     border-image: linear-gradient(to right, #ffcc57, #d3508e) 1;
-    transition: 0.2s;
+    transition: 0.2s; */
 }
 
 .profile-card-5 .card-img-block {
@@ -42,6 +44,7 @@
     color: white;
     transform: scale(1.05);
     transition: 0.2s;
+    border-color: white;
 }
 .profile-card-5:hover .company-card-title {
     color: white;
@@ -49,27 +52,12 @@
 .circle-card-companies {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 412px;
-    height: 319px;
-    background: linear-gradient(white, white) padding-box,
-        linear-gradient(to right, #ffcc57, #d3508e) border-box;
-    border: 2px solid transparent;
-}
-
-@media only screen and (max-width: 1339px) {
-    .circle-card-companies {
-        width: 362px;
-        height: 345px;
-    }
-}
-
-.plus-icon {
-    font-size: 200px;
+    font-size: 80px;
 }
 
 .circle-card-companies:hover {
-    background: linear-gradient(to right, #ffcc57, #d3508e) border-box;
-    color: white;
+    background-color: linear-gradient(to right, #ffcc57, #d3508e);
+    background-clip: initial;
     cursor: pointer;
     transform: scale(1.05);
     transition: 0.2s;

@@ -9,7 +9,7 @@ export const ProductStockAlert = () => {
     }, [])
 
     return (
-        <div className="widgets-container">
+        <div className="widget-container">
             <h4 className='widget-title'>Product Stock Alert</h4>
             <button className='stocky-button'>Create Alert</button>
             <hr />

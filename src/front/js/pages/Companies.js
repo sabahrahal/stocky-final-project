@@ -18,12 +18,15 @@ export const Companies = () => {
         <div className="container">
             {store.token && store.token != "" && store.token != undefined ?
                 <>
-                    <div className="row">
-                        <div className="col-md-6 title-and-sub-title mx-auto">
-                            <div className="d-flex flex-column align-items-center justify-content-center my-5 stocky-text-color">
-                                <h1 className="text-center">Please select a company</h1>
-                                <p className="text-center fs-5">Select your company to start with the stocky system, if you click on the plus button you can register another company to manage.</p>
-                            </div>
+                    <div className="full-width-widget-container">
+                        <div className="welcome-widget-text-container">
+                            <h1>Select a company...</h1>
+                            <p>
+                                Select your company to start with the stocky system, if you click on the plus button you can register another company to manage.
+                            </p>
+                        </div>
+                        <div className="welcome-widget-image">
+                            <img src="https://cdn.discordapp.com/attachments/245471080829943820/1048658813252812830/business-3d-businessman-in-blue-suit-jumping.png" />
                         </div>
                     </div>
                     <CardCompanies />
