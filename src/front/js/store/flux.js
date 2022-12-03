@@ -295,6 +295,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						selling_cost: selling_cost,
 						details: details,
 						serial_number: serial_number,
+						stock_alert: false,
+						stock_quantity_alert: 5,
 					}),
 				}
 				try {
