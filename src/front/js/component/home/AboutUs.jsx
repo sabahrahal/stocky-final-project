@@ -16,7 +16,7 @@ export const AboutUs = () => {
                 </p>
             </div>
             <div className="row mt-5">
-                <div className="col-md-3 d-flex flex-column align-items-center">
+                <div className="col-md-6 d-flex flex-column align-items-center">
                     <img
                         className="rounded-circle about-us-img"
                         src="https://avatars.githubusercontent.com/u/98910636?s=400&u=1ca29073b299635ad8e4df3be6571a9860abc4f5&v=4"
@@ -24,11 +24,10 @@ export const AboutUs = () => {
                     />
                     <h3>Sabah Rahal</h3>
                     <p className="text-center">
-                        "Cualquier idiota puede usar un ordenador. De hecho,
-                        muchos lo hacen"
+                        "intentando construir mayores y mejores programas"
                     </p>
                 </div>
-                <div className="col-md-3 d-flex flex-column align-items-center">
+                <div className="col-md-6 d-flex flex-column align-items-center">
                     <img
                         className="rounded-circle about-us-img"
                         src="https://avatars.githubusercontent.com/u/107929074?v=4"
@@ -36,30 +35,6 @@ export const AboutUs = () => {
                     />
                     <h3>Jorge Oviedo</h3>
                     <p className="text-center">"No es magia, es código"</p>
-                </div>
-                <div className="col-md-3 d-flex flex-column align-items-center">
-                    <img
-                        className="rounded-circle about-us-img"
-                        src="https://avatars.githubusercontent.com/u/98910636?s=400&u=1ca29073b299635ad8e4df3be6571a9860abc4f5&v=4"
-                        width="250px"
-                    />
-                    <h3>Daniel Gonzales</h3>
-                    <p className="text-center">
-                        "Cualquier idiota puede usar un ordenador. De hecho,
-                        muchos lo hacen"
-                    </p>
-                </div>
-                <div className="col-md-3 d-flex flex-column align-items-center">
-                    <img
-                        className="rounded-circle about-us-img"
-                        src="https://avatars.githubusercontent.com/u/98910636?s=400&u=1ca29073b299635ad8e4df3be6571a9860abc4f5&v=4"
-                        width="250px"
-                    />
-                    <h3>Alfredo Rondon</h3>
-                    <p className="text-center">
-                        "Cualquier idiota puede usar un ordenador. De hecho,
-                        muchos lo hacen"
-                    </p>
                 </div>
             </div>
             <div className="d-flex justify-content-center mt-5">

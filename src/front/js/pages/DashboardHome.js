@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/dashboard.css"
+import { ProductStockAlert } from "../component/dashboard/home/ProductStockAlert.jsx";
 
 export const DashboardHome = () => {
     const { store, actions } = useContext(Context);
@@ -20,7 +21,7 @@ export const DashboardHome = () => {
 
     return (
         <div className="container-fluid dashboard-page-container">
-            <h1>HOME</h1>
+            <ProductStockAlert />
         </div>
     );
 };

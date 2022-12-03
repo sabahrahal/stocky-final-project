@@ -114,6 +114,8 @@ class Product(db.Model):
     serial_number = db.Column(db.String(120))
     supplier_id = db.Column(db.Integer, db.ForeignKey('supplier.id'))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+    stock_alert = db.Column(db.Boolean, nullable=True, default=False)
+    stock_quantity_alert = db.Column(db.Integer, default=5)
 
     def __init__(self, **kwargs):
         self.name = kwargs["name"]
@@ -124,6 +126,8 @@ class Product(db.Model):
         self.serial_number = kwargs["serial_number"]
         self.supplier_id = kwargs["supplier_id"]
         self.company_id = kwargs["company_id"]
+        self.stock_alert = kwargs["stock_alert"]
+        self.stock_quantity_alert = kwargs["stock_quantity_alert"]
     
     @classmethod
     def create(cls, **kwargs):
@@ -147,7 +151,9 @@ class Product(db.Model):
             "serial_number" : self.serial_number, 
             "supplier_id" : self.supplier_id,
             "company_id" : self.company_id,
-            "supplier_name" : self.supplier.name
+            "supplier_name" : self.supplier.name,
+            "stock_alert" : self.stock_alert,
+            "stock_quantity_alert" : self.stock_quantity_alert
         }
 
 
