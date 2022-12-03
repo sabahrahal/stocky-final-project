@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user_id: "",
 			companies: [],
 			suppliers: [],
-			products: []
+			products: [],
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
@@ -107,7 +107,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ---------------- END USER ACTIONS -------------
 
 			// ---------------- START COMPANY ACTIONS -------------
-			createCompany: async (name, rif) => {
+			createCompany: async (name, rif, companyImg) => {
 				const store = getStore();
 				const ops = {
 					method: "POST",
@@ -118,6 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({
 						name: name,
 						rif: rif,
+						img_url: companyImg,
 					}),
 				}
 				try {
@@ -391,8 +392,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				sessionStorage.removeItem("selectedCompanyId");
 			},
-			// ---------------- END DASHBOARD ACTIONS -------------
-
 		},
 	};
 };

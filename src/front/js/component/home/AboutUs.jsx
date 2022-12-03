@@ -1,4 +1,5 @@
 import React from "react";
+import CloudinaryUploadWidget from "../cloudinary/CloudinaryUploadWidget";
 
 export const AboutUs = () => {
     return (
