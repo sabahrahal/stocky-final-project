@@ -22,11 +22,11 @@ export const SearchResultsProducts = (props) => {
                         <tr>
                             <th>Name</th>
                             <th>Supplier</th>
+                            <th>Details</th>
+                            <th>Serial #</th>
                             <th>Quantity</th>
                             <th>Buy Cost (UNIT)</th>
                             <th>Sell Cost (UNIT)</th>
-                            <th>Details</th>
-                            <th>Serial #</th>
                             <th className="text-center">Edit</th>
                         </tr>
                     </thead>
@@ -47,11 +47,11 @@ export const SearchResultsProducts = (props) => {
                                     <tr>
                                         <td>{product.name}</td>
                                         <td>{product.supplier_name}</td>
-                                        <td>{product.quantity}</td>
-                                        <td>{product.buying_cost}</td>
-                                        <td>{product.selling_cost}</td>
                                         <td>{product.details}</td>
                                         <td>{product.serial_number}</td>
+                                        <td>{product.quantity}</td>
+                                        <td>{product.buying_cost}$</td>
+                                        <td>{product.selling_cost}$</td>
                                         <td className="text-center">
                                             <EditProduct product={product} />
                                             <i

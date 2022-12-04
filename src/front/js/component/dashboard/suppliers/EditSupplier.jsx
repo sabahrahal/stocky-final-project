@@ -27,7 +27,7 @@ export const EditSupplier = (props) => {
                                     </h4>
                                 </div>
                                 <div className="form-group">
-                                    <label for="name">Name</label>
+                                    <label htmlFor="name">Name</label>
                                     <input
                                         name="name"
                                         type="text"
@@ -40,7 +40,7 @@ export const EditSupplier = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="phone">Phone</label>
+                                    <label htmlFor="phone">Phone</label>
                                     <input
                                         name="phone"
                                         type="text"
@@ -53,7 +53,7 @@ export const EditSupplier = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="email">Email</label>
+                                    <label htmlFor="email">Email</label>
                                     <input
                                         name="email"
                                         type="text"
@@ -66,7 +66,7 @@ export const EditSupplier = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="rif">Rif</label>
+                                    <label htmlFor="rif">Rif</label>
                                     <input
                                         name="rif"
                                         type="text"
@@ -79,7 +79,7 @@ export const EditSupplier = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="address">Address</label>
+                                    <label htmlFor="address">Address</label>
                                     <input
                                         name="Address"
                                         type="text"

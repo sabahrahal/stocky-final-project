@@ -28,7 +28,7 @@ export const EditProduct = (props) => {
                                     </h4>
                                 </div>
                                 <div className="form-group">
-                                    <label for="name">Name</label>
+                                    <label htmlFor="name">Name</label>
                                     <input
                                         name="name"
                                         type="text"
@@ -41,7 +41,7 @@ export const EditProduct = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="details">Details</label>
+                                    <label htmlFor="details">Details</label>
                                     <input
                                         name="details"
                                         type="text"
@@ -54,7 +54,7 @@ export const EditProduct = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="serial">Serial Number</label>
+                                    <label htmlFor="serial">Serial Number</label>
                                     <input
                                         name="serial"
                                         type="text"
@@ -67,7 +67,7 @@ export const EditProduct = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="quantity">Quantity</label>
+                                    <label htmlFor="quantity">Quantity</label>
                                     <input
                                         name="quantity"
                                         type="text"
@@ -80,7 +80,7 @@ export const EditProduct = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="buy_cost">Buy Cost (Unit)</label>
+                                    <label htmlFor="buy_cost">Buy Cost (Unit)</label>
                                     <input
                                         name="buy_cost"
                                         type="text"
@@ -93,7 +93,7 @@ export const EditProduct = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label for="sell_cost">Sell Cost (Unit)</label>
+                                    <label htmlFor="sell_cost">Sell Cost (Unit)</label>
                                     <input
                                         name="sell_cost"
                                         type="text"
