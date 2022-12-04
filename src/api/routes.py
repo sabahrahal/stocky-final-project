@@ -301,4 +301,34 @@ def stock_alert():
     else: 
         return jsonify("Company/Supplier/Product doesn't exists or token is not verified"), 400
 
+@api.route('/products-widget/<int:company_id_param>', methods=['GET'])
+@jwt_required()
+def products_widget(company_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= company_id_param, user_id = current_user_id).one_or_none()
+    total_products_quantity = 0
+    total_stock_value = 0 
+    total_cost_stock_value = 0 
+    total_stock_profit = 0 
+    total_profit_percentage = 0
+    if verify_company_id:
+        products = Product.query.filter_by(company_id = company_id_param)
+        for product in products:
+            total_products_quantity = total_products_quantity + product.quantity ## TOTAL QUANTITY OF ALL PRODUCTS IN THIS COMPANY
+            total_cost_stock_value = (product.quantity * product.buying_cost) + total_cost_stock_value ##TOTAL COST IN STOCK WITHOUT PROFIT
+            total_stock_value = (product.quantity * product.selling_cost) + total_stock_value ## TOTAL COST IN STOCK WITH PROFIT
+    
+        total_stock_profit = total_stock_value - total_cost_stock_value
+        total_profit_percentage = (total_stock_value * 100) / total_cost_stock_value
+        result_dictionary = {
+        "total_products_quantity" : total_products_quantity,
+        "total_cost_stock_value" : total_cost_stock_value,
+        "total_stock_profit" : total_stock_profit,
+        "total_profit_percentage" : total_profit_percentage 
+        }
+
+        return jsonify(result_dictionary), 200
+    else:
+        return jsonify("Company/Product doesn't exists or token is not verified"), 400
+
 #End Product Endpoints
