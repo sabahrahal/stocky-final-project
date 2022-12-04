@@ -9,7 +9,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			suppliers: [],
 			products: [],
 			selectedCompany: {},
-			currentUser: {}
+			currentUser: {},
+			productsInfo: {}
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
@@ -484,6 +485,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				sessionStorage.removeItem("selectedCompanyId");
 			},
+			getProductsInfo: async () => {
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const actions = getActions();
+				const store = getStore();
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/products-widget/${companyId}`, ops);
+					if (!response.ok) {
+						alert("Get productsInfo problem with endpoint /products-info");
+						return;
+					}
+					const body = await response.json();
+					setStore({
+						productsInfo: body
+					})
+					return body;
+				} catch (error) {
+					console.log(error)
+				}
+			}
 		},
 	};
 };
