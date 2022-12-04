@@ -5,8 +5,8 @@ export const WelcomeWidget = () => {
     const { store, actions } = useContext(Context);
 
     useEffect(() => {
-        actions.getUser()
-    }, [])
+        actions.getUser();
+    }, []);
 
     return (
         <div className="full-width-widget-container">

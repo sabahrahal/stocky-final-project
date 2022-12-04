@@ -5,6 +5,7 @@ import "../../styles/dashboard.css"
 import { ProductStockAlert } from "../component/dashboard/home/ProductStockAlert.jsx";
 import { NavbarHome } from "../component/dashboard/home/NavbarHome.jsx";
 import { WelcomeWidget } from "../component/dashboard/home/WelcomeWidget.jsx";
+import { ProductsWidget } from "../component/dashboard/home/ProductsWidget.jsx";
 
 export const DashboardHome = () => {
     const { store, actions } = useContext(Context);
@@ -27,7 +28,7 @@ export const DashboardHome = () => {
             <WelcomeWidget />
             <div id="widgets-container">
                 <ProductStockAlert />
-                <ProductStockAlert />
+                <ProductsWidget />
             </div>
         </div>
     );
