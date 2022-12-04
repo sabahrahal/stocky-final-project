@@ -266,6 +266,32 @@ def update_product(product_id_param):
                 product.selling_cost = new_product_data["selling_cost"]
                 product.details = new_product_data["details"]
                 product.serial_number = new_product_data["serial_number"]
+                if "stock_alert" in new_product_data and "stock_quantity_alert" in new_product_data:
+                    product.stock_alert = new_product_data["stock_alert"]
+                    product.stock_quantity_alert = new_product_data["stock_quantity_alert"]
+                db.session.commit()
+
+                return jsonify(product.serialize()), 201
+            except Exception as error: 
+                return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+                
+    else: 
+        return jsonify("Company/Supplier/Product doesn't exists or token is not verified"), 400
+
+@api.route('/stock-alert', methods=['PUT'])
+@jwt_required()
+def stock_alert():
+    new_product_data = request.json
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= new_product_data["company_id"], user_id = current_user_id).one_or_none()
+
+    if verify_company_id :
+        product = Product.query.filter_by(id = new_product_data["id"], company_id= new_product_data["company_id"] ).one_or_none()
+        if product:
+            try:
+                if "stock_alert" in new_product_data and "stock_quantity_alert" in new_product_data:
+                    product.stock_alert = new_product_data["stock_alert"]
+                    product.stock_quantity_alert = new_product_data["stock_quantity_alert"]
                 db.session.commit()
 
                 return jsonify(product.serialize()), 201

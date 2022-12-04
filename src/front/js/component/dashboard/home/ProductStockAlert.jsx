@@ -6,6 +6,7 @@ export const ProductStockAlert = () => {
     const [searchProduct, setSearchProduct] = useState("");
     const [selectedProduct, setSelectedProduct] = useState("Select");
     const [stockQuantityAlert, setStockQuantityAlert] = useState(0);
+    const [sendProduct, setSendProduct] = useState({});
 
     useEffect(() => {
         actions.getProducts();
@@ -78,7 +79,10 @@ export const ProductStockAlert = () => {
                             Create
                         </button>
                     ) : (
-                        <button className="stocky-button">Create</button>
+                        <button className="stocky-button"
+                            onClick={(event) => {
+                                actions.addLowStockAlert(selectedProduct, true, stockQuantityAlert);
+                            }}>Create</button>
                     )}
                 </div>
             </div>
@@ -92,7 +96,7 @@ export const ProductStockAlert = () => {
                 </div>
                 {store.products
                     .filter((product) => {
-                        product.stock_alert = true;
+                        return product.stock_alert = true;
                     })
                     .map((product) => {
                         return (
