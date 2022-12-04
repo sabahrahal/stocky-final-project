@@ -67,7 +67,8 @@ export const AddProduct = () => {
                         className="form-control item"
                         placeholder="Quantity*"
                         onChange={(event) => {
-                            setQuantity(event.target.value);
+                            if (event.target.value > 0)
+                                setQuantity(event.target.value);
                         }}
                         value={quantity}
                     />
@@ -76,9 +77,10 @@ export const AddProduct = () => {
                     <input
                         type="number"
                         className="form-control item"
-                        placeholder="Buy Cost*"
+                        placeholder="Buy Cost (Unit)$*"
                         onChange={(event) => {
-                            setBuyCost(event.target.value);
+                            if (event.target.value > -0.01)
+                                setBuyCost(event.target.value);
                         }}
                         value={buyCost}
                     />
@@ -87,9 +89,10 @@ export const AddProduct = () => {
                     <input
                         type="number"
                         className="form-control item"
-                        placeholder="Sell Cost"
+                        placeholder="Sell Cost (Unit)$"
                         onChange={(event) => {
-                            setSellCost(event.target.value);
+                            if (event.target.value > -0.01)
+                                setSellCost(event.target.value);
                         }}
                         value={sellCost}
                     />

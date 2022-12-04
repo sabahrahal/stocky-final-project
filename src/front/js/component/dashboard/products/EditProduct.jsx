@@ -5,14 +5,22 @@ export const EditProduct = (props) => {
     const { store, actions } = useContext(Context);
     const [name, setName] = useState(props.product.name);
     const [details, setDetails] = useState(props.product.details);
-    const [serialNumber, setSerialNumber] = useState(props.product.serial_number);
+    const [serialNumber, setSerialNumber] = useState(
+        props.product.serial_number
+    );
     const [quantity, setQuantity] = useState(props.product.quantity);
     const [buyingCost, setBuyingCost] = useState(props.product.buying_cost);
     const [sellingCost, setSellingCost] = useState(props.product.selling_cost);
 
     return (
         <div key={props.product.id}>
-            <div className="modal fade" id={`modal-${props.product.id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div
+                className="modal fade"
+                id={`modal-${props.product.id}`}
+                tabIndex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+            >
                 <div className="modal-dialog">
                     <div className="modal-content border-0 edit-modal">
                         <div className="dashboard-add-form">
@@ -23,8 +31,7 @@ export const EditProduct = (props) => {
                             >
                                 <div>
                                     <h4 className="mb-3 text-center">
-                                        Update Product <br />
-                                        "{name}"
+                                        Update Product <br />"{name}"
                                     </h4>
                                 </div>
                                 <div className="form-group">
@@ -54,7 +61,9 @@ export const EditProduct = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="serial">Serial Number</label>
+                                    <label htmlFor="serial">
+                                        Serial Number
+                                    </label>
                                     <input
                                         name="serial"
                                         type="text"
@@ -70,37 +79,46 @@ export const EditProduct = (props) => {
                                     <label htmlFor="quantity">Quantity</label>
                                     <input
                                         name="quantity"
-                                        type="text"
+                                        type="number"
                                         className="form-control item"
                                         placeholder="Quantity"
                                         onChange={(event) => {
-                                            setQuantity(event.target.value);
+                                            if (event.target.value > -0.1)
+                                                setQuantity(event.target.value);
                                         }}
                                         value={quantity}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="buy_cost">Buy Cost (Unit)</label>
+                                    <label htmlFor="buy_cost">
+                                        Buy Cost (Unit)
+                                    </label>
                                     <input
                                         name="buy_cost"
-                                        type="text"
+                                        type="number"
                                         className="form-control item"
                                         placeholder="Buy Cost"
                                         onChange={(event) => {
-                                            setBuyingCost(event.target.value);
+                                            if (event.target.value > -0.01)
+                                                setBuyingCost(
+                                                    event.target.value
+                                                );
                                         }}
                                         value={buyingCost}
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="sell_cost">Sell Cost (Unit)</label>
+                                    <label htmlFor="sell_cost">
+                                        Sell Cost (Unit)$
+                                    </label>
                                     <input
                                         name="sell_cost"
-                                        type="text"
+                                        type="number"
                                         className="form-control item"
-                                        placeholder="Sell Cost"
+                                        placeholder="Sell Cost (Unit)$"
                                         onChange={(event) => {
-                                            setSellingCost(event.target.value);
+                                            if (event.target.value > -0.01)
+                                                setSellingCost(event.target.value);
                                         }}
                                         value={sellingCost}
                                     />
@@ -125,7 +143,8 @@ export const EditProduct = (props) => {
                                                 serialNumber,
                                                 quantity,
                                                 buyingCost,
-                                                sellingCost)
+                                                sellingCost
+                                            );
                                         }}
                                     >
                                         Update Product
@@ -137,5 +156,5 @@ export const EditProduct = (props) => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

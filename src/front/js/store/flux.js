@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-9pmh1or9y2p.ws-eu77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-a454wouyluv.ws-us77.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
@@ -463,14 +463,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const response = await fetch(`${store.apiUrl}/stock-alert`, ops);
 					if (!response.ok) {
 						alert("Update stock alert product has a problem with endpoint /update-product");
-						return;
+						return false;
 					}
-					console.log(`Update a product succefully! ${product.name}`);
 					actions.getProducts();
 					return true;
 				} catch (error) {
 					console.log(error)
-					return;
+					return false;
 				}
 			},
 

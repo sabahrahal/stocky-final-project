@@ -5,7 +5,7 @@ export const ProductStockAlert = () => {
     const { store, actions } = useContext(Context);
     const [searchProduct, setSearchProduct] = useState("");
     const [selectedProduct, setSelectedProduct] = useState("Select");
-    const [stockQuantityAlert, setStockQuantityAlert] = useState(0);
+    const [stockQuantityAlert, setStockQuantityAlert] = useState();
     const [sendProduct, setSendProduct] = useState({});
 
     useEffect(() => {
@@ -14,7 +14,10 @@ export const ProductStockAlert = () => {
 
     return (
         <div className="widget-container">
-            <h4 className="widget-title">Low Stock Alert</h4>
+            <div className="widget-title">
+                <i className="bi bi-exclamation-triangle-fill"></i>
+                <h4>Low Stock Alerts!</h4>
+            </div>
             <div className="form-group">
                 <div className="d-flex align-items-center mb-2">
                     <i className="fas fa-search dashboard-add-form item me-2"></i>
@@ -46,14 +49,19 @@ export const ProductStockAlert = () => {
 
                     {store.products
                         .filter((product) => {
-                            return product.name
-                                .toLowerCase()
-                                .includes(searchProduct.toLowerCase());
+                            if (
+                                product.name
+                                    .toLowerCase()
+                                    .includes(searchProduct.toLowerCase()) &&
+                                product.stock_alert != true
+                            )
+                                return true;
                         })
                         .map((product) => {
                             return (
                                 <option key={product.id} value={product.id}>
-                                    {product.name}
+                                    {product.name} {product.details}, Left:{" "}
+                                    {product.quantity}
                                 </option>
                             );
                         })}
@@ -66,9 +74,10 @@ export const ProductStockAlert = () => {
                             style={{ width: "60px" }}
                             value={stockQuantityAlert}
                             onChange={(event) => {
-                                setStockQuantityAlert(event.target.value);
+                                if (event.target.value > 0)
+                                    setStockQuantityAlert(event.target.value);
                             }}
-                            placeholder="0"
+                            placeholder="1"
                         />
                     </div>
                     {stockQuantityAlert == 0 || selectedProduct == "Select" ? (
@@ -79,34 +88,81 @@ export const ProductStockAlert = () => {
                             Create
                         </button>
                     ) : (
-                        <button className="stocky-button"
+                        <button
+                            className="stocky-button"
                             onClick={(event) => {
-                                actions.addLowStockAlert(selectedProduct, true, stockQuantityAlert);
-                            }}>Create</button>
+                                actions.addLowStockAlert(
+                                    selectedProduct,
+                                    true,
+                                    stockQuantityAlert
+                                );
+                                setSearchProduct("");
+                                setSelectedProduct("Select");
+                                setStockQuantityAlert(0);
+                            }}
+                        >
+                            Create
+                        </button>
                     )}
                 </div>
             </div>
 
             <hr />
             <div className="widget-content">
-                <div className="table-tittle">
-                    <p>Product</p>
-                    <p>Quantity</p>
-                    <p>Order</p>
+                <div className="widget-mini-div-container">
+                    {store.products
+                        .filter((product) => {
+                            if (
+                                product.stock_alert != false &&
+                                product.quantity <= product.stock_quantity_alert
+                            )
+                                return true;
+                        })
+                        .map((product) => {
+                            return (
+                                <div
+                                    key={product.id}
+                                    className="widget-mini-div"
+                                >
+                                    <div className="widget-more-options">
+                                        <a
+                                            href={`mailto:${product.supplier_name}?Subject=Hello%20${product.supplier_name}!%20I'm%20interested%20in%20ordering%20${product.name}%20${product.details}.`}
+                                        >
+                                            <i className="bi bi-envelope-fill"></i>
+                                        </a>
+                                        <span
+                                            onClick={(event) => {
+                                                actions.addLowStockAlert(
+                                                    product.id,
+                                                    false,
+                                                    5
+                                                );
+                                            }}
+                                        >
+                                            <i className="bi bi-x-circle-fill"></i>
+                                        </span>
+                                    </div>
+
+                                    <p>
+                                        <i className="bi bi-box-fill me-2 widget-icon-gradient" />
+                                        <b>{product.name}</b>
+                                    </p>
+                                    <p>
+                                        <i className="bi bi-card-list me-2 widget-icon-gradient"></i>
+                                        {product.details}
+                                    </p>
+                                    <p>
+                                        <i className="bi bi-exclamation-square-fill me-2 widget-icon-gradient"></i>
+                                        Left: {product.quantity}
+                                    </p>
+                                    <p>
+                                        <i className="bi bi-building-fill me-2 widget-icon-gradient"></i>
+                                        {product.supplier_name}
+                                    </p>
+                                </div>
+                            );
+                        })}
                 </div>
-                {store.products
-                    .filter((product) => {
-                        return product.stock_alert = true;
-                    })
-                    .map((product) => {
-                        return (
-                            <div className="table-data">
-                                <p>{product.name}</p>
-                                <p>{product.quantity}</p>
-                                <p>ORDER</p>
-                            </div>
-                        );
-                    })}
             </div>
         </div>
     );
