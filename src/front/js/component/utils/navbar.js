@@ -28,7 +28,7 @@ export const Navbar = () => {
                     Welcome back!
                   </b>
                 </h1>
-                <img src="https://cdn.discordapp.com/attachments/245471080829943820/1049301607742984242/business-3d-flying-businessman-in-blue-suit.png" />
+                <img className="welcome-widget-image" src="https://cdn.discordapp.com/attachments/245471080829943820/1049301607742984242/business-3d-flying-businessman-in-blue-suit.png" />
                 <div>
                   <i className="bi bi-x-circle-fill modal-icon me-4"
                     data-bs-dismiss="modal"

@@ -338,7 +338,8 @@
 }
 
 .welcome-widget-image {
-    animation: bounceTop 1s ease 0s 1 normal forwards;
+    /* animation: bounceTop 1s ease 0s 1 normal forwards; */
+    animation: float 5s ease-in-out infinite;
 }
 
 @media only screen and (max-width: 768px) {
@@ -487,5 +488,3 @@
     justify-content: center;
     margin-bottom: 10px;
 }
-
-
