@@ -48,60 +48,73 @@ a:hover {
 }
 
 @keyframes bounceTop {
-	0% {
-		animation-timing-function: ease-in;
-		opacity: 0;
-		transform: translateY(250px);
-	}
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+        transform: translateY(250px);
+    }
 
-	38% {
-		animation-timing-function: ease-out;
-		opacity: 1;
-		transform: translateY(0);
-	}
+    38% {
+        animation-timing-function: ease-out;
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-	55% {
-		animation-timing-function: ease-in;
-		transform: translateY(65px);
-	}
+    55% {
+        animation-timing-function: ease-in;
+        transform: translateY(65px);
+    }
 
-	72% {
-		animation-timing-function: ease-out;
-		transform: translateY(0);
-	}
+    72% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
 
-	81% {
-		animation-timing-function: ease-in;
-		transform: translateY(28px);
-	}
+    81% {
+        animation-timing-function: ease-in;
+        transform: translateY(28px);
+    }
 
-	90% {
-		animation-timing-function: ease-out;
-		transform: translateY(0);
-	}
+    90% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
 
-	95% {
-		animation-timing-function: ease-in;
-		transform: translateY(8px);
-	}
+    95% {
+        animation-timing-function: ease-in;
+        transform: translateY(8px);
+    }
 
-	100% {
-		animation-timing-function: ease-out;
-		transform: translateY(0);
-	}
+    100% {
+        animation-timing-function: ease-out;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideRight {
-	0% {
-		opacity: 0;
-		transform: translateX(250px);
-	}
+    0% {
+        opacity: 0;
+        transform: translateX(250px);
+    }
 
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-10px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+
 .stocky-button {
     background: linear-gradient(to right, #ffcc57, #d3508e);
     background-color: #ffcc57;
