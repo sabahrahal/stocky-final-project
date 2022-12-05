@@ -26,8 +26,7 @@ export const Home = () => {
             </h1>
             <p className="stocky-text-color text-center fs-5">
               Stocky is the faster and safer way to manage your inventory automatically,
-              keep track of vendors, monitor products profitability in real
-              time, and more...
+              monitor products profitability in real time, manage your suppliers and more...
             </p>
             <a href="#road_map" className="stocky-button">
               Explore

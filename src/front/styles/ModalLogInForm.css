@@ -1,64 +1,112 @@
 .registration-form-modal .item {
-  border-radius: 20px;
-  margin-bottom: 25px;
-  padding: 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
 }
 
 .registration-form-modal .item:focus {
-  box-shadow: 0 0 0 0.25rem rgba(211, 80, 142, 0.25);
-  border-color: #d3508e;
+    box-shadow: 0 0 0 0.25rem rgba(211, 80, 142, 0.25);
+    border-color: #d3508e;
 }
 
 .registration-form-modal .social-media {
-  max-width: 600px;
-  background-color: #fff;
-  margin: auto;
-  text-align: center;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  color: black;
+    max-width: 600px;
+    background-color: #fff;
+    margin: auto;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: black;
 }
 
 .registration-form-modal.social-icons {
-  margin-top: 16px;
-  margin-bottom: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .registration-form-modal .social-icons a {
-  font-size: 23px;
-  margin: 0 3px;
-  color: #ef802f;
-  margin-top: 5px;
-  border-radius: 50%;
-  width: 45px;
-  display: inline-block;
-  height: 45px;
-  text-align: center;
-  background-color: #fff;
+    font-size: 23px;
+    margin: 0 3px;
+    color: #ef802f;
+    margin-top: 5px;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
 }
 
 .registration-form-modal .social-icons a:hover {
-  text-decoration: none;
-  opacity: 0.6;
+    text-decoration: none;
+    opacity: 0.6;
 }
 
 @media (max-width: 576px) {
-  .registration-form-modal form {
-    padding: 50px 20px;
-  }
+    .registration-form-modal form {
+        padding: 50px 20px;
+    }
 
-  .registration-form-modal .form-icon {
-    width: 70px;
-    height: 70px;
-    font-size: 30px;
-    line-height: 70px;
-  }
+    .registration-form-modal .form-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+        line-height: 70px;
+    }
 }
 
 .modal-signup-anchor {
-  color: #ef802f;
+    color: #ef802f;
 }
 
 .modal-signup-anchor:hover {
-  color: #d3508e;
+    color: #d3508e;
+}
+
+.modal-background {
+    background: linear-gradient(to right, #ffcc57, #d3508e);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.modal-shadow {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.modal-background img {
+    width: 400px;
+}
+
+.modal-input-label {
+    padding-left: 10px;
+}
+
+.modal-header-container {
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.modal-button {
+    background: linear-gradient(to right, #ffcc57, #d3508e);
+    width: 100%;
+}
+
+.modal-button:hover {
+    transform: scale(1.03);
+}
+
+.modal-icon {
+    font-size: 30px;
+    color: white;
+}
+
+.modal-icon:hover {
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+@media only screen and (max-width: 500px) {
+    .modal-background img {
+        width: 150px;
+    }
 }

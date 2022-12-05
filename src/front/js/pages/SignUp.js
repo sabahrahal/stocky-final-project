@@ -22,13 +22,15 @@ export const SignUp = () => {
 
     return (
         <>
-            <div className="row col-md-6 mx-auto d-flex flex-column align-items-center justify-content-center">
-                <h2 className=" fs-1 mt-5 text-center">
-                    Sign Up to start managing your business quickly and
-                    efficiently.
-                </h2>
+            <div className="full-width-widget-container mt-0 mb-1">
+                <div className="welcome-widget-image">
+                    <img src="https://cdn.discordapp.com/attachments/245471080829943820/1049325535760744508/business-3d-close-up-of-businessman-in-dark-blue-suit-with-coffee-mug.png" />
+                </div>
+                <div className="welcome-widget-text-container">
+                    <h1>Create an account to start using Stocky.</h1>
+                </div>
             </div>
-            <div className="registration-form">
+            <div className="registration-form pt-0">
                 <form>
                     <div className="form-icon">
                         <span>

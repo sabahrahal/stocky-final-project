@@ -19,103 +19,115 @@ export const Navbar = () => {
         aria-hidden="true"
       >
         <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Welcome Back!
-              </h1>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+          <div className="modal-content d-flex flex-column">
+            <div className="modal-background">
+              <div className="d-flex justify-content-around align-items-center modal-header-container">
+                <h1 className="modal-title fs-2 p-4 text-white" id="exampleModalLabel">
+                  <b>
+
+                    Welcome back!
+                  </b>
+                </h1>
+                <img src="https://cdn.discordapp.com/attachments/245471080829943820/1049301607742984242/business-3d-flying-businessman-in-blue-suit.png" />
+                <div>
+                  <i className="bi bi-x-circle-fill modal-icon me-4"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></i>
+                </div>
+              </div>
             </div>
-            <div className="modal-body">
-              <div className="registration-form-modal">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control item"
-                    id="username"
-                    placeholder="Username"
-                    onChange={(e) => {
-                      setUsername(e.target.value);
-                    }}
-                    value={username}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control item"
-                    id="password"
-                    placeholder="Password"
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                    }}
-                    value={password}
-                  />
-                </div>
-                <div className="social-media">
-                  <h5>
-                    You can also Log In with your social networks. If you don't
-                    have an account,{" "}
-                    <a
+            <div className="modal-info-container">
+              <div className="modal-body">
+                <div className="registration-form-modal">
+                  <div className="modal-form-group">
+                    <div className="form-icon mb-1">
+                      <span>
+                        <i className="fas fa-solid fa-user"></i>
+                      </span>
+                    </div>
+                    <label className="modal-input-label">Username</label>
+                    <input
+                      type="text"
+                      className="form-control item"
+                      id="username"
+                      placeholder="Username"
+                      onChange={(e) => {
+                        setUsername(e.target.value);
+                      }}
+                      value={username}
+                    />
+                  </div>
+                  <div className="modal-form-group">
+                    <label className="modal-input-label">Password</label>
+                    <input
+                      type="password"
+                      className="form-control item"
+                      id="password"
+                      placeholder="Password"
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                      value={password}
+                    />
+                  </div>
+                  <div className="d-flex align-items-center">
+                    {username === "" || password === "" ?
+                      <button
+                        className="btn btn-block stocky-button modal-button"
+                        disabled
+                      >
+                        Log In
+                      </button> :
+                      <button
+                        type="button"
+                        className="stocky-button modal-button"
+                        data-bs-dismiss="modal"
+                        onClick={async (event) => {
+                          const success = await actions.logIn(username, password);
+                          if (success) navigate('/companies');
+                        }}
+                      >
+                        Log In
+                      </button>
+                    }
+                  </div>
+                  <div className="my-2 d-flex flex-column justify-content-center align-items-center">
+                    <div>
+                      <hr></hr>
+                      <h5>
+                        or login using a social network
+                      </h5>
+                    </div>
+                    <div className="social-icons">
+                      <a href="#">
+                        <i className="bi bi-facebook widget-icon-gradient" title="Facebook"></i>
+                      </a>
+                      <a href="#">
+                        <i className="bi bi-google widget-icon-gradient" title="Google"></i>
+                      </a>
+                      <a href="#">
+                        <i className="bi bi-twitter widget-icon-gradient" title="Twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-center my-2 modal-footer">
+                    <h5 className="m-0 py-1">Not a member? <a
                       className="modal-signup-anchor"
                       data-bs-dismiss="modal"
                       onClick={(event) => {
                         navigate("/sign-up");
                       }}
                     >
-                      Sign Up Now!
-                    </a>
-                  </h5>
-                  <div className="social-icons">
-                    <a href="#">
-                      <i className="bi bi-facebook" title="Facebook"></i>
-                    </a>
-                    <a href="#">
-                      <i className="bi bi-google" title="Google"></i>
-                    </a>
-                    <a href="#">
-                      <i className="bi bi-twitter" title="Twitter"></i>
-                    </a>
+                      Sign up
+                    </a></h5>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="stocky-button"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              {username === "" || password === ""?
-              <button
-              className="btn btn-block stocky-button"
-              disabled
-          >
-              Log In
-          </button>:
-              <button
-              type="button"
-              className="stocky-button"
-              data-bs-dismiss="modal"
-              onClick={async (event) => {
-                const success = await actions.logIn(username, password);
-                if (success) navigate('/companies');
-              }}
-            >
-              Log In
-            </button>
-              }
-            </div>
           </div>
         </div>
       </div>
+
       {/* Close LogIn Modal */}
 
       <nav className="navbar navbar-expand-md navbar-light sticky-top bg-white">
