@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Company, Supplier, Product
+from api.models import db, User, Company, Supplier, Product, Customer, Customer_order
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
@@ -332,3 +332,80 @@ def products_widget(company_id_param):
         return jsonify("Company/Product doesn't exists or token is not verified"), 400
 
 #End Product Endpoints
+
+
+#Start Customer Endpoints
+
+@api.route('/create-customer', methods=['POST'])
+@jwt_required()
+def create_customer():
+    current_user_id = get_jwt_identity()
+    new_customer_data = request.json
+    verify_company_id = Company.query.filter_by(id = new_customer_data["company_id"], user_id = current_user_id).one_or_none()
+
+    if verify_company_id:
+        try:
+            if "name" not in new_customer_data or new_customer_data["name"] == "":
+                raise Exception("Supplier name invalid", 400)
+            if "document_identity" not in new_customer_data or new_customer_data["document_identity"] == "":
+                raise Exception("Supplier phone invalid", 400)
+            new_customer = Customer.create(**new_customer_data)
+            return jsonify(new_customer.serialize()), 201
+        except Exception as error: 
+            return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+    else: 
+        return jsonify("Company doesn't exists or token is not verified (/create-customer endpoint)"), 400
+
+@api.route('/customers/<int:company_id_param>', methods=['GET'])
+@jwt_required()
+def get_customers(company_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id = company_id_param, user_id = current_user_id).one_or_none()
+    
+    if verify_company_id:
+        customers_by_id = Customer.query.filter_by(company_id = company_id_param)
+        customers_by_id_dictionary = []
+        for customer in customers_by_id:
+            customers_by_id_dictionary.append(customer.serialize())
+
+        return jsonify(customers_by_id_dictionary), 200
+    else:
+        return jsonify("Company/Customer doesn't exists or token is not verified (/customers)"), 400
+
+#End Customer Endpoints
+
+#Start Customer_order Endpoints
+
+@api.route('/create-customer-order', methods=['POST'])
+@jwt_required()
+def create_customer_order():
+    current_user_id = get_jwt_identity()
+    new_customer_order_data = request.json
+    verify_company_id = Company.query.filter_by(id = new_customer_order_data["company_id"], user_id = current_user_id).one_or_none()
+
+    if verify_company_id:
+        try:
+            new_customer_order_data = Customer_order.create(**new_customer_order_data)
+            return jsonify(new_customer_order_data.serialize()), 201
+        except Exception as error: 
+            return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+    else: 
+        return jsonify("Company doesn't exists or token is not verified (/create-customer-order endpoint)"), 400
+
+@api.route('/customer-orders/<int:company_id_param>', methods=['GET'])
+@jwt_required()
+def get_customer_orders(company_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id = company_id_param, user_id = current_user_id).one_or_none()
+    
+    if verify_company_id:
+        customer_orders_by_id = Customer_order.query.filter_by(company_id = company_id_param)
+        customer_orders_by_id_dictionary = []
+        for order in customer_orders_by_id:
+            customer_orders_by_id_dictionary.append(order.serialize())
+
+        return jsonify(customer_orders_by_id_dictionary), 200
+    else:
+        return jsonify("Company/Customer doesn't exists or token is not verified (/customers-orders)"), 400
+
+#End Customer_order Endpoints
