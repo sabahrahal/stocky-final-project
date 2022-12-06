@@ -126,7 +126,7 @@ export const ProductStockAlert = () => {
                                 >
                                     <div className="widget-more-options">
                                         <a
-                                            href={`mailto:${product.supplier_name}?Subject=Hello%20${product.supplier_name}!%20I'm%20interested%20in%20ordering%20${product.name}%20${product.details}.`}
+                                            href={`mailto:${product.supplier_email}?Subject=Hello%20${product.supplier_name}!%20I'm%20interested%20in%20ordering%20${product.name}%20${product.details}.`}
                                         >
                                             <i className="bi bi-envelope-fill"></i>
                                         </a>
