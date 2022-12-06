@@ -63,7 +63,7 @@ export const NavbarProducts = (props) => {
                     </div>
                 </div>
             </div>
-            {add && <AddProduct />}
+            {add && <AddProduct add={add} setAdd={setAdd}/>}
         </div>
     );
 };

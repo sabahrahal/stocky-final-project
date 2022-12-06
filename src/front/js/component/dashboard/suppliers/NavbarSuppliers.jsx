@@ -63,7 +63,7 @@ export const NavbarSuppliers = (props) => {
                     </div>
                 </div>
             </div>
-            {add && <AddSupplier />}
+            {add && <AddSupplier add={add} setAdd={setAdd}/>}
         </div>
     );
 };

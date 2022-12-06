@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../../store/appContext";
 
-export const AddProduct = () => {
+export const AddProduct = (props) => {
     const [name, setName] = useState("");
     const [details, setDetails] = useState("");
     const [serialNumber, setSerialNumber] = useState("");
@@ -177,6 +177,7 @@ export const AddProduct = () => {
                                 setQuantity("");
                                 setBuyCost("");
                                 setSellCost("");
+                                props.setAdd(false);
                             }}
                         >
                             Save Product
