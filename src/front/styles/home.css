@@ -5,3 +5,114 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.hero {
+    height: 80vh;
+}
+
+.stocky-text-color {
+    color: #3b3b3b;
+}
+
+.stocky-text-color h1 {
+    font-size: 60px;
+}
+
+.hr-color {
+    background-color: rgb(190, 190, 190);
+}
+
+.title-and-sub-title {
+    animation: slideRight 1s ease 0s 1 normal forwards;
+}
+
+.stocky-pull-image {
+    position: absolute;
+    bottom: 0px;
+    left: -220px;
+}
+
+@media only screen and (max-width: 1399px) {
+    .screen-991px img {
+        width: 350px;
+        margin-top: 5px;
+    }
+    .title-and-sub-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .title-and-sub-title h1 {
+        font-size: 40px;
+    }
+    .title-and-sub-title p {
+        font-size: 20px;
+    }
+    .stocky-pull-image {
+        bottom: 60px;
+        left: -85px;
+        width: 200px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .about-us-img {
+        width: 150px;
+    }
+    .stocky-pull-image {
+        bottom: 80px;
+        left: -133px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .stocky-pull-image {
+        bottom: 180px;
+        left: -190px;
+    }
+}
+
+@media only screen and (max-width: 847px) {
+    .stocky-pull-image {
+        bottom: 120px;
+        left: -190px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .stocky-pull-image {
+        bottom: 70px;
+        left: -100px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .stocky-pull-image {
+        display: none;
+    }
+}
+
+/*-------------- SIGN UP --------------*/
+
+.welcome-widget-bubble {
+    padding: 15px;
+    border-radius: 15px;
+    background: rgb(255, 255, 255);
+}
+
+.welcome-widget-bubble p {
+    color: black;
+    margin: auto;
+    font-size: 20px;
+}
+
+.bubble-details {
+    width: 50px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    top: 30px;
+    left: -10px;
+}

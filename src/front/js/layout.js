@@ -1,14 +1,24 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
+import injectContext from "./store/appContext";
+import { ScrollToTop } from "./component/utils/scrollToTop";
+import { Navbar } from "./component/utils/navbar";
+import { Footer } from "./component/utils/footer";
+import { ScrollToTopButton } from "./component/utils/ScrollToTopButton.jsx";
 
 import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
-import { Single } from "./pages/single";
-import injectContext from "./store/appContext";
+import { SignUp } from "./pages/SignUp.js";
+import { Companies } from "./pages/Companies";
+import { DashboardHome } from "./pages/DashboardHome";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { AddCompany } from "./component/companies/AddCompany.jsx";
+import { CompaniesNavbar } from "./component/companies/CompaniesNavbar.jsx";
+import { DashboardNavbar } from "./component/dashboard/DashboardNavbar.jsx";
+import { DashboardProducts } from "./pages/DashboardProducts";
+import { DashboardSuppliers } from "./pages/DashboardSuppliers";
+import { DashboardCustomers } from "./pages/DashboardCustomers";
+import { DashboardOrders } from "./pages/DashboardOrders";
+import { DashboardRegister } from "./pages/DashboardRegister";
 
 //create your first component
 const Layout = () => {
@@ -20,14 +30,53 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar />
                     <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<>
+                            <Navbar />
+                            <Home />
+                            <ScrollToTopButton />
+                            <Footer />
+                        </>} path="/" />
+                        <Route element={<>
+                            <Navbar />
+                            <SignUp />
+                            <Footer />
+                        </>} path="/sign-up" />
+                        <Route element={<>
+                            <CompaniesNavbar />
+                            <Companies />
+                            <ScrollToTopButton />
+                        </>} path="/companies" />
+                        <Route element={<>
+                            <CompaniesNavbar />
+                            <AddCompany />
+                        </>} path="/add-company" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardHome />
+                        </>} path="/dashboard/home" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardSuppliers />
+                        </>} path="/dashboard/suppliers" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardProducts />
+                        </>} path="/dashboard/products" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardCustomers />
+                        </>} path="/dashboard/customers" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardOrders />
+                        </>} path="/dashboard/orders" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardRegister />
+                        </>} path="/dashboard/register" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
-                    <Footer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>
