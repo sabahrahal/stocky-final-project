@@ -1,16 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../../../store/appContext";
-import { EditProduct } from "./EditProduct.jsx";
+import { EditCustomer } from "./EditCustomer.jsx";
 
-export const TableProducts = () => {
+export const TableCustomers = () => {
     const { store, actions } = useContext(Context);
 
     return (
         <div className="scroll-table">
-            {store.products.length === 0 ? (
+            {store.customers.length === 0 ? (
                 <div className="full-width-widget-container">
                     <div className="welcome-widget-text-container">
-                        <h1>Start adding products to use Stocky!</h1>
+                        <h1>Start selling to add costumers!</h1>
                     </div>
                     <div className="welcome-widget-image">
                         <img src="https://cdn.discordapp.com/attachments/245471080829943820/1049148564611285052/business-3d-378.png" />
@@ -18,45 +18,43 @@ export const TableProducts = () => {
                 </div>
             ) : (
                 <>
-                    <h2 className="table-text">All Products</h2>
+                    <h2 className="table-text">All Customers</h2>
                     <table className="content-table">
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Supplier</th>
-                                <th>Details</th>
-                                <th>Serial #</th>
-                                <th>Quantity</th>
-                                <th>Buy Cost (UNIT)</th>
-                                <th>Sell Cost (UNIT)</th>
+                                <th>Document</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Email</th>
                                 <th className="text-center">Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {store.products
+                            {store.customers
                                 .sort((a, b) => {
                                     if (a.id > b.id) return -1;
                                     if (b.id > a.id) return 1;
                                     return 0;
                                 })
-                                .map((product) => {
+                                .map((customer) => {
                                     return (
-                                        <tr key={product.id}>
-                                            <td>{product.name}</td>
-                                            <td>{product.supplier_name}</td>
-                                            <td>{product.details}</td>
-                                            <td>{product.serial_number}</td>
-                                            <td>{product.quantity}</td>
-                                            <td>{product.buying_cost}$</td>
-                                            <td>{product.selling_cost}$</td>
+                                        <tr key={customer.id}>
+                                            <td>{customer.name}</td>
+                                            <td>
+                                                {customer.document_identity}
+                                            </td>
+                                            <td>{customer.phone}</td>
+                                            <td>{customer.address}</td>
+                                            <td>{customer.email}</td>
                                             <td className="text-center">
-                                                <EditProduct
-                                                    product={product}
+                                                <EditCustomer
+                                                    customer={customer}
                                                 />
                                                 <i
                                                     className="bi bi-pencil-square table-edit-icon"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target={`#modal-${product.id}`}
+                                                    data-bs-target={`#modal-${customer.id}`}
                                                 ></i>
                                             </td>
                                         </tr>

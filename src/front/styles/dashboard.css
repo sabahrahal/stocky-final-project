@@ -6,8 +6,8 @@
 
 .dashboard-navbar-container {
     animation: fadeInBottom 1s ease 0s 1 normal both;
-    max-width: 700px;
     margin: auto;
+    max-width: 800px;
     margin-bottom: 15px;
     border-radius: 50px;
     padding: 5px;
@@ -65,7 +65,7 @@
         border-bottom-right-radius: 0;
     }
     .dashboard-navbar-icons {
-        margin: 10px;
+        margin: 5px;
     }
 }
 
@@ -108,6 +108,11 @@
     margin-left: -15px;
 }
 
+.navbar-products-title-margin {
+    margin-left: 0px;
+    margin-right: 50px;
+}
+
 @media only screen and (max-width: 768px) {
     .navbar-dashboard-page-title-container {
         margin: 10px;
@@ -115,6 +120,10 @@
     }
     .home-navbar-title {
         margin-left: 0px;
+    }
+    .navbar-products-title-margin {
+        margin-left: 0px;
+        margin-right: 0px;
     }
 }
 
@@ -192,10 +201,6 @@
 
     .navbar-dashboard-page-first-section div img {
         width: 80px;
-    }
-
-    .navbar-dashboard-page-title {
-        font-size: 50px;
     }
 }
 
@@ -305,6 +310,9 @@
     .edit-modal {
         right: 0px !important;
         background: transparent;
+    }
+    .content-table thead tr {
+        background: #ffcc57;
     }
 }
 
@@ -471,6 +479,9 @@
     .widget-mini-div {
         width: 170px;
     }
+    .widget-container {
+        margin-bottom: 0px;
+    }
 }
 
 .widget-mini-div-products {
@@ -487,4 +498,17 @@
     flex-direction: column;
     justify-content: center;
     margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .widget-icon-gradient {
+        -webkit-text-fill-color: #ffcc57;
+    }
+    .widget-mini-div-products {
+        width: 150px;
+        min-height: 150px;
+    }
+    .widget-more-options span {
+        left: 40px;
+    }
 }

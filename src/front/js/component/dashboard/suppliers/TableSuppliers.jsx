@@ -18,7 +18,7 @@ export const TableSuppliers = () => {
                 </div>
             ) : (
                 <>
-                    <h2 className="table-text">All suppliers</h2>
+                    <h2 className="table-text">All Suppliers</h2>
                     <table className="content-table">
                         <thead>
                             <tr>

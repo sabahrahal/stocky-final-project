@@ -16,6 +16,9 @@ import { CompaniesNavbar } from "./component/companies/CompaniesNavbar.jsx";
 import { DashboardNavbar } from "./component/dashboard/DashboardNavbar.jsx";
 import { DashboardProducts } from "./pages/DashboardProducts";
 import { DashboardSuppliers } from "./pages/DashboardSuppliers";
+import { DashboardCustomers } from "./pages/DashboardCustomers";
+import { DashboardOrders } from "./pages/DashboardOrders";
+import { DashboardRegister } from "./pages/DashboardRegister";
 
 //create your first component
 const Layout = () => {
@@ -60,6 +63,18 @@ const Layout = () => {
                             <DashboardNavbar />
                             <DashboardProducts />
                         </>} path="/dashboard/products" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardCustomers />
+                        </>} path="/dashboard/customers" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardOrders />
+                        </>} path="/dashboard/orders" />
+                        <Route element={<>
+                            <DashboardNavbar />
+                            <DashboardRegister />
+                        </>} path="/dashboard/register" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                 </ScrollToTop>

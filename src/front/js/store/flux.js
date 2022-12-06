@@ -10,7 +10,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			products: [],
 			selectedCompany: {},
 			currentUser: {},
-			productsInfo: {}
+			productsInfo: {},
+			customers: [],
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
@@ -476,6 +477,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// ---------------- END PRODUCTS ACTIONS -------------
 
+			// ---------------- START COSTUMERS ACTIONS -------------
+			getCustomers: async () => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/customers/${companyId}`, ops);
+					if (!response.ok) {
+						alert("Get customers has a problem with endpoint /customers");
+						return;
+					}
+
+					const body = await response.json();
+					setStore({
+						customers: body
+					})
+
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
+			// ---------------- END COSTUMERS ACTIONS -------------
 
 			// ---------------- START DASHBOARD ACTIONS -------------
 			clearDashboardData: (id) => {
@@ -484,7 +518,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					selectedCompanyId: "",
 					products: [],
 					selectCompany: {},
-					productsInfo: {}
+					productsInfo: {},
+					customers: []
 				});
 				sessionStorage.removeItem("selectedCompanyId");
 			},
