@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../../store/appContext";
 
-export const AddSupplier = () => {
+export const AddSupplier = (props) => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
@@ -100,6 +100,7 @@ export const AddSupplier = () => {
                                 setEmail("");
                                 setRif("");
                                 setAddress("");
+                                props.setAdd(false);
                             }}
                         >
                             Save Supplier
