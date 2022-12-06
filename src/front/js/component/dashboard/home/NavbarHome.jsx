@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../../store/appContext";
+import { EditInfo } from "./EditInfo.jsx";
 
 export const NavbarHome = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
+    const [info, setInfo] = useState(false);
 
     return (
         <div className="navbar-dashboard-page-container">
@@ -21,16 +23,32 @@ export const NavbarHome = () => {
                 </div>
                 <div className="d-flex align-items-center">
                     <div
-                        className="dashboard-add-icon "
+                        className="dashboard-add-icon me-2"
                         onClick={(event) => {
-                            actions.logOff();
-                            navigate("/");
+                            if (info == false) setInfo(true);
+                            else setInfo(false);
                         }}
                     >
-                        <i className="bi bi-box-arrow-in-left fs-4 ms-1"></i>
+                        {info ? (
+                            <i className="bi bi-gear-wide-connected fs-3"></i>
+                        ) : (
+                            <i className="bi bi-gear-wide-connected fs-3"></i>
+                        )}
+                    </div>
+                    <div className="d-flex align-items-center">
+                        <div
+                            className="dashboard-add-icon "
+                            onClick={(event) => {
+                                actions.logOff();
+                                navigate("/");
+                            }}
+                        >
+                            <i className="bi bi-box-arrow-in-left fs-4 ms-1"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+            {info && <EditInfo info={info} setInfo={setInfo} />}
         </div>
     );
 };
