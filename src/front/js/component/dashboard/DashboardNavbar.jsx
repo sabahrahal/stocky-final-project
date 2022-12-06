@@ -8,8 +8,7 @@ export const DashboardNavbar = () => {
 
     useEffect(() => {
         actions.syncCompany();
-    }, [])
-
+    }, []);
 
     return (
         <div className="dashboard-navbar-container fixed-bottom d-flex flex-row align-items-center justify-content-center">
@@ -61,20 +60,40 @@ export const DashboardNavbar = () => {
                         <i className="bi bi-box-seam-fill dashboard-icon"></i>
                         <span className="dashboard-navbar-text">Products</span>
                     </div>
-                    {/* ---------------------!!!!!!!!PREGUNTAR ERNESTO POR QUE SE MUEVEN LOS OTROS!!!!!!!!!-----------------------*/}
                     <div
-                        className="dashboard-navbar-icons"
+                        className={
+                            location.pathname.includes("customers")
+                                ? "dashboard-navbar-icons dashboard-navbar-icons-active"
+                                : "dashboard-navbar-icons"
+                        }
                         onClick={(event) => {
-                            navigate("/dashboard/products");
+                            navigate("/dashboard/customers");
+                        }}
+                    >
+                        <i className="bi bi-person-badge-fill dashboard-icon"></i>
+                        <span className="dashboard-navbar-text">Customers</span>
+                    </div>
+                    <div
+                        className={
+                            location.pathname.includes("orders")
+                                ? "dashboard-navbar-icons dashboard-navbar-icons-active"
+                                : "dashboard-navbar-icons"
+                        }
+                        onClick={(event) => {
+                            navigate("/dashboard/orders");
                         }}
                     >
                         <i className="bi bi-receipt dashboard-icon"></i>
                         <span className="dashboard-navbar-text">Orders</span>
                     </div>
                     <div
-                        className="dashboard-navbar-icons"
+                        className={
+                            location.pathname.includes("register")
+                                ? "dashboard-navbar-icons dashboard-navbar-icons-active"
+                                : "dashboard-navbar-icons"
+                        }
                         onClick={(event) => {
-                            navigate("/dashboard/products");
+                            navigate("/dashboard/register");
                         }}
                     >
                         <i className="bi bi-cash-stack dashboard-icon"></i>
