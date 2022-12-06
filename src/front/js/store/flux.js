@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-a454wouyluv.ws-us77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-9pmh1or9y2p.ws-eu77.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
