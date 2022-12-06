@@ -157,6 +157,7 @@ class Product(db.Model):
             "supplier_id" : self.supplier_id,
             "company_id" : self.company_id,
             "supplier_name" : self.supplier.name,
+            "supplier_email" : self.supplier.email,
             "stock_alert" : self.stock_alert,
             "stock_quantity_alert" : self.stock_quantity_alert
         }
