@@ -508,6 +508,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
+			updateCustomer: async (customerId, name, document, phone, address, email) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						name: name,
+						document_identity: document,
+						phone: phone,
+						address: address,
+						email: email
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/update-customer/${customerId}`, ops);
+					if (!response.ok) {
+						alert("Update customer has a problem with endpoint /update-customer");
+						return;
+					}
+					console.log(`Update a customer successfully! ${name}`);
+					actions.getCustomers();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
 
 			// ---------------- END COSTUMERS ACTIONS -------------
 

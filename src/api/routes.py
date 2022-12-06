@@ -372,6 +372,39 @@ def get_customers(company_id_param):
     else:
         return jsonify("Company/Customer doesn't exists or token is not verified (/customers)"), 400
 
+@api.route('/update-customer/<int:customer_id_param>', methods=['PUT'])
+@jwt_required()
+def update_customer(customer_id_param):
+    new_customer_data = request.json
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= new_customer_data["company_id"], user_id = current_user_id).one_or_none()
+
+    
+    if verify_company_id:
+        customer = Customer.query.filter_by(id = customer_id_param, company_id= new_customer_data["company_id"] ).one_or_none()
+        if customer:
+            try:
+                if "name" not in new_customer_data or new_customer_data["name"] == "":
+                    raise Exception("Customer name invalid", 400)
+                if "document_identity" not in new_customer_data or new_customer_data["document_identity"] == "":
+                    raise Exception("Customer phone invalid", 400)
+
+                customer.id = customer_id_param
+                customer.name = new_customer_data["name"]
+                customer.document_identity = new_customer_data["document_identity"]
+                customer.phone = new_customer_data["phone"]
+                customer.address = new_customer_data["address"]
+                customer.email = new_customer_data["email"]
+                customer.company_id = new_customer_data["company_id"]
+                db.session.commit()
+
+                return jsonify(customer.serialize()), 201
+            except Exception as error: 
+                return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+                
+    else: 
+        return jsonify("Company doesn't exists or token is not verified"), 400
+
 #End Customer Endpoints
 
 #Start Customer_order Endpoints
