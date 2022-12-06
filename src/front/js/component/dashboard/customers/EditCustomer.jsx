@@ -109,7 +109,9 @@ export const EditCustomer = (props) => {
                                     <button
                                         className="btn btn-block stocky-button ms-3"
                                         data-bs-dismiss="modal"
-                                        onClick={(event) => {}}
+                                        onClick={(event) => {
+                                            actions.updateCustomer(props.customer.id, name, document, phone, address, email);
+                                        }}
                                     >
                                         Update Customer
                                     </button>
