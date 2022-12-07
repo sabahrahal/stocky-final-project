@@ -120,7 +120,6 @@ class Product(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
     stock_alert = db.Column(db.Boolean, nullable=True, default=False)
     stock_quantity_alert = db.Column(db.Integer, default=5)
-    customer_order = db.relationship("Customer_order", backref="product")
 
     def __init__(self, **kwargs):
         self.name = kwargs["name"]
@@ -205,15 +204,19 @@ class Customer(db.Model):
 class Customer_order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
+    order_details = db.Column(db.String(2000))
     pay_method = db.Column(db.String(80))
+    total_payment = db.Column(db.Float)
+    order_status = db.Column(db.Boolean, nullable= True ,default = False)
 
     def __init__(self, **kwargs):
         self.pay_method = kwargs["pay_method"]
         self.company_id = kwargs["company_id"]
         self.customer_id = kwargs["customer_id"]
-        self.product_id = kwargs ["product_id"]
+        self.order_details = kwargs["order_details"]
+        self.total_payment = kwargs["total_payment"]
+        self.order_status = kwargs["order_status"]
     
     @classmethod
     def create(cls, **kwargs):
@@ -231,11 +234,11 @@ class Customer_order(db.Model):
             "id" : self.id,
             "company_id" : self.company_id,
             "customer_id" : self.customer_id,
-            "product_id" : self.product_id,
             "pay_method" : self.pay_method,
-            "product_name" : self.product.name,
+            "total_payment" : self.total_payment,
+            "order_status" : self.order_status,
+            "order_details": self.order_details,
             "company_name": self.company.name,
-            "product_selling_cost" : self.product.selling_cost,
             "customer_name": self.customer.name,
             "customer_document_identity": self.customer.document_identity,
             "customer_phone": self.customer.phone,

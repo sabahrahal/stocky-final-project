@@ -72,7 +72,7 @@ export const EditInfo = (props) => {
                 <div className="form-group">
                     <label className="ms-2">Password</label>
                     <input
-                        type="text"
+                        type="password"
                         className="form-control item"
                         placeholder="Password*"
                         onChange={(event) => {
@@ -83,9 +83,9 @@ export const EditInfo = (props) => {
                 </div>
                 <div className="form-group d-flex justify-content-center">
                     {username == "" ||
-                    email == "" ||
-                    phone == "" ||
-                    password == "" ? (
+                        email == "" ||
+                        phone == "" ||
+                        password == "" ? (
                         <button
                             className="btn btn-block stocky-button"
                             disabled
@@ -97,6 +97,7 @@ export const EditInfo = (props) => {
                             className="btn btn-block stocky-button"
                             onClick={(event) => {
                                 props.setInfo(false);
+                                actions.updateUser(username, password, email, phone);
                             }}
                         >
                             Update User
@@ -146,6 +147,7 @@ export const EditInfo = (props) => {
                             className="btn btn-block stocky-button"
                             onClick={(event) => {
                                 props.setInfo(false);
+                                actions.updateCompany(companyName, rif);
                             }}
                         >
                             Update Company
