@@ -33,7 +33,7 @@ export const DashboardRegister = () => {
                     <RegisterProducts productsDetails={productsDetails} setProductsDetails={setProductsDetails} />
                 </div>
                 <div>
-                    <OrderDetails selectedCustomer={selectedCustomer} productsDetails={productsDetails}/>
+                    <OrderDetails selectedCustomer={selectedCustomer} productsDetails={productsDetails} />
                 </div>
             </div>
         </div>

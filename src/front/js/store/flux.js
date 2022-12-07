@@ -469,6 +469,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
+			getProductById: async (productId) => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/get-product-by-id/${companyId}/${productId}`, ops);
+					if (!response.ok) {
+						alert("Get product by id has a problem with endpoint /get-product-by-id");
+						return;
+					}
+
+					const body = await response.json();
+					console.log(body);
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
 			updateProduct: async (productId, supplierId, name, details, serialNumber, quantity, buyingCost, sellingCost) => {
 				const store = getStore();
 				const actions = getActions();
@@ -562,6 +589,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 						customers: body
 					})
 
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
+			getCustomerById: async (customerId) => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/get-customer-by-id/${companyId}/${customerId}`, ops);
+					if (!response.ok) {
+						alert("Get customer by id has a problem with endpoint /customer-by-id");
+						return;
+					}
+
+					const body = await response.json();
+					console.log(body);
 					return body;
 
 				} catch (error) {
