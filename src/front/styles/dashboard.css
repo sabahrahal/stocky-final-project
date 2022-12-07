@@ -512,3 +512,28 @@
         left: 40px;
     }
 }
+
+/* ------------------ REGISTER STYLES ----------- */
+
+.dashboard-register-container {
+    display: flex;
+    height: 70vh;
+    margin-top: 20px;
+}
+
+.dashboard-register-mini-container {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+}
+
+.dashboard-register-big-container {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    width: 40vw;
+    height: 71.5vh;
+    margin: 15px;
+    border-radius: 15px;
+}

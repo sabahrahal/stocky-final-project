@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-9pmh1or9y2p.ws-eu77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-1b4s75yaigv.ws-us77.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
@@ -12,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentUser: {},
 			productsInfo: {},
 			customers: [],
+			customerOrders: [],
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
@@ -600,8 +601,111 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return;
 				}
 			},
+			createCustomer: async (name, document, phone, address, email) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						name: name,
+						document_identity: document,
+						phone: phone,
+						address: address,
+						email: email
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/create-customer`, ops);
+					if (!response.ok) {
+						alert("Create customer has a problem with endpoint /create-customer");
+						return;
+					}
+					console.log(`Create a customer successfully! ${name}`);
+					actions.getCustomers();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
 
 			// ---------------- END COSTUMERS ACTIONS -------------
+
+			// ---------------- START COSTUMER ORDERS ACTIONS -------------
+
+			createCustomerOrder: async (payMethod, customerId, orderDetails) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						pay_method: payMethod,
+						customer_id: customerId,
+						order_details: orderDetails,
+						order_status: true
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/create-customer-order`, ops);
+					if (!response.ok) {
+						alert("Create customer order has a problem with endpoint /create-customer-order");
+						return;
+					}
+					console.log(`Create a customer order successfully! ${orderDetails} ${payMethod}`);
+					actions.getCustomerOrders();
+					actions.getProducts();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
+
+			getCustomerOrders: async () => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/customer-orders/${companyId}`, ops);
+					if (!response.ok) {
+						alert("Get customer orders has a problem with endpoint /customer-orders");
+						return;
+					}
+
+					const body = await response.json();
+					setStore({
+						customerOrders: body
+					})
+
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
+			// ---------------- END COSTUMER ORDERS ACTIONS -------------
+
 
 			// ---------------- START DASHBOARD ACTIONS -------------
 			clearDashboardData: (id) => {
