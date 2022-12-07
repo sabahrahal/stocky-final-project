@@ -73,7 +73,7 @@
 
 .dashboard-page-container {
     margin-top: 10px;
-    margin-bottom: 150px;
+    margin-bottom: 120px;
 }
 @media only screen and (max-width: 768px) {
     .dashboard-page-container {
@@ -536,4 +536,5 @@
     height: 71.5vh;
     margin: 15px;
     border-radius: 15px;
+    padding: 30px 60px;
 }

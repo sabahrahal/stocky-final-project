@@ -288,6 +288,20 @@ def get_products(company_id_param):
     else:
         return jsonify("Company/Product doesn't exists or token is not verified"), 400
 
+@api.route("/get-product-by-id/<int:company_id_param>/<int:product_id_param>", methods=['GET'])
+@jwt_required()
+def get_product_by_id(company_id_param, product_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= company_id_param, user_id = current_user_id).one_or_none()
+    if verify_company_id:
+        try:
+            product = Product.query.filter_by(id = product_id_param, company_id = company_id_param).one_or_none()
+            return jsonify(product.serialize()), 201
+        except Exception as error: 
+            return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+    else: 
+        return jsonify("Company doesn't exists or token is not verified"), 400
+
 @api.route('/update-product/<int:product_id_param>', methods=['PUT'])
 @jwt_required()
 def update_product(product_id_param):
@@ -423,6 +437,20 @@ def get_customers(company_id_param):
         return jsonify(customers_by_id_dictionary), 200
     else:
         return jsonify("Company/Customer doesn't exists or token is not verified (/customers)"), 400
+
+@api.route("/get-customer-by-id/<int:company_id_param>/<int:customer_id_param>", methods=['GET'])
+@jwt_required()
+def get_customer_by_id(company_id_param, customer_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= company_id_param, user_id = current_user_id).one_or_none()
+    if verify_company_id:
+        try:
+            customer = Customer.query.filter_by(id = customer_id_param, company_id = company_id_param).one_or_none()
+            return jsonify(customer.serialize()), 201
+        except Exception as error: 
+            return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+    else: 
+        return jsonify("Company doesn't exists or token is not verified"), 400
 
 @api.route('/update-customer/<int:customer_id_param>', methods=['PUT'])
 @jwt_required()
