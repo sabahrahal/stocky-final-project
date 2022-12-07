@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://stocky.onrender.com/api",
+				"https://3001-sabahrahal-stockyfinalp-9pmh1or9y2p.ws-eu77.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
@@ -138,6 +138,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 				sessionStorage.clear();
 				setStore({ token: undefined })
 			},
+			updateUser: async (username, password, email, phone) => {
+				const store = getStore();
+				const actions = getActions();
+				const ops = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						username: username,
+						password: password,
+						email: email,
+						phone: phone,
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/update-user`, ops);
+					if (!response.ok) {
+						alert("Update user has a problem with endpoint /update-user");
+						return;
+					}
+					console.log(`Update user succefully! ${username}`);
+					actions.getUser();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
 			// ---------------- END USER ACTIONS -------------
 
 			// ---------------- START COMPANY ACTIONS -------------
@@ -236,6 +266,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const actions = getActions();
 				const selectedCompanyId = sessionStorage.getItem("selectedCompanyId");
 				actions.selectCompany(selectedCompanyId);
+			},
+			updateCompany: async (name, rif) => {
+				const store = getStore();
+				const actions = getActions();
+				const company_id = sessionStorage.getItem("selectedCompanyId")
+				const ops = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						name: name,
+						rif: rif,
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/update-company/${company_id}`, ops);
+					if (!response.ok) {
+						alert("Update Company has a problem with endpoint /update-company");
+						return;
+					}
+					console.log(`Update Company succefully! ${name}`);
+					actions.syncCompany();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
 			},
 			// ---------------- END COMPANY ACTIONS -------------
 
@@ -572,7 +631,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const response = await fetch(`${store.apiUrl}/products-widget/${companyId}`, ops);
 					if (!response.ok) {
-						alert("Get productsInfo problem with endpoint /products-info");
 						return;
 					}
 					const body = await response.json();
