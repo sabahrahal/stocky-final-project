@@ -477,7 +477,7 @@ def create_customer_order():
             product_query.quantity = product_query.quantity - int(product["quantity"])
             total_payment = total_payment + (int(product_query.selling_cost) * int(product["quantity"]))
             db.session.commit()
-            string_order_details = string_order_details + f'id: {product["id"]}, name: {product_query.name}, details: {product_query.details}, serial number: {product_query.serial_number}, quantity: {product["quantity"]}, selling cost: {product_query.selling_cost} ;'
+            string_order_details = string_order_details + f'name:{product_query.name}, details:{product_query.details}, quantity:{product["quantity"]}, selling cost:{product_query.selling_cost};'
         
         new_customer_order_data["total_payment"] = total_payment
         new_customer_order_data["order_details"] = string_order_details
