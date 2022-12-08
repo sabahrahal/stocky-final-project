@@ -503,7 +503,7 @@ def create_customer_order():
         for product in new_customer_order_data["order_details"]:
             product_query = Product.query.filter_by(id = product["id"]).one_or_none()
             product_query.quantity = product_query.quantity - int(product["quantity"])
-            total_payment = total_payment + (int(product_query.selling_cost) * int(product["quantity"]))
+            total_payment = total_payment + (float(product_query.selling_cost) * int(product["quantity"]))
             db.session.commit()
             string_order_details = string_order_details + f'{product_query.name} {product_query.details} {product["quantity"]}x{product_query.selling_cost}$ | '
         
