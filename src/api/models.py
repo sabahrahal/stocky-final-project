@@ -209,6 +209,8 @@ class Customer_order(db.Model):
     pay_method = db.Column(db.String(80))
     total_payment = db.Column(db.Float)
     order_status = db.Column(db.Boolean, nullable= True ,default = False)
+    date = db.Column(db.String(80))
+    payment_id = db.Column(db.String(80), nullable= True)
 
     def __init__(self, **kwargs):
         self.pay_method = kwargs["pay_method"]
@@ -216,6 +218,8 @@ class Customer_order(db.Model):
         self.customer_id = kwargs["customer_id"]
         self.order_details = kwargs["order_details"]
         self.total_payment = kwargs["total_payment"]
+        self.date = kwargs["date"]
+        self.payment_id = kwargs["payment_id"]
         self.order_status = kwargs["order_status"]
     
     @classmethod
@@ -238,6 +242,8 @@ class Customer_order(db.Model):
             "total_payment" : self.total_payment,
             "order_status" : self.order_status,
             "order_details": self.order_details,
+            "order_date": self.date,
+            "payment_id": self.payment_id,
             "company_name": self.company.name,
             "customer_name": self.customer.name,
             "customer_document_identity": self.customer.document_identity,

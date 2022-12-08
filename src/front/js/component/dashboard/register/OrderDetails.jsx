@@ -8,6 +8,7 @@ export const OrderDetails = React.forwardRef((props, ref) => {
     const [totalAmount, setTotalAmount] = useState(0);
     const [date, setDate] = useState();
     const [paymentMethod, setPaymentMethod] = useState("Select");
+    const [paymentId, setPaymentId] = useState("");
 
     const getCustomerData = async () => {
         const data = await actions.getCustomerById(props.selectedCustomer);
@@ -84,12 +85,12 @@ export const OrderDetails = React.forwardRef((props, ref) => {
                     </div>
                     <div className="d-flex flex-column justify-content-end">
                         {props.showPrint == false && (
-                            <p>Select Payment Method</p>
+                            <p className="mb-0">Select Payment Method</p>
                         )}
 
                         <select
                             name="PaymentMethod"
-                            className="form-control form-select item mb-2 w-75 ms-auto"
+                            className="form-control form-select item mb-2 ms-auto"
                             value={paymentMethod}
                             onChange={(event) => {
                                 setPaymentMethod(event.target.value);
@@ -103,6 +104,14 @@ export const OrderDetails = React.forwardRef((props, ref) => {
                             <option value="Zelle">Zelle</option>
                             <option value="Binance">Binance</option>
                         </select>
+                        {paymentMethod != "Cash" && paymentMethod != "Select" && <div>
+                            <p className="mb-0">Payment Reference</p>
+                            <input type="text"
+                                value={paymentId}
+                                onChange={(event) => {
+                                    setPaymentId(event.target.value)
+                                }}></input>
+                        </div>}
                         <div className="text-end">{date}</div>
                     </div>
                 </div>
@@ -135,24 +144,20 @@ export const OrderDetails = React.forwardRef((props, ref) => {
                     <h5 className="text-end">Total: {totalAmount}$</h5>
                     <div className="d-flex justify-content-end">
                         {props.selectedCustomer == "Select" ||
-                        productsData.length == 0 ||
-                        props.showPrint ||
-                        paymentMethod == "Select" ? (
+                            productsData.length == 0 ||
+                            props.showPrint ||
+                            paymentMethod == "Select" ? (
                             <div className="d-block h-25"></div>
                         ) : (
-                            // <button
-                            //     className="btn btn-block stocky-button"
-                            //     disabled
-                            // >
-                            //     Create Order
-                            // </button>
                             <button
                                 className="btn btn-block stocky-button"
                                 onClick={(event) => {
                                     actions.createCustomerOrder(
                                         paymentMethod,
                                         props.selectedCustomer,
-                                        props.productsDetails
+                                        props.productsDetails,
+                                        date,
+                                        paymentId
                                     );
                                     props.setShowPrint(true);
                                 }}
