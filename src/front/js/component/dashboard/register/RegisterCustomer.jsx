@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../../store/appContext";
+import { Context } from "../../../store/appContext";
 
 export const RegisterCustomer = (props) => {
     const { store, actions } = useContext(Context);
@@ -20,12 +20,12 @@ export const RegisterCustomer = (props) => {
         <div className="dashboard-register-mini-container">
             <div className="form-group">
                 <div>
-                    <h4 className="mb-3 text-center">Select a Customer</h4>
+                    <h4 className="mb-3 text-center">1. Select a Customer</h4>
                 </div>
                 <div className="d-flex align-items-center mb-2">
                     <i className="fas fa-search dashboard-add-form item me-2"></i>
                     <input
-                        className="form-control item"
+                        className="form-control item w-100"
                         placeholder="Search"
                         value={searchCustomer}
                         onChange={(event) => {
@@ -34,46 +34,55 @@ export const RegisterCustomer = (props) => {
                     ></input>
                 </div>
 
-                <select
-                    name="customer"
-                    className="form-control form-select item mb-2"
-                    value={props.selectedCustomer}
-                    onChange={(event) => {
-                        props.setSelectedCustomer(event.target.value);
-                    }}
-                >
-                    {searchCustomer === "" ? (
-                        <option value="Select">Select Customer</option>
-                    ) : (
-                        <option value="Select">
-                            Search results for {searchCustomer}
-                        </option>
-                    )}
+                {props.showPrint == false && (
+                    <select
+                        name="customer"
+                        className="form-control form-select item mb-2"
+                        value={props.selectedCustomer}
+                        onChange={(event) => {
+                            props.setSelectedCustomer(event.target.value);
+                        }}
+                    >
+                        {searchCustomer === "" ? (
+                            <option value="Select">Select Customer</option>
+                        ) : (
+                            <option value="Select">
+                                Search results for {searchCustomer}
+                            </option>
+                        )}
 
-                    {store.customers
-                        .filter((customer) => {
-                            if (
-                                customer.name
-                                    .toLowerCase()
-                                    .includes(searchCustomer.toLowerCase()) ||
-                                customer.document_identity
-                                    .toLowerCase()
-                                    .includes(searchCustomer.toLowerCase())
-                            )
-                                return true;
-                        }).sort((a, b) => {
-                            if (a.id > b.id) return -1;
-                            if (b.id > a.id) return 1;
-                            return 0;
-                        })
-                        .map((customer) => {
-                            return (
-                                <option key={customer.id} value={customer.id}>
-                                    {customer.name} {customer.document_identity}
-                                </option>
-                            );
-                        })}
-                </select>
+                        {store.customers
+                            .filter((customer) => {
+                                if (
+                                    customer.name
+                                        .toLowerCase()
+                                        .includes(
+                                            searchCustomer.toLowerCase()
+                                        ) ||
+                                    customer.document_identity
+                                        .toLowerCase()
+                                        .includes(searchCustomer.toLowerCase())
+                                )
+                                    return true;
+                            })
+                            .sort((a, b) => {
+                                if (a.id > b.id) return -1;
+                                if (b.id > a.id) return 1;
+                                return 0;
+                            })
+                            .map((customer) => {
+                                return (
+                                    <option
+                                        key={customer.id}
+                                        value={customer.id}
+                                    >
+                                        {customer.name}{" "}
+                                        {customer.document_identity}
+                                    </option>
+                                );
+                            })}
+                    </select>
+                )}
 
                 <div>
                     <h4 className="mb-1 my-3 text-center">
@@ -147,7 +156,13 @@ export const RegisterCustomer = (props) => {
                         <button
                             className="btn btn-block stocky-button w-100"
                             onClick={(event) => {
-                                actions.createCustomer(customerName, customerDocumentIdentity, customerPhone, customerAddress, customerEmail)
+                                actions.createCustomer(
+                                    customerName,
+                                    customerDocumentIdentity,
+                                    customerPhone,
+                                    customerAddress,
+                                    customerEmail
+                                );
                                 setCustomerName("");
                                 setCustomerDocumentIdentity("");
                                 setCustomerEmail("");
