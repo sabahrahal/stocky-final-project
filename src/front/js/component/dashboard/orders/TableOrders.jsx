@@ -44,7 +44,13 @@ export const TableCustomerOrders = () => {
                                     return (
                                         <tr key={order.id}>
                                             <td>{order.order_date}</td>
-                                            <td>{order.order_details.slice(0, order.order_details.length - 2)}</td>
+                                            <td>
+                                                {order.order_details.slice(
+                                                    0,
+                                                    order.order_details.length -
+                                                        2
+                                                )}
+                                            </td>
                                             <td>
                                                 {order.customer_name}{" "}
                                                 {
@@ -53,7 +59,10 @@ export const TableCustomerOrders = () => {
                                             </td>
                                             <td>{order.pay_method}</td>
                                             <td>{order.payment_id}</td>
-                                            <td>{order.total_payment}$</td>
+                                            <td>
+                                                {order.total_payment.toFixed(2)}
+                                                $
+                                            </td>
                                         </tr>
                                     );
                                 })}

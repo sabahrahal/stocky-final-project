@@ -47,8 +47,12 @@ export const TableProducts = () => {
                                             <td>{product.details}</td>
                                             <td>{product.serial_number}</td>
                                             <td>{product.quantity}</td>
-                                            <td>{product.buying_cost}$</td>
-                                            <td>{product.selling_cost}$</td>
+                                            <td>{product.buying_cost.toFixed(
+                                        2
+                                    )}$</td>
+                                            <td>{product.selling_cost.toFixed(
+                                        2
+                                    )}$</td>
                                             <td className="text-center">
                                                 <EditProduct
                                                     product={product}
