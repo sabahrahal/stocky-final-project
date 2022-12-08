@@ -717,15 +717,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const response = await fetch(`${store.apiUrl}/create-customer-order`, ops);
 					if (!response.ok) {
 						alert("Create customer order has a problem with endpoint /create-customer-order");
-						return;
+						return false;
 					}
 					console.log(`Create a customer order successfully! ${orderDetails} ${payMethod}`);
 					actions.getCustomerOrders();
 					actions.getProducts();
-					return true;
+					const body = await response.json();
+					return body;
 				} catch (error) {
 					console.log(error)
-					return;
+					return false;
 				}
 			},
 

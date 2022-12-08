@@ -20,6 +20,7 @@ export const DashboardHome = () => {
         const id = sessionStorage.getItem("selectedCompanyId");
         if (!id || id == "" || id == "undefined") navigate("/companies");
         actions.selectCompany(id);
+        actions.getProducts();
     }, [])
 
     return (
@@ -27,8 +28,10 @@ export const DashboardHome = () => {
             <NavbarHome />
             <WelcomeWidget />
             <div id="widgets-container">
-                <ProductStockAlert />
-                <ProductsWidget />
+                {store.products.length === 0 ? <><div className="mt-3"><h3>To see widgets please add products.</h3></div></> : <>
+                    <ProductStockAlert />
+                    <ProductsWidget />
+                </>}
             </div>
         </div>
     );
