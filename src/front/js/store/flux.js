@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-1b4s75yaigv.ws-us77.gitpod.io/api",
+				"https://3001-sabahrahal-stockyfinalp-1b4s75yaigv.ws-us78.gitpod.io/api",
 			token: "",
 			user_id: "",
 			companies: [],
@@ -769,7 +769,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					products: [],
 					selectCompany: {},
 					productsInfo: {},
-					customers: []
+					customers: [],
+					customerOrders: []
 				});
 				sessionStorage.removeItem("selectedCompanyId");
 			},

@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Context } from "../../store/appContext";
+import { Context } from "../../../store/appContext";
 
 export const RegisterProducts = (props) => {
     const { store, actions } = useContext(Context);
     const [searchProduct, setSearchProduct] = useState("");
 
     const [selectedProduct, setSelectedProduct] = useState("");
-    const [productQuantity, setProductQuantity] = useState("");
+    const [productQuantity, setProductQuantity] = useState(1);
 
     useEffect(() => {
         actions.getProducts();
@@ -15,6 +15,9 @@ export const RegisterProducts = (props) => {
     return (
         <div className="dashboard-register-mini-container">
             <div className="form-group">
+                <div>
+                    <h4 className="mb-3 text-center">2. Add products</h4>
+                </div>
                 <div className="d-flex align-items-center mb-2">
                     <i className="fas fa-search dashboard-add-form item me-2"></i>
                     <input
@@ -76,7 +79,10 @@ export const RegisterProducts = (props) => {
                             placeholder="0"
                         />
                     </div>
-                    {productQuantity == 0 || selectedProduct == "" ? (
+                    {productQuantity == 0 ||
+                    selectedProduct == "Select" ||
+                    selectedProduct == "" ||
+                    props.showPrint ? (
                         <button
                             className="btn btn-block stocky-button"
                             disabled
@@ -96,7 +102,7 @@ export const RegisterProducts = (props) => {
                                 ]);
                                 setSearchProduct("");
                                 setSelectedProduct("Select");
-                                setProductQuantity(0);
+                                setProductQuantity(1);
                             }}
                         >
                             Add to order
