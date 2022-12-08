@@ -10,7 +10,7 @@ export const TableSuppliers = () => {
             {store.suppliers.length === 0 ? (
                 <div className="full-width-widget-container">
                     <div className="welcome-widget-text-container">
-                        <h1>Start adding suppliers to use Stocky!</h1>
+                        <h1>Use the + button to start adding suppliers!</h1>
                     </div>
                     <div className="welcome-widget-image">
                         <img src="https://cdn.discordapp.com/attachments/245471080829943820/1049148564611285052/business-3d-378.png" />

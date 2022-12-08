@@ -40,7 +40,7 @@ export const NavbarProducts = (props) => {
                     </div>
 
                     <div
-                        className="dashboard-add-icon me-2"
+                        className="dashboard-add-icon me-2 pulse-animation"
                         onClick={(event) => {
                             if (add == false) setAdd(true);
                             else setAdd(false);
