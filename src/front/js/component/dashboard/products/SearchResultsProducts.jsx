@@ -59,7 +59,6 @@ export const SearchResultsProducts = (props) => {
                                                 data-bs-toggle="modal"
                                                 data-bs-target={`#modal-${product.id}`}
                                             ></i>
-                                            {/* preguntar a ERNESTO porque al buscar uno no trae la informacion correspondiente y al buscar varios si la trae */}
                                         </td>
                                     </tr>
                                 );

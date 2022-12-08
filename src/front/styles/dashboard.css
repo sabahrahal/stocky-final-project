@@ -77,7 +77,7 @@
 }
 @media only screen and (max-width: 768px) {
     .dashboard-page-container {
-        margin-bottom: 100px;
+        margin-bottom: 150px;
     }
 }
 
@@ -510,5 +510,58 @@
     }
     .widget-more-options span {
         left: 40px;
+    }
+}
+
+/* ------------------ REGISTER STYLES ----------- */
+
+.dashboard-register-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.dashboard-register-mini-container {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 15px;
+    min-width: 410px;
+}
+
+.dashboard-register-big-container {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    width: 40vw;
+    min-height: 710px;
+    margin: 15px;
+    border-radius: 15px;
+    padding: 30px 60px;
+}
+
+.register-products-container {
+    min-height: 275px;
+}
+
+.print-message {
+    border-radius: 15px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    max-width: 580px;
+    margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .dashboard-register-big-container {
+        padding: 5px;
+        margin: 5px;
+    }
+    .dashboard-register-container {
+        padding: 5px;
+    }
+    .dashboard-register-mini-container {
+        margin: 5px;
+        padding: 5px;
+        min-width: 150px;
     }
 }

@@ -12,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentUser: {},
 			productsInfo: {},
 			customers: [],
+			customerOrders: [],
 		},
 		actions: {
 			// ---------------- START USER ACTIONS -------------
@@ -138,6 +139,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 				sessionStorage.clear();
 				setStore({ token: undefined })
 			},
+			updateUser: async (username, password, email, phone) => {
+				const store = getStore();
+				const actions = getActions();
+				const ops = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						username: username,
+						password: password,
+						email: email,
+						phone: phone,
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/update-user`, ops);
+					if (!response.ok) {
+						alert("Update user has a problem with endpoint /update-user");
+						return;
+					}
+					console.log(`Update user succefully! ${username}`);
+					actions.getUser();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
 			// ---------------- END USER ACTIONS -------------
 
 			// ---------------- START COMPANY ACTIONS -------------
@@ -236,6 +267,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const actions = getActions();
 				const selectedCompanyId = sessionStorage.getItem("selectedCompanyId");
 				actions.selectCompany(selectedCompanyId);
+			},
+			updateCompany: async (name, rif) => {
+				const store = getStore();
+				const actions = getActions();
+				const company_id = sessionStorage.getItem("selectedCompanyId")
+				const ops = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						name: name,
+						rif: rif,
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/update-company/${company_id}`, ops);
+					if (!response.ok) {
+						alert("Update Company has a problem with endpoint /update-company");
+						return;
+					}
+					console.log(`Update Company succefully! ${name}`);
+					actions.syncCompany();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
 			},
 			// ---------------- END COMPANY ACTIONS -------------
 
@@ -409,6 +469,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
+			getProductById: async (productId) => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/get-product-by-id/${companyId}/${productId}`, ops);
+					if (!response.ok) {
+						alert("Get product by id has a problem with endpoint /get-product-by-id");
+						return;
+					}
+
+					const body = await response.json();
+					console.log(body);
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
 			updateProduct: async (productId, supplierId, name, details, serialNumber, quantity, buyingCost, sellingCost) => {
 				const store = getStore();
 				const actions = getActions();
@@ -508,6 +595,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
+			getCustomerById: async (customerId) => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/get-customer-by-id/${companyId}/${customerId}`, ops);
+					if (!response.ok) {
+						alert("Get customer by id has a problem with endpoint /customer-by-id");
+						return;
+					}
+
+					const body = await response.json();
+					console.log(body);
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
 			updateCustomer: async (customerId, name, document, phone, address, email) => {
 				const store = getStore();
 				const actions = getActions();
@@ -541,8 +655,113 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return;
 				}
 			},
+			createCustomer: async (name, document, phone, address, email) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						name: name,
+						document_identity: document,
+						phone: phone,
+						address: address,
+						email: email
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/create-customer`, ops);
+					if (!response.ok) {
+						alert("Create customer has a problem with endpoint /create-customer");
+						return;
+					}
+					console.log(`Create a customer successfully! ${name}`);
+					actions.getCustomers();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
 
 			// ---------------- END COSTUMERS ACTIONS -------------
+
+			// ---------------- START COSTUMER ORDERS ACTIONS -------------
+
+			createCustomerOrder: async (payMethod, customerId, orderDetails, date, payment_id) => {
+				const store = getStore();
+				const actions = getActions();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const ops = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						company_id: companyId,
+						pay_method: payMethod,
+						customer_id: customerId,
+						order_details: orderDetails,
+						order_status: true,
+						date: date,
+						payment_id: payment_id
+					}),
+				}
+				try {
+					const response = await fetch(`${store.apiUrl}/create-customer-order`, ops);
+					if (!response.ok) {
+						alert("Create customer order has a problem with endpoint /create-customer-order");
+						return;
+					}
+					console.log(`Create a customer order successfully! ${orderDetails} ${payMethod}`);
+					actions.getCustomerOrders();
+					actions.getProducts();
+					return true;
+				} catch (error) {
+					console.log(error)
+					return;
+				}
+			},
+
+			getCustomerOrders: async () => {
+				const store = getStore();
+				const companyId = sessionStorage.getItem("selectedCompanyId");
+				const token = sessionStorage.getItem("token");
+				const ops = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + token
+					}
+				};
+
+				try {
+					const response = await fetch(`${store.apiUrl}/customer-orders/${companyId}`, ops);
+					if (!response.ok) {
+						alert("Get customer orders has a problem with endpoint /customer-orders");
+						return;
+					}
+
+					const body = await response.json();
+					setStore({
+						customerOrders: body
+					})
+
+					return body;
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
+			// ---------------- END COSTUMER ORDERS ACTIONS -------------
+
 
 			// ---------------- START DASHBOARD ACTIONS -------------
 			clearDashboardData: (id) => {
@@ -552,7 +771,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					products: [],
 					selectCompany: {},
 					productsInfo: {},
-					customers: []
+					customers: [],
+					customerOrders: []
 				});
 				sessionStorage.removeItem("selectedCompanyId");
 			},
@@ -572,7 +792,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const response = await fetch(`${store.apiUrl}/products-widget/${companyId}`, ops);
 					if (!response.ok) {
-						alert("Get productsInfo problem with endpoint /products-info");
 						return;
 					}
 					const body = await response.json();

@@ -54,6 +54,35 @@ def get_user_by_id():
         return jsonify(user.serialize()), 201
     else: 
         return jsonify("User doesn't exists or token is not verified"), 400
+
+@api.route('/update-user', methods=['PUT'])
+@jwt_required()
+def update_user():
+    new_user_data = request.json
+    current_user_id = get_jwt_identity()
+
+    user = User.query.filter_by(id = current_user_id).one_or_none()
+
+    try:
+        if "username" not in new_user_data or new_user_data["username"] == "":
+            raise Exception("Username invalid", 400)
+        if "password" not in new_user_data or new_user_data["password"] == "":
+            raise Exception("Password invalid", 400)
+        if "email" not in new_user_data or new_user_data["email"] == "":
+            raise Exception("Email invalid", 400)
+        if "phone" not in new_user_data or new_user_data["phone"] == "":
+            raise Exception("Phone invalid", 400)
+
+        user.id = current_user_id
+        user.username = new_user_data["username"]
+        user.password = new_user_data["password"]
+        user.email = new_user_data["email"]
+        user.phone = new_user_data["phone"]
+        db.session.commit()
+
+        return jsonify(user.serialize()), 201
+    except Exception as error: 
+        return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
 #End User Endpoints
 
 
@@ -97,6 +126,29 @@ def get_company_by_id(company_id_param):
             return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
     else: 
         return jsonify("Company doesn't exists or token is not verified"), 400
+
+@api.route('/update-company/<int:company_id_param>', methods=['PUT'])
+@jwt_required()
+def update_company(company_id_param):
+    new_company_data = request.json
+    current_user_id = get_jwt_identity()
+    company = Company.query.filter_by(id= company_id_param, user_id = current_user_id).one_or_none()
+
+    try:
+        if "name" not in new_company_data or new_company_data["name"] == "":
+            raise Exception("Supplier name invalid", 400)
+        if "rif" not in new_company_data or new_company_data["rif"] == "":
+            raise Exception("Supplier phone invalid", 400)
+
+        company.id = company_id_param
+        company.name = new_company_data["name"]
+        company.rif = new_company_data["rif"]
+        db.session.commit()
+
+        return jsonify(company.serialize()), 201
+    except Exception as error: 
+        return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+            
 
 #End Company Endpoints
 
@@ -236,6 +288,20 @@ def get_products(company_id_param):
     else:
         return jsonify("Company/Product doesn't exists or token is not verified"), 400
 
+@api.route("/get-product-by-id/<int:company_id_param>/<int:product_id_param>", methods=['GET'])
+@jwt_required()
+def get_product_by_id(company_id_param, product_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= company_id_param, user_id = current_user_id).one_or_none()
+    if verify_company_id:
+        try:
+            product = Product.query.filter_by(id = product_id_param, company_id = company_id_param).one_or_none()
+            return jsonify(product.serialize()), 201
+        except Exception as error: 
+            return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+    else: 
+        return jsonify("Company doesn't exists or token is not verified"), 400
+
 @api.route('/update-product/<int:product_id_param>', methods=['PUT'])
 @jwt_required()
 def update_product(product_id_param):
@@ -372,6 +438,20 @@ def get_customers(company_id_param):
     else:
         return jsonify("Company/Customer doesn't exists or token is not verified (/customers)"), 400
 
+@api.route("/get-customer-by-id/<int:company_id_param>/<int:customer_id_param>", methods=['GET'])
+@jwt_required()
+def get_customer_by_id(company_id_param, customer_id_param):
+    current_user_id = get_jwt_identity()
+    verify_company_id = Company.query.filter_by(id= company_id_param, user_id = current_user_id).one_or_none()
+    if verify_company_id:
+        try:
+            customer = Customer.query.filter_by(id = customer_id_param, company_id = company_id_param).one_or_none()
+            return jsonify(customer.serialize()), 201
+        except Exception as error: 
+            return jsonify(error.args[0]), error.args[1] if len(error.args) > 1 else 500
+    else: 
+        return jsonify("Company doesn't exists or token is not verified"), 400
+
 @api.route('/update-customer/<int:customer_id_param>', methods=['PUT'])
 @jwt_required()
 def update_customer(customer_id_param):
@@ -415,8 +495,20 @@ def create_customer_order():
     current_user_id = get_jwt_identity()
     new_customer_order_data = request.json
     verify_company_id = Company.query.filter_by(id = new_customer_order_data["company_id"], user_id = current_user_id).one_or_none()
+    string_order_details = ""
+    total_payment = 0
 
     if verify_company_id:
+        
+        for product in new_customer_order_data["order_details"]:
+            product_query = Product.query.filter_by(id = product["id"]).one_or_none()
+            product_query.quantity = product_query.quantity - int(product["quantity"])
+            total_payment = total_payment + (int(product_query.selling_cost) * int(product["quantity"]))
+            db.session.commit()
+            string_order_details = string_order_details + f'{product_query.name} {product_query.details} {product["quantity"]}x{product_query.selling_cost}$ | '
+        
+        new_customer_order_data["total_payment"] = total_payment
+        new_customer_order_data["order_details"] = string_order_details
         try:
             new_customer_order_data = Customer_order.create(**new_customer_order_data)
             return jsonify(new_customer_order_data.serialize()), 201
