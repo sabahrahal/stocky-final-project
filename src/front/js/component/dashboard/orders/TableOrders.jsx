@@ -25,9 +25,11 @@ export const TableCustomerOrders = () => {
                     <table className="content-table">
                         <thead>
                             <tr>
+                                <th>Date</th>
                                 <th>Details</th>
-                                <th>Payment</th>
                                 <th>Customer</th>
+                                <th>Payment</th>
+                                <th>Payment Id</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
@@ -41,16 +43,16 @@ export const TableCustomerOrders = () => {
                                 .map((order) => {
                                     return (
                                         <tr key={order.id}>
-                                            <td>{order.order_details}</td>
-                                            <td>{order.pay_method}</td>
+                                            <td>{order.order_date}</td>
+                                            <td>{order.order_details.slice(0, order.order_details.length - 2)}</td>
                                             <td>
                                                 {order.customer_name}{" "}
                                                 {
                                                     order.customer_document_identity
-                                                }{" "}
-                                                {order.customer_phone}{" "}
-                                                {order.customer_address}
+                                                }
                                             </td>
+                                            <td>{order.pay_method}</td>
+                                            <td>{order.payment_id}</td>
                                             <td>{order.total_payment}$</td>
                                         </tr>
                                     );

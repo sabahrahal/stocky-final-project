@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			apiUrl:
-				"https://3001-sabahrahal-stockyfinalp-1b4s75yaigv.ws-us78.gitpod.io/api",
+				"https://stocky.onrender.com/api",
 			token: "",
 			user_id: "",
 			companies: [],
@@ -693,7 +693,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// ---------------- START COSTUMER ORDERS ACTIONS -------------
 
-			createCustomerOrder: async (payMethod, customerId, orderDetails) => {
+			createCustomerOrder: async (payMethod, customerId, orderDetails, date, payment_id) => {
 				const store = getStore();
 				const actions = getActions();
 				const companyId = sessionStorage.getItem("selectedCompanyId");
@@ -708,7 +708,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						pay_method: payMethod,
 						customer_id: customerId,
 						order_details: orderDetails,
-						order_status: true
+						order_status: true,
+						date: date,
+						payment_id: payment_id
 					}),
 				}
 				try {
