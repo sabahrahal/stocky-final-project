@@ -18,7 +18,10 @@ export const ProductsWidget = () => {
                         <h2>
                             {store.productsInfo.total_cost_stock_value > 0 && (
                                 <b>
-                                    {store.productsInfo.total_cost_stock_value}$
+                                    {store.productsInfo.total_cost_stock_value.toFixed(
+                                        2
+                                    )}
+                                    $
                                 </b>
                             )}
                         </h2>
@@ -39,21 +42,29 @@ export const ProductsWidget = () => {
                         <i className="bi bi-cash-stack fs-3"></i>
                         <p>Possible Profit</p>
                         <h2>
-                        {store.productsInfo.total_stock_profit > 0 && <b>{store.productsInfo.total_stock_profit}$</b>}
-                            
+                            {store.productsInfo.total_stock_profit > 0 && (
+                                <b>
+                                    {store.productsInfo.total_stock_profit.toFixed(
+                                        2
+                                    )}
+                                    $
+                                </b>
+                            )}
                         </h2>
                     </div>
                     <div className="widget-mini-div-products d-flex justify-content-center align-items-center flex-column">
                         <i className="bi bi-graph-up-arrow fs-3"></i>
                         <p>Possible Brute Profit</p>
                         <h2>
-                        {store.productsInfo.total_profit_percentage > 0 && <b>
-                                {parseInt(
-                                    store.productsInfo.total_profit_percentage
-                                )}
-                                %
-                            </b>}
-                            
+                            {store.productsInfo.total_profit_percentage > 0 && (
+                                <b>
+                                    {parseInt(
+                                        store.productsInfo
+                                            .total_profit_percentage
+                                    )}
+                                    %
+                                </b>
+                            )}
                         </h2>
                     </div>
                 </div>

@@ -143,19 +143,19 @@ export const OrderDetails = React.forwardRef((props, ref) => {
                                         <p>
                                             {product.sell_quantity}x
                                             {product.name} {product.details}{" "}
-                                            {product.selling_cost}$
+                                            {product.selling_cost.toFixed(2)}$
                                         </p>
                                     </div>
                                     <p>
-                                        {product.selling_cost *
-                                            product.sell_quantity}
+                                        {(product.selling_cost *
+                                            product.sell_quantity).toFixed(2)}
                                         $
                                     </p>
                                 </div>
                             );
                         })}
                     </div>
-                    <h5 className="text-end mt-5">Total: {totalAmount}$</h5>
+                    <h5 className="text-end mt-5">Total: {totalAmount.toFixed(2)}$</h5>
                     <div className="d-flex justify-content-end">
                         {props.selectedCustomer == "Select" ||
                         productsData.length == 0 ||

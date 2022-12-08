@@ -66,7 +66,9 @@ export const SearchResultsOrders = (props) => {
                                         </td>
                                         <td>{order.pay_method}</td>
                                         <td>{order.payment_id}</td>
-                                        <td>{order.total_payment}$</td>
+                                        <td>{order.total_payment.toFixed(
+                                        2
+                                    )}$</td>
                                     </tr>
                                 );
                             })}
