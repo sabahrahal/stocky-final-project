@@ -154,7 +154,7 @@ export const RegisterCustomer = (props) => {
                         </button>
                     ) : (
                         <button
-                            className="btn btn-block stocky-button w-100"
+                            className="btn btn-block stocky-button w-100 pulse-animation-no-scale"
                             onClick={(event) => {
                                 actions.createCustomer(
                                     customerName,

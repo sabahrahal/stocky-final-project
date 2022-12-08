@@ -9,6 +9,7 @@ export const OrderDetails = React.forwardRef((props, ref) => {
     const [date, setDate] = useState();
     const [paymentMethod, setPaymentMethod] = useState("Select");
     const [paymentId, setPaymentId] = useState("");
+    const [orderId, setOrderId] = useState();
 
     const getCustomerData = async () => {
         const data = await actions.getCustomerById(props.selectedCustomer);
@@ -51,7 +52,7 @@ export const OrderDetails = React.forwardRef((props, ref) => {
                 {props.showPrint == false && (
                     <div>
                         <h4 className="mb-3 text-center">
-                            3. Check details and create order
+                            3. Add payment method and create order
                         </h4>
                     </div>
                 )}
@@ -84,34 +85,47 @@ export const OrderDetails = React.forwardRef((props, ref) => {
                         </p>
                     </div>
                     <div className="d-flex flex-column justify-content-end">
+                        {props.showPrint && <p>ORDER #{orderId}</p>}
                         {props.showPrint == false && (
                             <p className="mb-0">Select Payment Method</p>
                         )}
-
-                        <select
-                            name="PaymentMethod"
-                            className="form-control form-select item mb-2 ms-auto"
-                            value={paymentMethod}
-                            onChange={(event) => {
-                                setPaymentMethod(event.target.value);
-                            }}
-                        >
-                            <option value="Select">Select</option>
-                            <option value="Cash">Cash</option>
-                            <option value="Card">Card</option>
-                            <option value="Check">Check</option>
-                            <option value="Paypal">Paypal</option>
-                            <option value="Zelle">Zelle</option>
-                            <option value="Binance">Binance</option>
-                        </select>
-                        {paymentMethod != "Cash" && paymentMethod != "Select" && <div>
-                            <p className="mb-0">Payment Reference</p>
-                            <input type="text"
-                                value={paymentId}
+                        {props.showPrint == false ? (
+                            <select
+                                name="PaymentMethod"
+                                className={
+                                    paymentMethod == "Select"
+                                        ? "form-control form-select item mb-2 ms-auto pulse-animation-no-scale"
+                                        : "form-control form-select item mb-2 ms-auto"
+                                }
+                                value={paymentMethod}
                                 onChange={(event) => {
-                                    setPaymentId(event.target.value)
-                                }}></input>
-                        </div>}
+                                    setPaymentMethod(event.target.value);
+                                }}
+                            >
+                                <option value="Select">Select</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Card">Card</option>
+                                <option value="Check">Check</option>
+                                <option value="Paypal">Paypal</option>
+                                <option value="Zelle">Zelle</option>
+                                <option value="Binance">Binance</option>
+                            </select>
+                        ) : (
+                            <p>{paymentMethod}</p>
+                        )}
+
+                        {paymentMethod != "Cash" && paymentMethod != "Select" && (
+                            <div>
+                                <p className="mb-0">Payment Reference</p>
+                                <input
+                                    type="text"
+                                    value={paymentId}
+                                    onChange={(event) => {
+                                        setPaymentId(event.target.value);
+                                    }}
+                                ></input>
+                            </div>
+                        )}
                         <div className="text-end">{date}</div>
                     </div>
                 </div>
@@ -141,25 +155,27 @@ export const OrderDetails = React.forwardRef((props, ref) => {
                             );
                         })}
                     </div>
-                    <h5 className="text-end">Total: {totalAmount}$</h5>
+                    <h5 className="text-end mt-5">Total: {totalAmount}$</h5>
                     <div className="d-flex justify-content-end">
                         {props.selectedCustomer == "Select" ||
-                            productsData.length == 0 ||
-                            props.showPrint ||
-                            paymentMethod == "Select" ? (
-                            <div className="d-block h-25"></div>
+                        productsData.length == 0 ||
+                        props.showPrint ||
+                        paymentMethod == "Select" ? (
+                            <></>
                         ) : (
                             <button
-                                className="btn btn-block stocky-button"
-                                onClick={(event) => {
-                                    actions.createCustomerOrder(
-                                        paymentMethod,
-                                        props.selectedCustomer,
-                                        props.productsDetails,
-                                        date,
-                                        paymentId
-                                    );
-                                    props.setShowPrint(true);
+                                className="btn btn-block stocky-button pulse-animation"
+                                onClick={async (event) => {
+                                    const success =
+                                        await actions.createCustomerOrder(
+                                            paymentMethod,
+                                            props.selectedCustomer,
+                                            props.productsDetails,
+                                            date,
+                                            paymentId
+                                        );
+                                    if (success) props.setShowPrint(true);
+                                    setOrderId(success.id);
                                 }}
                             >
                                 Create Order
@@ -174,6 +190,7 @@ export const OrderDetails = React.forwardRef((props, ref) => {
                                     setProductsData([]);
                                     setCustomerData([]);
                                     setPaymentMethod("Select");
+                                    setTotalAmount(0);
                                 }}
                                 className="dashboard-add-icon ms-auto"
                             >

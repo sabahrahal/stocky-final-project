@@ -84,14 +84,14 @@ export const RegisterProducts = (props) => {
                     selectedProduct == "" ||
                     props.showPrint ? (
                         <button
-                            className="btn btn-block stocky-button"
+                            className="btn btn-block stocky-button "
                             disabled
                         >
                             Add to order
                         </button>
                     ) : (
                         <button
-                            className="stocky-button"
+                            className="stocky-button pulse-animation-no-scale"
                             onClick={(event) => {
                                 props.setProductsDetails([
                                     ...props.productsDetails,

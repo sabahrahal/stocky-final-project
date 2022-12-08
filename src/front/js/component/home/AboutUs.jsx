@@ -25,8 +25,19 @@ export const AboutUs = () => {
                     />
                     <h3>Sabah Rahal</h3>
                     <p className="text-center">
-                        "intentando construir mayores y mejores programas"
+                        "Intentando construir mayores y mejores programas"
                     </p>
+                    <div className="d-flex justify-content-center">
+                        <a href="https://github.com/sabahrahal" target="_blank">
+                            <i className="bi bi-github widget-icon-gradient fs-2"></i>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/sabah-rahal-5a82b2228/"
+                            target="_blank"
+                        >
+                            <i className="bi bi-linkedin ms-2 widget-icon-gradient fs-2"></i>
+                        </a>
+                    </div>
                 </div>
                 <div className="col-md-6 d-flex flex-column align-items-center">
                     <img
@@ -36,6 +47,20 @@ export const AboutUs = () => {
                     />
                     <h3>Jorge Oviedo</h3>
                     <p className="text-center">"No es magia, es código"</p>
+                    <div className="d-flex justify-content-center">
+                        <a
+                            href="https://github.com/JorgeOviedo3"
+                            target="_blank"
+                        >
+                            <i className="bi bi-github widget-icon-gradient fs-2"></i>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/jorge-oviedo-a41795233/"
+                            target="_blank"
+                        >
+                            <i className="bi bi-linkedin ms-2 widget-icon-gradient fs-2"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div className="d-flex justify-content-center mt-5">
